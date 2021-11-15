@@ -33,7 +33,7 @@ class Solution {
         //         count++;
         // }
         // return count;
-        return (int) Math.sqrt(n + 0.5);//艹
+        return (int) Math.sqrt(n + 0.5);
     }
 }
 // @lc code=end
