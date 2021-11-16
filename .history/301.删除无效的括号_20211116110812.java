@@ -1,4 +1,3 @@
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
@@ -15,7 +14,7 @@ class Solution {
         for (int i = 0; i < s.length(); i++) {
 
         }
-        List<String> strings = new LinkedList<>();
+        List<String> strings;
         strings.add(st.toString());
 
         return null;
