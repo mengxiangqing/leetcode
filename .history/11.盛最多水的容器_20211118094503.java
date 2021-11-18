@@ -12,8 +12,11 @@ class Solution {
         int left = 0;
         int right = height.length - 1;
         int res = 0;
+
+        // 可以往里缩
         while (left < right) {
-            // 总是移动较小的边
+
+            // 当前水量
             int area = (height[right] < height[left] ? height[right] : height[left]) * (right - left);
             res = res > area ? res : area;
             if (height[left]<height[right]) {

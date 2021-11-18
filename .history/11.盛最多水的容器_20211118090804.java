@@ -11,17 +11,19 @@ class Solution {
 
         int left = 0;
         int right = height.length - 1;
-        int res = 0;
         while (left < right) {
-            // 总是移动较小的边
-            int area = (height[right] < height[left] ? height[right] : height[left]) * (right - left);
-            res = res > area ? res : area;
-            if (height[left]<height[right]) {
+            // 可以往里缩
+            if (height[left] + 1 < height[left + 1] && left + 1 < right) {
                 left++;
-            } else
+            } else if (height[right] + 1 < height[right - 1] && left < right - 1) {
                 right--;
+            } else {
+                break;
+            }
+
         }
-        return res;
+        return (height[right] < height[left] ? height[right] : height[left]) * (right - left);
+
     }
 }
 // @lc code=end
