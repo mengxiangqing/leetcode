@@ -21,15 +21,13 @@ class Solution {
     }
 
     void dfs(int[] nums, int target, int k) {
-        if (target < 0)
-            return;
         if (target == 0) {
             lists.add(new ArrayList<>(list));
             return;
         }
         for (int i = k; i < nums.length; i++) {
-            if (target - nums[i] < 0)//提前终止，减少时间
-                break;
+            // if (target - nums[i] < 0)
+            //     break;
             if (i > k && nums[i] == nums[i - 1]) {
                 continue;
             }
