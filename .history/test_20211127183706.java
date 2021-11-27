@@ -1,9 +1,11 @@
 /**
  * test
  */
+import S;
 public class test {
 
     public static void main(String[] args) {
-        System.out.println(", , , ,        a, eaefa".split(" "));
+        int[] nums = { 3, 0, 1 };
+        missingNumber(nums);
     }
 }

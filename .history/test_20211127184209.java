@@ -1,5 +1,5 @@
 /**
- * DEBUG测试类
+ * test
  */
 
 public class test {
