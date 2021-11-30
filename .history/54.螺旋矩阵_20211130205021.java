@@ -1,0 +1,21 @@
+import java.util.ArrayList;
+import java.util.List;
+
+/*
+ * @lc app=leetcode.cn id=54 lang=java
+ *
+ * [54] 螺旋矩阵
+ */
+
+// @lc code=start
+class Solution {
+    public List<Integer> spiralOrder(int[][] matrix) {
+        int n = matrix[0].length;
+        int m = matrix.length;
+        List<Integer> res = new ArrayList<>();
+        
+        return res;
+    }
+}
+// @lc code=end
+
