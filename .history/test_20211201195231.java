@@ -9,7 +9,7 @@ public class test {
         int[][] m = { { 7 }, { 9 }, { 6 } };
         int n = 3;
         Solutio S = new Solutio();
-        S.generateMatrix(n);
+        S.spiralOrder(n);
 
     }
 }
