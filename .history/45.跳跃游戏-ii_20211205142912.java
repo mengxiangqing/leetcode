@@ -1,0 +1,39 @@
+/*
+ * @lc app=leetcode.cn id=45 lang=java
+ *
+ * [45] 跳跃游戏 II
+ */
+
+// @lc code=start
+class Solution {
+    public int jump1(int[] nums) {
+        int pos = nums.length - 1;
+        int step = 0;
+        while (pos > 0) {
+            for (int i = 0; i < pos; i++) {
+                if (nums[i] + i >= pos) {
+                    pos = i;
+                    step++;
+                    break;
+                }
+            }
+        }
+        return step;
+    }
+}
+    public int jump(int[] nums) {
+        int step = 0;
+        int pos = 0;
+        int max = 0;
+        for (int i = 0; i < nums.length; i++) {
+            max = Math.max(max, nums[i] + i);
+            if (i == pos) {
+                pos = max;
+                step++;
+            }
+        }
+        return step;
+    }
+}
+// @lc code=end
+
