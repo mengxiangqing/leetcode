@@ -9,8 +9,7 @@ public class test {
         int target = 0;
         int[] nums = { 2, 0, 2, 1, 1, 0 };
         Solutio S = new Solutio();
-        S.sortColors(nums);
-
+        System.out.println( S.searchMatrix(matrix, target));
 
 
     }
