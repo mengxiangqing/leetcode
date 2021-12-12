@@ -11,7 +11,7 @@ public class test {
         String word = "ABCB";
         int[] nums = { 2, 0, 2, 1, 1, 0 };
         Solutio S = new Solutio();
-        System.out.println(S.exist(board, word));
+        S.exist(board, word);
 
 
 
