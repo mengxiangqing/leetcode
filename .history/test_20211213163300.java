@@ -11,7 +11,13 @@ public class test {
         String word = "ABCB";
         int[] nums = {1,0,1,1,1};
         Solutio S = new Solutio();
-        S.search(nums, target);
+        int len = S.removeDuplicates(nums);
+        System.out.println(len);
+        for (int i = 0; i < len; i++) {
+            System.out.print(nums[i]);
+            System.out.print(" ");
+        }
+
 
 
     }
