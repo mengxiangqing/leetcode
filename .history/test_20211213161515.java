@@ -9,7 +9,7 @@ public class test {
         int target = 0;
         char[][] board = { { 'A', 'B', 'C', 'E' }, { 'S', 'F', 'C', 'S' }, { 'A', 'D', 'E', 'E' } };
         String word = "ABCB";
-        int[] nums = {0,0,1,1,1,1,2,3,3};
+        int[] nums = {0,1,2,3,4,2,6,7,8};
         Solutio S = new Solutio();
         int len = S.removeDuplicates(nums);
         System.out.println(len);
