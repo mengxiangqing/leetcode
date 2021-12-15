@@ -11,7 +11,7 @@ public class test {
         String word = "ABCB";
         int[] nums = { 2, 1, 5, 6, 2, 3 };
         Solutio S = new Solutio();
-        System.out.println(S.largestRectangleArea(nums));
+        S.largestRectangleArea(nums);
 
     }
 }

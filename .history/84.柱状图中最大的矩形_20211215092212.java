@@ -8,7 +8,7 @@ import java.util.Deque;
  */
 
 // @lc code=start
-class Solution {
+class Solutio {
     public int largestRectangleArea(int[] heights) {
         int max = 0;
         int n = heights.length;
@@ -25,7 +25,7 @@ class Solution {
                     current_w = i - stack.peekLast() - 1;
                 }
 
-                max = Math.max(max, (current_h * current_w));
+                max = Math.max(max, (i - current_h * current_w));
             }
 
             stack.addLast(i);
@@ -39,7 +39,7 @@ class Solution {
                 current_w = n - stack.peekLast() - 1;
             }
 
-            max = Math.max(max, (current_h * current_w));
+            max = Math.max(max, (n - current_h * current_w));
         }
 
         return max;
