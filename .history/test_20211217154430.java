@@ -9,7 +9,6 @@ public class test {
         Solutio S = new Solutio();
         String res;
         res = S.longestDupSubstring(str);
-        System.out.println(res);
 
     }
 }
