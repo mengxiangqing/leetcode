@@ -13,6 +13,7 @@ class Solution {
         List<List<Integer>> res = new ArrayList<>();
         List<Integer> path = new ArrayList<>();
         backtrack(nums, path, res);
+
         return res;
 
     }
@@ -28,7 +29,7 @@ class Solution {
             }
             path.add(nums[i]);
             backtrack(nums, path, res);
-            path.remove(path.size()-1);
+            path.remove(nums[i]);
         }
     }
 }
