@@ -12,17 +12,11 @@ class Solution {
     }
 
     private double quickMul(double x, Long N) {
-        double ans = 1.0;
-        // 贡献的初始值为x
-        double x_contribute = x;
-
-        while (N > 0) {
-            if (N % 2 == 1)
-                ans *= x_contribute;
-            x_contribute *= x_contribute;
-            N /= 2;
-        }
-        return ans;
+        if (N == 0)
+            return 1.0;
+        double y = quickMul(x, N / 2);
+        return N % 2 == 0 ? y * y : y * y * x;
     }
 }
 // @lc code=end
+
