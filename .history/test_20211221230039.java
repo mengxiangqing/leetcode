@@ -9,7 +9,7 @@ public class test {
         Solutio S = new Solutio();
         String res;
         S.solveNQueens(4);
-
+        System.out.println(res);
 
     }
 }
