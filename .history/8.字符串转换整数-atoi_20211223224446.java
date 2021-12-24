@@ -8,7 +8,7 @@ import java.util.Map;
  */
 
 // @lc code=start
-class Solutio {
+class Solution {
     public int myAtoi(String str) {
         Automaton automaton = new Automaton();
         int length = str.length();
