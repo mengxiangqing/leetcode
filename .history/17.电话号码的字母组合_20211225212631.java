@@ -1,4 +1,4 @@
-imprt jva.utilArrayList;
+import java.util.ArrayList;
 import java.util.List;
 
 /*
@@ -12,18 +12,13 @@ class Solution {
     public List<String> letterCombinations(String digits) {
         List<String> res = new ArrayList<>();
         String [] num=new String[10];
+        num[1]="abc";
         num[2]="abc";
-        num[3]="def";
-        num[4]="ghi";
-        num[5]="jkl";
-        num[6]="mno";
-        num[7]="pqrs";
-        num[8]="tuv";
-        num[9]="wxyz";
-        if(digits.length()==0)return res;
-        else{
-            
-        }
+        num[3]="abc";
+        num[4]="abc";
+        num[5]="abc";
+        num[6]="abc";
+        num[1]="abc";
 
         
         return res;

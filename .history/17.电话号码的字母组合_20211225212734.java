@@ -1,4 +1,4 @@
-imprt jva.utilArrayList;
+import java.util.ArrayList;
 import java.util.List;
 
 /*
@@ -20,10 +20,7 @@ class Solution {
         num[7]="pqrs";
         num[8]="tuv";
         num[9]="wxyz";
-        if(digits.length()==0)return res;
-        else{
-            
-        }
+        
 
         
         return res;
