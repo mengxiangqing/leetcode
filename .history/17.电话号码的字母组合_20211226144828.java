@@ -8,7 +8,7 @@ import java.util.List;
  */
 
 // @lc code=start
-class Solution {
+class Solutio {
     public List<String> letterCombinations(String digits) {
         List<String> res = new ArrayList<>();
         String[] num = new String[10];

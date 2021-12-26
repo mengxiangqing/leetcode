@@ -8,7 +8,7 @@ import java.util.List;
  */
 
 // @lc code=start
-class Solution {
+class Solutio {
     public List<String> letterCombinations(String digits) {
         List<String> res = new ArrayList<>();
         String[] num = new String[10];
@@ -28,7 +28,6 @@ class Solution {
             for (int i = 0; i < len; i++) {
                 res.add(String.valueOf(num[n].charAt(i)));
             }
-            System.out.println(res.toString());
             return res;
         } else {
             List<String> path = new ArrayList<>();
@@ -37,29 +36,10 @@ class Solution {
             for (int i = 0; i < n; i++) {
                 digit[i] = digits.charAt(i) - '0';
             }
-            backtrack(res, path, num, digit, 0);
+            backtrack(res, path, num, digit);
         }
 
         return res;
-    }
-
-    private void backtrack(List<String> res, List<String> path, String[] num, int[] digit, int start) {
-        if (path.size() == digit.length) {
-            String str = "";
-            for (String i : path) {
-                str += i;
-            }
-            res.add(str);
-        } else {
-            for (int i = start; i < digit.length; i++) {
-                for (int j = 0; j < num[digit[i]].length(); j++) {
-                    path.add(String.valueOf(num[digit[i]].charAt(j)));
-                    backtrack(res, path, num, digit, i + 1);
-                    path.remove(path.size() - 1);
-                }
-
-            }
-        }
     }
 }
 // @lc code=end
