@@ -5,10 +5,11 @@
 public class test {
 
     public static void main(String[] args) {
+        String str = "0000";
         Solutio S = new Solutio();
-        S.remainOfpeach(1);
-        int n = Solutio.remainOfpeach(1);
-       
+        String res;
+        System.out.println(
+                S.totalNQueens(5));
 
     }
 }

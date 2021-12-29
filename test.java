@@ -5,11 +5,10 @@
 public class test {
 
     public static void main(String[] args) {
-        String str = "233";
+        String str = "101023";
         Solutio S = new Solutio();
         String res;
-        System.out.println(
-                S.totalNQueens(5));
+        S.restoreIpAddresses(str);
 
     }
 }

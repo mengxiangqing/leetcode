@@ -5,8 +5,11 @@
 public class test {
 
     public static void main(String[] args) {
+        String str = "0000";
         Solutio S = new Solutio();
-        int n = S.remainOfpeach(1);
+        String res;
+
+        S.restoreIpAddresses(str);
 
     }
 }

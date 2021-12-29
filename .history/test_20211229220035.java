@@ -5,9 +5,10 @@
 public class test {
 
     public static void main(String[] args) {
+        String str = "101023";
         Solutio S = new Solutio();
-        int n;
-        n=S.remainOfpeach(n)+1;
+        String res;
+        S.restoreIpAddresses(str);
 
     }
 }
