@@ -10,7 +10,7 @@ public class test {
         String str = "101023";
         Solutio S = new Solutio();
         // String res;
-        S.getPermutation(3, 3);
+         S.getPermutation(3);
 
     }
 }
