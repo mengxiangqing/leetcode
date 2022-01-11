@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 /*
  * @lc app=leetcode.cn id=60 lang=java
  *
@@ -5,36 +8,29 @@
  */
 
 // @lc code=start
-class Solution {
-    public static int count;
-    public static String res;
-
+class Solutio {
     public String getPermutation(int n, int k) {
+        String res = "";
         if (n == 1)
             return "1";
-        res = "";
-        count = 0;
         boolean[] numIsUse = new boolean[n];
+        List<String> resList = new ArrayList<>();
         StringBuilder sb = new StringBuilder();
-        backTrack(sb, numIsUse, n, k);
-        return res;
+        backTrack(resList, sb, numIsUse, n);
+        return resList.get(k);
     }
 
-    private void backTrack(StringBuilder sb, boolean[] numIsUse, int n, int k) {
+    private void backTrack(List<String> resList, StringBuilder sb, boolean[] numIsUse, int n) {
         if (sb.length() == n) {
-            count++;
-            if (count == k) {
-                res = new String(sb.toString());
-            }
+            resList.add(new String(sb.toString()));
             return;
         }
-        for (int i = 1; i <= n && res.equals(""); i++) {
+        for (int i = 1; i <= n; i++) {
             if (numIsUse[i - 1] == false) {
                 numIsUse[i - 1] = true;
                 sb.append(i);
-                backTrack(sb, numIsUse, n, k);
+                backTrack(resList, sb, numIsUse, n);
                 sb.deleteCharAt(sb.length() - 1);
-                numIsUse[i - 1] = false;
             }
         }
     }

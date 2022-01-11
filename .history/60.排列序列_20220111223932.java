@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 /*
  * @lc app=leetcode.cn id=60 lang=java
  *
@@ -6,33 +9,29 @@
 
 // @lc code=start
 class Solution {
-    public static int count;
-    public static String res;
-
     public String getPermutation(int n, int k) {
         if (n == 1)
             return "1";
-        res = "";
-        count = 0;
+        String res = "";
         boolean[] numIsUse = new boolean[n];
         StringBuilder sb = new StringBuilder();
-        backTrack(sb, numIsUse, n, k);
+        backTrack(res, sb, numIsUse, n,k,0);
         return res;
     }
 
-    private void backTrack(StringBuilder sb, boolean[] numIsUse, int n, int k) {
+    private void backTrack(String res, StringBuilder sb, boolean[] numIsUse, int n,int k,int count) {
         if (sb.length() == n) {
             count++;
-            if (count == k) {
-                res = new String(sb.toString());
+            if (count == k) {   
+                res=new String(sb.toString());
             }
             return;
         }
-        for (int i = 1; i <= n && res.equals(""); i++) {
+        for (int i = 1; i <= n&&res.equals(""); i++) {
             if (numIsUse[i - 1] == false) {
                 numIsUse[i - 1] = true;
                 sb.append(i);
-                backTrack(sb, numIsUse, n, k);
+                backTrack(res, sb, numIsUse, n,k,count);
                 sb.deleteCharAt(sb.length() - 1);
                 numIsUse[i - 1] = false;
             }

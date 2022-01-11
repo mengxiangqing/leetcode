@@ -5,15 +5,14 @@
  */
 
 // @lc code=start
-class Solution {
-    public static int count;
-    public static String res;
+class Solutio {
+    public static int count = 0;
+    public static String res = "";
 
     public String getPermutation(int n, int k) {
         if (n == 1)
             return "1";
-        res = "";
-        count = 0;
+
         boolean[] numIsUse = new boolean[n];
         StringBuilder sb = new StringBuilder();
         backTrack(sb, numIsUse, n, k);

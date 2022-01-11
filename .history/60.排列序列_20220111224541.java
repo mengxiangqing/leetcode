@@ -6,8 +6,8 @@
 
 // @lc code=start
 class Solution {
-    public static int count;
-    public static String res;
+    public static int count = 0;
+    public static String res = "";
 
     public String getPermutation(int n, int k) {
         if (n == 1)
