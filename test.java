@@ -7,10 +7,10 @@ import java.util.List;
 public class test {
 
     public static void main(String[] args) {
-        String str = "101023";
+        String str = "aab";
         Solutio S = new Solutio();
         // String res;
-        S.getPermutation(3, 3);
+        S.partition(str);
 
     }
 }

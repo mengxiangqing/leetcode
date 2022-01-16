@@ -10,7 +10,7 @@ import java.util.List;
  */
 
 // @lc code=start
-class Solution {
+class Solutio {
     public List<List<String>> partition(String s) {
         List<List<String>> res = new ArrayList<>();
         if (s.length() == 1)
@@ -22,9 +22,7 @@ class Solution {
             one.add(String.valueOf(s.charAt(i)));
         }
         res.add(one);
-        if (isHui(s)) {
-            res.add(Arrays.asList(s));
-        }
+
         // 分隔符个数从 len-1 到 1
         for (int lenOfPoint = s.length() - 2; lenOfPoint > 0; lenOfPoint--) {
             // 分隔符位置
@@ -50,7 +48,7 @@ class Solution {
                 res.add(set);
             return;
         }
-        for (int i = start; i < s.length(); i++) {
+        for (int i = start; i < s.length()-1; i++) {
             position.add(i);
             backTrack(res, s, position, lenOfPoint,i+1);
             position.remove(position.size() - 1);

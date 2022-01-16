@@ -22,9 +22,7 @@ class Solution {
             one.add(String.valueOf(s.charAt(i)));
         }
         res.add(one);
-        if (isHui(s)) {
-            res.add(Arrays.asList(s));
-        }
+
         // 分隔符个数从 len-1 到 1
         for (int lenOfPoint = s.length() - 2; lenOfPoint > 0; lenOfPoint--) {
             // 分隔符位置

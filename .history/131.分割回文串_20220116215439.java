@@ -10,7 +10,7 @@ import java.util.List;
  */
 
 // @lc code=start
-class Solution {
+class Solutio {
     public List<List<String>> partition(String s) {
         List<List<String>> res = new ArrayList<>();
         if (s.length() == 1)
@@ -22,38 +22,22 @@ class Solution {
             one.add(String.valueOf(s.charAt(i)));
         }
         res.add(one);
-        if (isHui(s)) {
-            res.add(Arrays.asList(s));
-        }
+
         // 分隔符个数从 len-1 到 1
         for (int lenOfPoint = s.length() - 2; lenOfPoint > 0; lenOfPoint--) {
-            // 分隔符位置
+            //分隔符位置    
             List<Integer> position = new ArrayList<>();
-            // 找符合回文串的position
-            backTrack(res, s, position, lenOfPoint,1);
+            // 找position
+            backTrack(s, position, lenOfPoint);
 
         }
         return res;
     }
 
-    private void backTrack(List<List<String>> res, String s, List<Integer> position, int lenOfPoint,int start) {
-        if (position.size() == lenOfPoint) {
-            List<String> set = split_S(s, position);
-            boolean isTrue = true;
-            for (String string : set) {
-                if (!isHui(string)) {
-                    isTrue = false;
-                    break;
-                }
-            }
-            if (isTrue)
-                res.add(set);
-            return;
-        }
-        for (int i = start; i < s.length(); i++) {
-            position.add(i);
-            backTrack(res, s, position, lenOfPoint,i+1);
-            position.remove(position.size() - 1);
+    private void backTrack(String s, List<String> path, int[] position, int lenOfPoint) {
+
+        for (int i = 1; i < s.length() - 1; i++) {
+
         }
     }
 
