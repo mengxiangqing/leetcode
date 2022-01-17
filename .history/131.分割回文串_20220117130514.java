@@ -56,7 +56,7 @@ class Solution {
             position.remove(position.size() - 1);
         }
     }
-//
+
     public List<String> split_S(String s, List<Integer> position) {
         List<String> res = new ArrayList<>();
         if (position.size() == 1) {
