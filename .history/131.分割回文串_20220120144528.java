@@ -17,19 +17,19 @@ class Solution {
         List<List<String>> res = new ArrayList<>();
         if (s.length() == 1)
             return Arrays.asList(Arrays.asList(s));
-        int lenOfStr = s.length();
-        isHuiArray = new int[lenOfStr][lenOfStr];
+
         // 将长度为1的子串加进去
         List<String> one = new ArrayList<>();
         for (int i = 0; i < s.length(); i++) {
             one.add(String.valueOf(s.charAt(i)));
-            isHuiArray[i][i] = 1;
         }
         res.add(one);
         if (isHui(s)) {
             res.add(Arrays.asList(s));
         }
-
+        // 填充2，是回文串为1，不是为0
+        int lenOfStr = s.length();
+        isHuiArray = new int[lenOfStr][lenOfStr];
         // 分隔符个数从 len-1 到 1
         for (int lenOfPoint = s.length() - 2; lenOfPoint > 0; lenOfPoint--) {
             // 分隔符位置
@@ -60,23 +60,23 @@ class Solution {
         List<String> res = new ArrayList<>();
 
         String s0 = s.substring(0, position.get(0));
-        if (isHuiArray[0][position.get(0)-1] == 1 || isHui(s0)) {
-            isHuiArray[0][position.get(0)-1] = 1;
+        if (isHuiArray[0][position.get(0)] == 1 || isHui(s0)) {
+            isHuiArray[0][position.get(0)] = 1;
             res.add(s0);
         } else
             return new ArrayList<>();
         for (int i = 0; i < position.size() - 1; i++) {
             s0 = s.substring(position.get(i), position.get(i + 1));
-            if (isHuiArray[position.get(i)][position.get(i + 1)-1] == 1 || isHui(s0)) {
-                isHuiArray[position.get(i)][position.get(i + 1)-1] = 1;
+            if (isHuiArray[position.get(i)][position.get(i + 1)] == 1 || isHui(s0)) {
+                isHuiArray[position.get(i)][position.get(i + 1)] = 1;
                 res.add(s0);
             } else
                 return new ArrayList<>();
         }
 
         s0 = s.substring(position.get(position.size() - 1));
-        if (isHuiArray[position.get(position.size() - 1)][s.length() - 1] == 1 || isHui(s0)) {
-            isHuiArray[position.get(position.size() - 1)][s.length() - 1] = 1;
+        if (isHuiArray[position.get(position.size() - 1)][s.length()-1] == 1 || isHui(s0)) {
+            isHuiArray[position.get(position.size() - 1)][s.length()-1] = 1;
             res.add(s0);
         } else
             return new ArrayList<>();

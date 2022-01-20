@@ -10,7 +10,7 @@ import java.util.List;
  */
 
 // @lc code=start
-class Solution {
+class Solutio {
     private int[][] isHuiArray;
 
     public List<List<String>> partition(String s) {

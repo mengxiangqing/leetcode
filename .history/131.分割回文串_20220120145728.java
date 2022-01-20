@@ -10,7 +10,7 @@ import java.util.List;
  */
 
 // @lc code=start
-class Solution {
+class Solutio {
     private int[][] isHuiArray;
 
     public List<List<String>> partition(String s) {
@@ -67,16 +67,16 @@ class Solution {
             return new ArrayList<>();
         for (int i = 0; i < position.size() - 1; i++) {
             s0 = s.substring(position.get(i), position.get(i + 1));
-            if (isHuiArray[position.get(i)][position.get(i + 1)-1] == 1 || isHui(s0)) {
-                isHuiArray[position.get(i)][position.get(i + 1)-1] = 1;
+            if (isHuiArray[position.get(i)-1][position.get(i + 1)-1] == 1 || isHui(s0)) {
+                isHuiArray[position.get(i)-1][position.get(i + 1)-1] = 1;
                 res.add(s0);
             } else
                 return new ArrayList<>();
         }
 
         s0 = s.substring(position.get(position.size() - 1));
-        if (isHuiArray[position.get(position.size() - 1)][s.length() - 1] == 1 || isHui(s0)) {
-            isHuiArray[position.get(position.size() - 1)][s.length() - 1] = 1;
+        if (isHuiArray[position.get(position.size() - 1)-1][s.length() - 1] == 1 || isHui(s0)) {
+            isHuiArray[position.get(position.size() - 1)-1][s.length() - 1] = 1;
             res.add(s0);
         } else
             return new ArrayList<>();
