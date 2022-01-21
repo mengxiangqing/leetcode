@@ -22,10 +22,7 @@ class Solutio {
         for (int i = 0; i < isHuiArray.length; i++) {
             Arrays.fill(isHuiArray[i], true);
         }
-        for (int i = lenOfStr; i >= 0; i--) {
-            
-            
-        }
+
         return res;
     }
 

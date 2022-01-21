@@ -10,7 +10,7 @@ import java.util.List;
  */
 
 // @lc code=start
-class Solutio {
+class Solution {
     private boolean[][] isHuiArray;
 
     public List<List<String>> partition(String s) {
@@ -19,13 +19,8 @@ class Solutio {
             return Arrays.asList(Arrays.asList(s));
         int lenOfStr = s.length();
         isHuiArray = new boolean[lenOfStr][lenOfStr];
-        for (int i = 0; i < isHuiArray.length; i++) {
-            Arrays.fill(isHuiArray[i], true);
-        }
-        for (int i = lenOfStr; i >= 0; i--) {
-            
-            
-        }
+        
+
         return res;
     }
 

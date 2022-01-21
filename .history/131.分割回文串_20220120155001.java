@@ -10,7 +10,7 @@ import java.util.List;
  */
 
 // @lc code=start
-class Solutio {
+class Solution {
     private boolean[][] isHuiArray;
 
     public List<List<String>> partition(String s) {
@@ -19,12 +19,24 @@ class Solutio {
             return Arrays.asList(Arrays.asList(s));
         int lenOfStr = s.length();
         isHuiArray = new boolean[lenOfStr][lenOfStr];
-        for (int i = 0; i < isHuiArray.length; i++) {
-            Arrays.fill(isHuiArray[i], true);
+        // 将长度为1的子串加进去
+        List<String> one = new ArrayList<>();
+        for (int i = 0; i < s.length(); i++) {
+            one.add(String.valueOf(s.charAt(i)));
+            isHuiArray[i][i] = 1;
         }
-        for (int i = lenOfStr; i >= 0; i--) {
-            
-            
+        res.add(one);
+        if (isHui(s)) {
+            res.add(Arrays.asList(s));
+        }
+
+        // 分隔符个数从 len-1 到 1
+        for (int lenOfPoint = s.length() - 2; lenOfPoint > 0; lenOfPoint--) {
+            // 分隔符位置
+            List<Integer> position = new ArrayList<>();
+            // 找符合回文串的position
+            backTrack(res, s, position, lenOfPoint, 1);
+
         }
         return res;
     }
