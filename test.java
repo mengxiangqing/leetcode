@@ -7,10 +7,11 @@ import java.util.List;
 public class test {
 
     public static void main(String[] args) {
-        String str = "abbab";
+        String str = "aa";
         Solutio S = new Solutio();
         // String res;
-        S.partition(str);
+        System.out.println(
+                S.isMatch(str, "a*"));
 
     }
 }
