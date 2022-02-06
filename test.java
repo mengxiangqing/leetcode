@@ -10,7 +10,9 @@ public class test {
         String str = "aa";
         Solutio S = new Solutio();
         // String res;
-        S.convert("AB", 1);
+        System.out.println(
+
+                S.intToRoman(3));
 
     }
 }
