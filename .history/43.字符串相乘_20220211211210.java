@@ -15,19 +15,20 @@ class Solution {
         // num2每一位与num1相乘
         for (int i = num2.length() - 1; i >= 0; i--) {
             String temp = "0";
-            // 乘几个num1就是几个num1相加
+            //乘几个num1就是几个num1相加
             for (int j = 0; j < num2.charAt(i) - '0'; j++) {
 
                 temp = addStrings(num1, temp);
             }
-
-            // 补充0
+            if (i != num2.length()) {
+                //补充0
             StringBuilder sb = new StringBuilder(temp);
-            for (int j = 0; j < num2.length() - 1 - i; j++) {
+            for (int j = 0; j < num2.length()-i; j++) {
                 sb.append(0);
-
             }
-            res = addStrings(sb.toString(), res);
+                
+            }
+            res = addStrings(temp, res);
         }
 
         return res;

@@ -7,30 +7,18 @@
 // @lc code=start
 class Solution {
     public String multiply(String num1, String num2) {
-        if (num1.equals("0") || num2.equals("0")) {
-            return "0";
+        int n1 = 0;
+        int n2 = 0;
+        for (int i = 0; i < num1.length(); i++) {
+
+            n1 = n1 * 10 + (num1.charAt(i) - '0');
         }
-        // 保存计算结果
-        String res = "0";
-        // num2每一位与num1相乘
-        for (int i = num2.length() - 1; i >= 0; i--) {
-            String temp = "0";
-            // 乘几个num1就是几个num1相加
-            for (int j = 0; j < num2.charAt(i) - '0'; j++) {
+        for (int j = 0; j < num2.length(); j++) {
 
-                temp = addStrings(num1, temp);
-            }
-
-            // 补充0
-            StringBuilder sb = new StringBuilder(temp);
-            for (int j = 0; j < num2.length() - 1 - i; j++) {
-                sb.append(0);
-
-            }
-            res = addStrings(sb.toString(), res);
+            n2 = n2 * 10 + (num2.charAt(j) - '0');
         }
-
-        return res;
+        int count = n1 * n2;
+        return String.valueOf(count);
     }
 
     public String addStrings(String num1, String num2) {
