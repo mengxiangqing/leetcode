@@ -12,7 +12,7 @@ public class test {
         // String res;
         System.out.println(
 
-                S.isPalindrome(".,"));
+                S(".,"));
 
     }
 }
