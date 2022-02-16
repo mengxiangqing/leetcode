@@ -10,7 +10,7 @@ public class test {
         String str = "aa";
         Solutio S = new Solutio();
         // String res;
-        System.out.println(
+        System.out.printl(
                 S.isPalindrome(".,"));
 
     }
