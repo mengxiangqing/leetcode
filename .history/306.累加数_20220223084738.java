@@ -5,7 +5,7 @@
  */
 
 // @lc code=start
-class Solution {
+class Solutio {
     public boolean isAdditiveNumber(String num) {
         return dfs(num, 0, 0, 0, 0);
 
@@ -41,7 +41,7 @@ class Solution {
                 if (cur < sum)
                     continue;
             }
-            if (dfs(num, i + 1, count + 1, prev, cur))
+            if (dfs(num, index + 1, count + 1, prev, cur))
                 return true;
         }
         return false;

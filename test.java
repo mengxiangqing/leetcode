@@ -11,7 +11,7 @@ public class test {
         Solutio S = new Solutio();
         // String res;
         System.out.println(
-                S.isPalindrome(".,"));
+                S.isAdditiveNumber("199100199"));
 
                 
     }
