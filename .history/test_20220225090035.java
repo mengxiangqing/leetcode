@@ -11,7 +11,7 @@ public class test {
         Solutio S = new Solutio();
         // String res;
         System.out.println(
-                S.getRow(3));
+                S.getRow(4));
 
                 
     }
