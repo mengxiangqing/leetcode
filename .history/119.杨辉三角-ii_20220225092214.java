@@ -16,19 +16,15 @@ class Solution {
         List<Integer> pre = new ArrayList<>(Arrays.asList(1));
         if (rowIndex == 0)
             return pre;
+        List<Integer> cur = new ArrayList<>(Arrays.asList(1, 1));
+        if (rowIndex == 1)
+            return cur;
+        
 
-        int curIndex = 0;
-        while (curIndex++ < rowIndex) {
-            List<Integer> cur = new ArrayList<>();
-            for (int i = 0; i <= curIndex; i++) {
-                if (i == 0 || i == curIndex)
-                    cur.add(1);
-                else {
-                    cur.add(pre.get(i - 1) + pre.get(i));
-                }
-            }
-            pre = cur;
+        int curIndex = 1;
+        while (curIndex++ <= rowIndex) {
 
+           
         }
         return pre;
 

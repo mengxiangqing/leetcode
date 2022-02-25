@@ -9,7 +9,7 @@ import java.util.List;
  */
 
 // @lc code=start
-class Solution {
+class Solutio {
     public List<Integer> getRow(int rowIndex) {
 
         // 前三行
@@ -27,6 +27,7 @@ class Solution {
                     cur.add(pre.get(i - 1) + pre.get(i));
                 }
             }
+
             pre = cur;
 
         }

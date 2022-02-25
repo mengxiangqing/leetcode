@@ -27,6 +27,7 @@ class Solution {
                     cur.add(pre.get(i - 1) + pre.get(i));
                 }
             }
+
             pre = cur;
 
         }
