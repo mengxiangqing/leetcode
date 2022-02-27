@@ -10,7 +10,7 @@ import java.util.List;
 // @lc code=start
 // 对于非多线程环境中的字符串操作，我们应该使用 StringBuilder 否则使用 StringBuffer 类。
 // StringBuffer 是线程安全和同步的，而 StringBuilder 不是。这就是 StringBuilder 比 StringBuffer 快的原因。
-class Solution {
+class Solutio {
     int[] hours = new int[] { 1, 2, 4, 8, 0, 0, 0, 0, 0, 0 };
     int[] minutes = new int[] { 0, 0, 0, 0, 1, 2, 4, 8, 16, 32 };
 
