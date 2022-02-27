@@ -11,7 +11,8 @@ public class test {
         Solutio S = new Solutio();
         // String res;
         System.out.println(
-                S.isMatch(str, "a*"));
+                S.hammingWeight(00000000000000000000000000001011));
 
+                
     }
 }

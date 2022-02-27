@@ -11,7 +11,7 @@ public class test {
         Solutio S = new Solutio();
         // String res;
         System.out.println(
-                S.readBinaryWatch(3));
+                S.hammingWeight(00000000000000000000000000001011));
 
                 
     }
