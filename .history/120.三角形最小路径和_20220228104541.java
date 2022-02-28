@@ -7,7 +7,7 @@ import java.util.List;
  */
 
 // @lc code=start
-class Solution {
+class Solutio {
 
     public int minimumTotal(List<List<Integer>> triangle) {
         int[][] dp = new int[triangle.size()][triangle.size()];

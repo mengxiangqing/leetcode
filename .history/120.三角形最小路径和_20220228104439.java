@@ -21,7 +21,7 @@ class Solution {
         }
         int min = dp[dp.length-1][0];
         for (int i = 0; i < dp.length; i++) {
-            min = Math.min(min, dp[dp.length-1][i]);
+            min = Math.min(min, dp[dp.length][i]);
 
         }
         return min;
