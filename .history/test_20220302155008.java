@@ -22,7 +22,7 @@ public class test {
         triangle.add(num3);
         triangle.add(num4);
         System.out.println(
-                S.numDecodings("111111111111111111111111111111111111111111111"));
+z                S.numDecodings("226"));
 
 
     }
