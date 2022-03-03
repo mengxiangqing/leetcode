@@ -27,18 +27,18 @@ class Solution {
         if (n == 2) {
             return prices[0] < prices[1] ? prices[1] - prices[0] : 0;
         }
-        int[][] dp = new int[n][2];
+        int[][] dp = new int[2][2];
         // dp[i][0]代表下标为i 这天结束的时候，不持股,手里的现金数
         // dp[i][1]代表下标为i 这天结束的时候，持股，手里的现金数
 
         dp[0][0] = 0;
         dp[0][1] = -prices[0];
         for (int i = 1; i < n; i++) {
-            dp[i][0] = Math.max(dp[i - 1][0], dp[i - 1][1] + prices[i]);
-            dp[i][1] = Math.max(dp[i - 1][1], -prices[i]);
+            dp[i % 2][0] = Math.max(dp[(i - 1) % 2][0], dp[(i - 1) % 2][1] + prices[i]);
+            dp[i % 2][1] = Math.max(dp[(i - 1) % 2][1], -prices[i]);
 
         }
-        return dp[n-1][0];
+        return dp[(n - 1) % 2][0];
     }
 }
 // @lc code=end

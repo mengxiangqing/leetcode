@@ -25,7 +25,7 @@ class Solution {
         if (n == 1)
             return 0;
         if (n == 2) {
-            return prices[0] < prices[1] ? prices[1] - prices[0] : 0;
+            return prices[0] > prices[1] ? prices[0] - prices[1] : 0;
         }
         int[][] dp = new int[n][2];
         // dp[i][0]代表下标为i 这天结束的时候，不持股,手里的现金数
