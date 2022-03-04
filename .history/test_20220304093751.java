@@ -21,9 +21,9 @@ public class test {
         triangle.add(num2);
         triangle.add(num3);
         triangle.add(num4);
-        int[] nums = { 1,2 };
+        int[] nums = { 1, 2, 3, 4, 5 };
 
-        S.rotateRight(S.creaListNode(nums), 1);
+        S.rotateRight(S.creaListNode(nums), 2);
 
 
 
