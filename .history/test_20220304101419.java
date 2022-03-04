@@ -23,7 +23,7 @@ public class test {
         triangle.add(num4);
         int[] nums = { 1, 2, 3, 4, 5 };
 
-        S.rotateRight(S.creaListNode(nums), 2);
+        S.rotateRight(S.creaListNode(nums), 1);
 
     }
 }
