@@ -22,10 +22,9 @@ public class test {
         triangle.add(num3);
         triangle.add(num4);
         int[] nums = { 1, 2, 3, 4, 5 };
-        nums = S.countBits(100);
+        nums = S.countBits(10);
         for (int i : nums) {
-            System.out.print(i+" ");
-
+            System.out.println(i);
         }
 
     }
