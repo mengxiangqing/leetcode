@@ -22,7 +22,7 @@ public class test {
         triangle.add(num3);
         triangle.add(num4);
         int[] nums = { 1, 2, 3, 4, 5 };
-        S.integerBreak(9);
+        nums = S.integerBreak(9);
 
     }
 }
