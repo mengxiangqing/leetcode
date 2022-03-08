@@ -1,5 +1,7 @@
 import java.util.ArrayDeque;
+import java.util.Arrays;
 import java.util.Deque;
+import java.util.Stack;
 
 /*
  * @lc app=leetcode.cn id=84 lang=java
@@ -8,7 +10,7 @@ import java.util.Deque;
  */
 
 // @lc code=start
-class Solution {
+class Solutio {
     // public int largestRectangleArea(int[] heights) {
     // int max = 0;
     // int n = heights.length;

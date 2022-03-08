@@ -1,5 +1,6 @@
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.Stack;
 
 /*
  * @lc app=leetcode.cn id=84 lang=java
@@ -47,29 +48,23 @@ class Solution {
     public int largestRectangleArea(int[] heights) {
         Deque<Integer> stack = new ArrayDeque<>();
         // 在数组首尾添加0，方便确定边界
-        int[] newheights = new int[heights.length + 2];
-        System.arraycopy(heights, 0, newheights, 1, heights.length);
-        //先将哨兵放入栈，就不用判断非空了
         stack.addLast(0);
         int max = 0;
-        for (int i = 1; i < newheights.length; i++) {
+        for (int i = 0; i < heights.length; i++) {
             // 栈顶元素小于新元素heights[i]
-            if (newheights[stack.getLast()] <= newheights[i]) {
+            if (stack.getLast() <= heights[i]) {
                 // 进栈
                 stack.addLast(i);
             } else {
                 // 新元素小于栈顶元素，出栈，并计算面积
-                while (newheights[stack.getLast()] > newheights[i]) {
-                    int curH = newheights[stack.pollLast()];
-                    int curW = i - stack.getLast()-1;
-
-                    max = Math.max(max, curH * curW);
+                while (stack.getLast() > heights[i]) {
+                    int curH = stack.pollLast();
+                    max = Math.max(max, heights[curH] * (i - curH));
                 }
                 //新元素进栈
                 stack.addLast(i);
             }
         }
-        return max;
 
     }
 }

@@ -1,5 +1,7 @@
 import java.util.ArrayDeque;
+import java.util.Arrays;
 import java.util.Deque;
+import java.util.Stack;
 
 /*
  * @lc app=leetcode.cn id=84 lang=java
@@ -60,10 +62,8 @@ class Solution {
             } else {
                 // 新元素小于栈顶元素，出栈，并计算面积
                 while (newheights[stack.getLast()] > newheights[i]) {
-                    int curH = newheights[stack.pollLast()];
-                    int curW = i - stack.getLast()-1;
-
-                    max = Math.max(max, curH * curW);
+                    int curH = stack.pollLast();
+                    max = Math.max(max, newheights[curH] * (i - curH));
                 }
                 //新元素进栈
                 stack.addLast(i);

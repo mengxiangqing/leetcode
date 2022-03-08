@@ -21,7 +21,7 @@ public class test {
         triangle.add(num2);
         triangle.add(num3);
         triangle.add(num4);
-        int[] nums = {2,1,2 };
+        int[] nums = {2,1,5,6,2,3 };
         S.largestRectangleArea(nums);
 
     }

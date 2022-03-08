@@ -1,5 +1,7 @@
 import java.util.ArrayDeque;
+import java.util.Arrays;
 import java.util.Deque;
+import java.util.Stack;
 
 /*
  * @lc app=leetcode.cn id=84 lang=java
@@ -8,7 +10,7 @@ import java.util.Deque;
  */
 
 // @lc code=start
-class Solution {
+class Solutio {
     // public int largestRectangleArea(int[] heights) {
     // int max = 0;
     // int n = heights.length;
@@ -60,8 +62,8 @@ class Solution {
             } else {
                 // 新元素小于栈顶元素，出栈，并计算面积
                 while (newheights[stack.getLast()] > newheights[i]) {
+                    int curW = i - stack.getLast();
                     int curH = newheights[stack.pollLast()];
-                    int curW = i - stack.getLast()-1;
 
                     max = Math.max(max, curH * curW);
                 }
