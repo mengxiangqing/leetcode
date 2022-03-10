@@ -23,11 +23,8 @@ public class test {
         triangle.add(num4);
         int[] nums = { 2, 1, 2 };
         List<String> word = new ArrayList<>();
-        word.add("cat");
-        word.add("cats");
-        word.add("and");
-        word.add("sand");
-        word.add("dog");
+        word.add("leet");
+        word.add("code");
         S.wordBreak("catsanddog",word);
 
     }
