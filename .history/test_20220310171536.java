@@ -21,11 +21,8 @@ public class test {
         triangle.add(num2);
         triangle.add(num3);
         triangle.add(num4);
-        int[] nums = { 2, 1, 2 };
-        List<String> word = new ArrayList<>();
-        word.add("leet");
-        word.add("code");
-        S.wordBreak("leetcode",word);
+        int[] nums = {2,1,2 };
+        S.wordBreak(nums);
 
     }
 }
