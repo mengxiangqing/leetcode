@@ -1,0 +1,18 @@
+/*
+ * @lc app=leetcode.cn id=474 lang=java
+ *
+ * [474] 一和零
+ */
+
+// @lc code=start
+class Solution {
+    public int findMaxForm(String[] strs, int m, int n) {
+        int len = strs.length;
+        //dp[k][i][j] 表示
+        int[][][] dp = new int[len+1][m+1][n + 1];
+
+
+    }
+}
+// @lc code=end
+

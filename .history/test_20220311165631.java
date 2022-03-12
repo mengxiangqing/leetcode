@@ -22,8 +22,8 @@ public class test {
         triangle.add(num3);
         triangle.add(num4);
         int[] nums = { 2, 1, 2 };
-        String[] strs = { "10", "0001", "111001", "1", "0" };
-        S.findMaxForm(strs,5,3);
+        String[] strs={}
+        S.wordBreak("catsanddog",word);
 
     }
 }
