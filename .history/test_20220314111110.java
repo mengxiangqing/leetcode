@@ -23,7 +23,7 @@ public class test {
         triangle.add(num4);
         int[] nums = { 0,1,0,3,2,3 };
         String[] strs = { "10", "0001", "111001", "1", "0" };
-        S.lengthOfLIS(nums);
+        S.findMaxForm(strs,5,3);
 
     }
 }
