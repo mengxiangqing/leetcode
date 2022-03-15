@@ -16,7 +16,6 @@ class Solution {
         int[] visted = new int[nums.length];
         List<Integer> path = new ArrayList<>();
         backTrack(nums, res, path, visted);
-
         return res;
 
     }
@@ -27,7 +26,9 @@ class Solution {
                 return;
         }
         for (int i = 0; i < nums.length; i++) {
-            if (i > 0 && nums[i] == nums[i - 1] && visted[i - 1] == 1)
+
+            // 设定一个规则，保证在填第 i 个数的时候重复数字只会被填入一次即可。而在本题解中，我们选择对原数组排序，保证相同的数字都相邻，然后每次填入的数一定是这个数所在重复数集合中「从左往右第一个未被填过的数字」if (i > 0 && nums[i] == nums[i - 1] && visted[i - 1] == 0)
+            if (i > 0 && nums[i] == nums[i - 1] && visted[i - 1] == 0)
                 continue;
             if (visted[i] == 0) {
                 visted[i] = 1;

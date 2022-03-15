@@ -19,11 +19,10 @@ class Solution {
         int end = 0;// end表示有序数组tail的最后一个已经赋值元素的索引
 
         for (int i = 1; i < n; i++) {
-            // 比tail数组实际有效的末尾的那个元素还大
+            //比tail数组实际有效的末尾那个元素还，，
             if (nums[i] > tail[end]) {
                 end++;
                 tail[end] = nums[i];
-            } else {
             }
         }
 

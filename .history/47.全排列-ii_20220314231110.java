@@ -16,9 +16,7 @@ class Solution {
         int[] visted = new int[nums.length];
         List<Integer> path = new ArrayList<>();
         backTrack(nums, res, path, visted);
-
         return res;
-
     }
 
     private void backTrack(int[] nums, List<List<Integer>> res, List<Integer> path, int[] visted) {

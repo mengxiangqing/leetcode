@@ -25,6 +25,8 @@ public class test {
         int[] nums = { 0, 1, 0, 3, 2, 3 };
         String[] strs = { "10", "0001", "111001", "1", "0" };
         S.lengthOfLIS(nums);
+        num1.sort(Comparator < int > c -> {
 
+        });
     }
 }

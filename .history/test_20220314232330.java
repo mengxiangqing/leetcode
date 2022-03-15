@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-
 /**
  * DEBUG测试类
  */
@@ -22,9 +21,9 @@ public class test {
         triangle.add(num2);
         triangle.add(num3);
         triangle.add(num4);
-        int[] nums = { 0, 1, 0, 3, 2, 3 };
+        int[] nums = { 0,1,0,3,2,3 };
         String[] strs = { "10", "0001", "111001", "1", "0" };
         S.lengthOfLIS(nums);
-
+        num1.sort(c);
     }
 }
