@@ -26,10 +26,7 @@ class WordDictionary {
         boolean flag = false;
         for (int i = 0; i < word.length(); i++) {
             if (word.charAt(i) == '.')
-                {
-                    flag = true;
-                    break;
-                }
+                flag = true;
         }
         if (flag) {
             for (String str : wordList) {
