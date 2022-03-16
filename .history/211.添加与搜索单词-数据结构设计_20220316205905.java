@@ -41,7 +41,7 @@ class WordDictionary {
                 }
             }
         }
-        return false;
+        return true;
     }
 }
 

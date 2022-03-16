@@ -25,23 +25,13 @@ class WordDictionary {
         if (index == word.length())
             return node.isEnd();
         char ch = word.charAt(index);
-        // 如果ch是字母
+        //如果ch是字母
         if (Character.isLetter(ch)) {
             int childrenIndex = ch - 'a';
             Trie child = node.getChildren()[childrenIndex];
-            if (child != null && dfs(child, word, index + 1)) {
-                return true;
-            }
-        } else {
-            for (int i = 0; i < 26; i++) {
-                Trie child = node.getChildren()[i];
-                if(child!=null && dfs(child, word, index+1))
-                {
-                    return true;
-                }
-            }
+if(child != null &&dfs(node, word, index))
         }
-        return false;
+        return true;
     }
 }
 
@@ -92,7 +82,6 @@ class Trie {
     public Trie[] getChildren() {
         return children;
     }
-
     public boolean startsWith(String prefix) {
         return searchPrefix(prefix) != null;
     }

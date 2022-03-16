@@ -35,13 +35,10 @@ class WordDictionary {
         } else {
             for (int i = 0; i < 26; i++) {
                 Trie child = node.getChildren()[i];
-                if(child!=null && dfs(child, word, index+1))
-                {
-                    return true;
-                }
+                if(child!=null && )
             }
         }
-        return false;
+        return true;
     }
 }
 
