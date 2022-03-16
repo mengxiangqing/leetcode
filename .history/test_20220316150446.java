@@ -11,7 +11,7 @@ public class test {
 
     public static void main(String[] args) {
         String str = "aa";
-        // Solutio S = new Solutio();
+        Solutio S = new Solutio();
         // String res;
         List<List<Integer>> triangle = new ArrayList<>();
         List<Integer> num1 = new ArrayList<>(Arrays.asList(2));
@@ -26,11 +26,7 @@ public class test {
         String[] strs = { "10", "0001", "111001", "1", "0" };
         WordDictionary wordDictionary = new WordDictionary();
         wordDictionary.addWord("bad");
-        wordDictionary.addWord("dad");
         wordDictionary.addWord("mad");
-        wordDictionary.search("pad");
         wordDictionary.search("bad");
-        wordDictionary.search(".ad");
-        wordDictionary.search("b..");
     }
 }

@@ -26,11 +26,7 @@ public class test {
         String[] strs = { "10", "0001", "111001", "1", "0" };
         WordDictionary wordDictionary = new WordDictionary();
         wordDictionary.addWord("bad");
-        wordDictionary.addWord("dad");
         wordDictionary.addWord("mad");
-        wordDictionary.search("pad");
         wordDictionary.search("bad");
-        wordDictionary.search(".ad");
-        wordDictionary.search("b..");
     }
 }
