@@ -29,7 +29,7 @@ class Solution {
             res.add(new ArrayList<>(path));
             return;
         }
-        for (int i = start; i < num.length && sum +i<=n; i++) {
+        for (int i = start; i < num.length ; i++) {
             if (isUsed[i] == false) {
                 path.add(i);
                 isUsed[i] = true;
