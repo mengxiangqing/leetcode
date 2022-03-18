@@ -26,6 +26,6 @@ public class test {
         String[] strs = { "10", "0001", "111001", "1", "0" };
         int tmp = 2;
         int cmp = 3;
-        System.out.println(tmp=3);
+        System.out.println(tmp=cmp);
     }
 }
