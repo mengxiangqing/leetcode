@@ -25,8 +25,8 @@ class Solution {
         }
 
         for (int i = 0; i + wordsLength <= s.length(); i++) {
-            // 多移动几个
             if (hashMap.get(s.substring(i, i + minLength)) == null) {
+                i += minLength-1;
                 continue;
             }
             String str = s.substring(i, i + wordsLength);
