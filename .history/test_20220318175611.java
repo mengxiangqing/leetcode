@@ -11,7 +11,7 @@ public class test {
 
     public static void main(String[] args) {
         String str = "aa";
-        // Solutio S = new Solutio();
+        Solutio S = new Solutio();
         // String res;
         List<List<Integer>> triangle = new ArrayList<>();
         List<Integer> num1 = new ArrayList<>(Arrays.asList(2));
@@ -27,9 +27,6 @@ public class test {
         int tmp = 2;
         int cmp = 3;
         System.out.println(tmp = 3);
-        // S.findSubstring("wordgoodgoodgoodbestword", strs);
-        int[] test = nums;
-        nums[0] = 2;
-        System.out.println(test[0]);
+        S.findSubstring("wordgoodgoodgoodbestword", strs);
     }
 }

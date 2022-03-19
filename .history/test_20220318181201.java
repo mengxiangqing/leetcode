@@ -29,7 +29,6 @@ public class test {
         System.out.println(tmp = 3);
         // S.findSubstring("wordgoodgoodgoodbestword", strs);
         int[] test = nums;
-        nums[0] = 2;
         System.out.println(test[0]);
     }
 }
