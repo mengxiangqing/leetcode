@@ -29,25 +29,25 @@ class Solution {
         if (head == null || head.next ==null)
             return head;
         ListNode dummy = new ListNode();
-        ListNode small = new ListNode();
-        ListNode large = new ListNode();
-
-        ListNode smallHead = small;
-        ListNode largeHead = large;
-        while (head != null) {
-            if (head.val < x) {
-                small.next = head;
-                small = small.next;
+        ListNode slow = dummy;
+        ListNode newDummy = new ListNode(0,head);
+        ListNode quick = newDummy;
+        while (quick.next != null) {
+            if (quick.next.val < x) {
+                //将结点移到前面
+                slow.next = quick.next;
+                slow = slow.next;
+                // 指针继续走
+                quick.next = quick.next.next;
+                slow.next = null;
             } else {
-                large.next = head;
-                large = large.next;
+                quick = quick.next;
             }
-            head = head.next;
-        }
-        large.next = null;
-        small.next = largeHead.next;
 
-        return smallHead.next;
+        }
+        slow.next = newDummy.next;
+
+        return dummy.next;
     }
 }
 // @lc code=end
