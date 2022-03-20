@@ -32,6 +32,6 @@ public class test {
         nums[0] = 2;
         System.out.println(test[0]);
         char[] c = str.toCharArray();
-        System.out.println(new String(c));
+        System.out.println(c.toString());
     }
 }
