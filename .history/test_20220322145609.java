@@ -61,13 +61,13 @@ class MinStack {
     public void pop() {
 
       statck.removeFirst();
-      MinStack.removeFirst();
 
     }
 
     public int top() {
+        MinStack.removeFirst();
 
-      return statck.getFirst();
+      return statck.removeFirst();
 
     }
 

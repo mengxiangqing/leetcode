@@ -38,12 +38,13 @@ public class test {
 }
 
 class MinStack {
+    private int minData;
     private Deque<Integer> MinStack;
     private Deque<Integer> statck;
 
     /** initialize your data structure here. */
     public MinStack() {
-
+        minData = Integer.MAX_VALUE;
         MinStack = new ArrayDeque<>();
         statck = new ArrayDeque<>();
     }
@@ -61,13 +62,12 @@ class MinStack {
     public void pop() {
 
       statck.removeFirst();
-      MinStack.removeFirst();
+            MinStack.removeFirst();
 
     }
 
     public int top() {
-
-      return statck.getFirst();
+      return statck.removeFirst();
 
     }
 

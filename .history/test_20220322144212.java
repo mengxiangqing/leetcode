@@ -38,21 +38,21 @@ public class test {
 }
 
 class MinStack {
+    private int minData;
     private Deque<Integer> MinStack;
     private Deque<Integer> statck;
 
     /** initialize your data structure here. */
     public MinStack() {
-
+        minData = Integer.MAX_VALUE;
         MinStack = new ArrayDeque<>();
         statck = new ArrayDeque<>();
     }
 
     public void push(int x) {
-        if (MinStack.isEmpty() || (x < MinStack.getFirst())) {
-            MinStack.addFirst(x);
-        } else
-            MinStack.addFirst(MinStack.getFirst());
+        if (MinStack.isEmpty()||(x < MinStack.getFirst())) {
+                MinStack.addFirst(x);
+            }else MinStack.addFirst(MinStack.getFirst());
 
         statck.addFirst(x);
 
@@ -60,20 +60,24 @@ class MinStack {
 
     public void pop() {
 
-      statck.removeFirst();
-      MinStack.removeFirst();
-
+        int data =statck.removeFirst();
+        if (data == MinStack.getFirst()) {
+            MinStack.removeFirst();
+        }
     }
 
     public int top() {
+        int data =statck.removeFirst();
 
-      return statck.getFirst();
+            MinStack.removeFirst();
 
+        return data;
     }
 
     public int min() {
-
+        if (!MinStack.isEmpty()) {
             return MinStack.getFirst();
-
+        }
+        return minData;
     }
 }

@@ -61,7 +61,6 @@ class MinStack {
     public void pop() {
 
       statck.removeFirst();
-      MinStack.removeFirst();
 
     }
 
