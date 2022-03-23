@@ -34,13 +34,14 @@ public class test {
         System.out.println(test[0]);
         char[] c = str.toCharArray();
         System.out.println(new String(c));
-
     }
 }
 
 class MinStack {
     private Deque<Integer> MinStack;
     private Deque<Integer> statck;
+    private int b = a;
+    private int a = 0;
 
     /** initialize your data structure here. */
     public MinStack() {

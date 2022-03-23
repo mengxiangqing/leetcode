@@ -34,7 +34,6 @@ public class test {
         System.out.println(test[0]);
         char[] c = str.toCharArray();
         System.out.println(new String(c));
-
     }
 }
 

@@ -35,9 +35,8 @@ public class test {
         char[] c = str.toCharArray();
         System.out.println(new String(c));
 
-    }
-}
 
+    }
 class MinStack {
     private Deque<Integer> MinStack;
     private Deque<Integer> statck;

@@ -36,6 +36,13 @@ public class test {
         System.out.println(new String(c));
 
     }
+    private int[] countZeroAndOne(String str) {
+        int[] ans = new int[2];
+        for (char c : str.toCharArray()) {
+            ans[c - '0']++;
+        }
+        return ans;
+    }
 }
 
 class MinStack {
