@@ -43,13 +43,12 @@ class Solution {
     }
 
     private void dfs(int index, TreeNode root, List<List<Integer>> res) {
-        if (res.size() < index)//妙呀
+        if (res.size() < index)
             res.add(new ArrayList<>());
         res.get(index - 1).add(root.val);
         if (root.left != null)
             dfs(index + 1, root.left, res);
-        if (root.right != null)
-            dfs(index + 1, root.right, res);
+        if(root.right!=null)dfs(index+1, root.right, res);
     }
 
 }
