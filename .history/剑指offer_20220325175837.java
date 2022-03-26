@@ -136,25 +136,4 @@ class StringReverse {
         return num;
     }
 
-    public char firstUniqChar(String s) {
-        if (s.length() == 0)
-            return ' ';
-        int[] c = new int[26];
-        for (int i = 0; i < s.length(); i++) {
-            c[s.charAt(i) - 'a']++;
-        }
-       for (int i = 0; i < s.length(); i++) {
-                if (c[s.charAt(i) - 'a'] == 1)
-                    return s.charAt(i) ;
-
-       }
-        return ' ';
-    }
-}
-
-class testChar {
-    public static void main(String[] args) {
-        StringReverse sr = new StringReverse();
-        System.out.println(sr.firstUniqChar("leetcode"));
-    }
 }

@@ -144,8 +144,8 @@ class StringReverse {
             c[s.charAt(i) - 'a']++;
         }
        for (int i = 0; i < s.length(); i++) {
-                if (c[s.charAt(i) - 'a'] == 1)
-                    return s.charAt(i) ;
+                if (c[i] == 1)
+                    return (char) ('a' + i);
 
        }
         return ' ';

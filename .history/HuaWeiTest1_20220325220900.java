@@ -152,6 +152,9 @@ class 污染水域 {
             System.out.println(-1);
         } else {
             int n = (int) Math.sqrt(numStr.length);
+            if (n == 2) {// 二阶正方形另说。只有边
+
+            }
             int[][] num = new int[n][n];
             int k = 0;
             int flag = 0;
@@ -169,7 +172,6 @@ class 污染水域 {
 
                 int day = 0;
                 while (count != numStr.length) {
-                    count = 0;
                     num = trans(num);
                     day++;
                 }
@@ -183,62 +185,58 @@ class 污染水域 {
         int[][] res = new int[num.length][num.length];
         for (int i = 0; i < res.length; i++) {
             for (int j = 0; j < res.length; j++) {
-                if (num[i][j] == 0) {
-
-                    // 根据原数组中的数据判断新数组中的数据是否被感染
-                    // 矩阵内部
-                    if (i > 0 && j > 0 && i < num.length - 1 && j < num.length - 1) {
-                        if (num[i - 1][j] == 0 && num[i + 1][j] == 0 && num[i][j - 1] == 0 && num[i][j + 1] == 0)
-                            res[i][j] = 0;
-                        else
-                            res[i][j] = 1;
-                    }
-                    // 矩阵上边
-                    else if (i == 0 && j > 0 && j < num.length - 1) {
-                        if (num[i + 1][j] == 0 && num[i][j - 1] == 0 && num[i][j + 1] == 0)
-                            res[i][j] = 0;
-                        else
-                            res[i][j] = 1;
-                    }
-                    // 下边
-                    else if (i == num.length - 1 && j > 0 && j < num.length - 1) {
-                        if (num[i - 1][j] == 0 && num[i][j - 1] == 0 && num[i][j + 1] == 0)
-                            res[i][j] = 0;
-                        else
-                            res[i][j] = 1;
-                    } else if (j == 0 && i > 0 && i < num.length - 1) {
-                        if (num[i - 1][j] == 0 && num[i + 1][j] == 0 && num[i][j + 1] == 0)
-                            res[i][j] = 0;
-                        else
-                            res[i][j] = 1;
-                    } else if (j == num.length - 1 && i > 0 && i < num.length - 1) {
-                        if (num[i - 1][j] == 0 && num[i + 1][j] == 0 && num[i][j - 1] == 0)
-                            res[i][j] = 0;
-                        else
-                            res[i][j] = 1;
-                    } else if (i == 0 && j == 0) {
-                        if (num[i + 1][j] == 0 && num[i][j + 1] == 0)
-                            res[i][j] = 0;
-                        else
-                            res[i][j] = 1;
-                    } else if (i == 0 && j == num.length - 1) {
-                        if (num[i + 1][j] == 0 && num[i][j - 1] == 0)
-                            res[i][j] = 0;
-                        else
-                            res[i][j] = 1;
-                    } else if (i == num.length - 1 && j == 0) {
-                        if (num[i - 1][j] == 0 && num[i][j + 1] == 0)
-                            res[i][j] = 0;
-                        else
-                            res[i][j] = 1;
-                    } else if (i == num.length - 1 && j == num.length - 1) {
-                        if (num[i - 1][j] == 0 && num[i][j - 1] == 0)
-                            res[i][j] = 0;
-                        else
-                            res[i][j] = 1;
-                    }
-                } else
-                    res[i][j] = 1;
+                // 根据原数组中的数据判断新数组中的数据是否被感染
+                // 矩阵内部
+                if (i > 0 && j > 0 && i < num.length - 1 && j < num.length - 1) {
+                    if (num[i - 1][j] == 0 && num[i + 1][j] == 0 && num[i][j - 1] == 0 && num[i][j + 1] == 0)
+                        res[i][j] = 0;
+                    else
+                        res[i][j] = 1;
+                }
+                // 矩阵上边
+                else if (i == 0 && j > 0 && j < num.length - 1) {
+                    if (num[i + 1][j] == 0 && num[i][j - 1] == 0 && num[i][j + 1] == 0)
+                        res[i][j] = 0;
+                    else
+                        res[i][j] = 1;
+                }
+                // 下边
+                else if (i == num.length - 1 && j > 0 && j < num.length - 1) {
+                    if (num[i - 1][j] == 0 && num[i][j - 1] == 0 && num[i][j + 1] == 0)
+                        res[i][j] = 0;
+                    else
+                        res[i][j] = 1;
+                } else if (j == 0 && i > 0 && i < num.length - 1) {
+                    if (num[i - 1][j] == 0 && num[i + 1][j] == 0 && num[i][j + 1] == 0)
+                        res[i][j] = 0;
+                    else
+                        res[i][j] = 1;
+                } else if (j == num.length - 1 && i > 0 && i < num.length - 1) {
+                    if (num[i - 1][j] == 0 && num[i + 1][j] == 0 && num[i][j - 1] == 0)
+                        res[i][j] = 0;
+                    else
+                        res[i][j] = 1;
+                } else if (i == 0 && j == 0) {
+                    if (num[i + 1][j] == 0 && num[i][j + 1] == 0)
+                        res[i][j] = 0;
+                    else
+                        res[i][j] = 1;
+                } else if (i == 0 && j == num.length - 1) {
+                    if (num[i + 1][j] == 0 && num[i][j - 1] == 0)
+                        res[i][j] = 0;
+                    else
+                        res[i][j] = 1;
+                } else if (i == num.length - 1 && j == 0) {
+                    if (num[i - 1][j] == 0 && num[i][j + 1] == 0)
+                        res[i][j] = 0;
+                    else
+                        res[i][j] = 1;
+                } else if (i == num.length - 1 && j == num.length - 1) {
+                    if (num[i - 1][j] == 0 && num[i][j - 1] == 0)
+                        res[i][j] = 0;
+                    else
+                        res[i][j] = 1;
+                }
                 if (res[i][j] == 1)
                     count++;
             }

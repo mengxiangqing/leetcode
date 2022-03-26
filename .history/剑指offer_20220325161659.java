@@ -15,6 +15,8 @@ class ListNode {
     }
 }
 
+
+
 // 输入一个链表的头节点，从尾到头反过来返回每个节点的值（用数组返回）。
 class Solution {
     public int[] reversePrint(ListNode head) {
@@ -73,9 +75,8 @@ class Node {
  */
 class CopyComplixList {
     HashMap<Node, Node> hashMap = new HashMap<>();
-
     public Node copyRandomList(Node head) {
-        // 新链表头结点
+        //新链表头结点
         Node newDummy = new Node(0);
         Node q = newDummy;
         Node p = head;
@@ -104,57 +105,10 @@ class StringReverse {
         sb.append(s.substring(0, n));
         return sb.toString();
     }
-
     public int findRepeatNumber(int[] nums) {
-        HashMap<Integer, Integer> hashMap = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
-            if (hashMap.containsKey(nums[i])) {
-                return nums[i];
-            } else {
-                hashMap.put(nums[i], 1);
 
-            }
         }
-        return 0;
     }
 
-    public int missingNumber(int[] nums) {
-        int num = 1;
-        if (nums.length == 1) {
-            if (nums[0] == 0)
-                return 1;
-            else
-                return 0;
-        } else {
-            int n = nums.length;
-            for (int i = 1; i < nums.length; i++) {
-                if (nums[i] != nums[i - 1] + 1) {
-                    num = nums[i] + 1;
-                }
-            }
-        }
-        return num;
-    }
-
-    public char firstUniqChar(String s) {
-        if (s.length() == 0)
-            return ' ';
-        int[] c = new int[26];
-        for (int i = 0; i < s.length(); i++) {
-            c[s.charAt(i) - 'a']++;
-        }
-       for (int i = 0; i < s.length(); i++) {
-                if (c[s.charAt(i) - 'a'] == 1)
-                    return s.charAt(i) ;
-
-       }
-        return ' ';
-    }
-}
-
-class testChar {
-    public static void main(String[] args) {
-        StringReverse sr = new StringReverse();
-        System.out.println(sr.firstUniqChar("leetcode"));
-    }
 }

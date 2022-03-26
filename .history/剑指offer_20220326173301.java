@@ -143,9 +143,9 @@ class StringReverse {
         for (int i = 0; i < s.length(); i++) {
             c[s.charAt(i) - 'a']++;
         }
-       for (int i = 0; i < s.length(); i++) {
-                if (c[s.charAt(i) - 'a'] == 1)
-                    return s.charAt(i) ;
+       for (int i = 0; i < c.length; i++) {
+                if (c[i] == 1)
+                    return (char) ('a' + i);
 
        }
         return ' ';
@@ -155,6 +155,6 @@ class StringReverse {
 class testChar {
     public static void main(String[] args) {
         StringReverse sr = new StringReverse();
-        System.out.println(sr.firstUniqChar("leetcode"));
+        sr.firstUniqChar("leetcode");
     }
 }

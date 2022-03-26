@@ -152,6 +152,9 @@ class 污染水域 {
             System.out.println(-1);
         } else {
             int n = (int) Math.sqrt(numStr.length);
+            if (n == 2) {// 二阶正方形另说。只有边
+
+            }
             int[][] num = new int[n][n];
             int k = 0;
             int flag = 0;
@@ -169,7 +172,6 @@ class 污染水域 {
 
                 int day = 0;
                 while (count != numStr.length) {
-                    count = 0;
                     num = trans(num);
                     day++;
                 }
