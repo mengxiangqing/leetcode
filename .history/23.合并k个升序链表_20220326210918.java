@@ -30,41 +30,9 @@ class ListNode {
 // @lc code=start
 class Solution {
     public ListNode mergeKLists(ListNode[] lists) {
-        if (lists.length == 0)
-            return null;
+        ListNode dummy = new ListNode();
 
-        // PriorityQueue<ListNode> pq = new PriorityQueue<>((v1, v2) -> v1.val -
-        // v2.val);
-        // for (ListNode node : lists) {
-        // if (node != null)
-        // pq.offer(node);
-
-        // }
-        // ListNode p = dummy;
-        // while (!pq.isEmpty()) {
-        // ListNode node = pq.poll();
-        // p.next = node;
-        // p = p.next;
-        // if (node.next != null) {
-        // pq.offer(node.next);
-
-        // }
-        // }
-        // 两两合并
-        return merge(lists, 0, lists.length - 1);
-
-    }
-
-    public ListNode merge(ListNode[] lists, int left, int right) {
-        if (left == right)
-            return lists[left];
-        else {
-            int mid = (right - left) / 2 + left;
-            ListNode l1 = merge(lists, left, mid);
-            ListNode l2 = merge(lists, mid + 1, right);
-            return mergeTwoLists(l1, l2);
-
-        }
+        return dummy.next;
     }
 
     /**

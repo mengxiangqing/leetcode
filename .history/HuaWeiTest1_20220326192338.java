@@ -249,7 +249,5 @@ class 污染水域 {
 }
 
 class 滑动窗口最大值 {
-public static void main(String[] args) {
 
-}
 }
