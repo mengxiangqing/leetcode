@@ -225,7 +225,7 @@ class BinTree {
                 if (ans.size() % 2 == 0)
                     temp.addLast(node.val);
                 else
-                    temp.addFirst(node.val);
+                    temp.addLast(node.val);
 
                 if (node.left != null)
                     que.addFirst(node.left);

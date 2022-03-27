@@ -215,23 +215,16 @@ class BinTree {
         List<List<Integer>> ans = new ArrayList<>();
         Deque<TreeNode> que = new ArrayDeque<>();
         que.addFirst(root);
-
         while (!que.isEmpty()) {
             int size = que.size();
-            LinkedList<Integer> temp = new LinkedList<>();
-
+            List<Integer> temp = new ArrayList<>();
             for (int i = 0; i < size; i++) {
                 TreeNode node = que.removeLast();
-                if (ans.size() % 2 == 0)
-                    temp.addLast(node.val);
-                else
-                    temp.addFirst(node.val);
-
+                temp.add(node.val);
                 if (node.left != null)
                     que.addFirst(node.left);
                 if (node.right != null)
                     que.addFirst(node.right);
-
             }
             ans.add(temp);
         }
