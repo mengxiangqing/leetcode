@@ -237,10 +237,5 @@ class BinTree {
         }
         return ans;
     }
-
-    public boolean isSubStructure(TreeNode A, TreeNode B) {
-        if (B == null)
-            return false;
-        return false;
-    }
+    isSubStructure
 }

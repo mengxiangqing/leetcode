@@ -11,10 +11,11 @@ class Solution {
         int s_len = s.length();
         if (p_len < s_len && !p.contains("*"))
             return false;
-        //动态规划，dp[i][j]代表s[i] f[j]之前的是否匹配
-        boolean[][] dp = new boolean[s_len][p_len];
-        //
-        return true;
+        // 动态规划，dp[i][j]代表s[i] p[j]之前的是否匹配
+        boolean[][] dp = new boolean[s_len + 1][p_len + 1];
+        if()
+
+        return dp[s_len][p_len];
     }
 }
 // @lc code=end
