@@ -278,24 +278,4 @@ class BinTree {
         root.right = left;
         return root;
     }
-
-    public boolean isSymmetric(TreeNode root) {
-        if (root == null)
-            return true;
-        TreeNode a = root.left;
-        TreeNode b = root.right;
-        return isSymmetricTwo(a, b);
-
-    }
-
-    private boolean isSymmetricTwo(TreeNode a, TreeNode b) {
-        if (a == null && b == null)
-            return true;
-        else if (a == null || b == null)
-            return false;
-        else if (a.val != b.val)
-            return false;
-        else
-            return isSymmetricTwo(a.left, b.right) && isSymmetricTwo(a.right, b.left);
-    }
 }

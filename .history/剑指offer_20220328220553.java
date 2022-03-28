@@ -248,7 +248,7 @@ class BinTree {
             TreeNode p = que.removeFirst();
             if (p.val == B.val) {
                 if (dfs(p, B))
-                    return true;
+                    break;
             }
             if (p.left != null)
                 que.addLast(p.left);
@@ -259,43 +259,10 @@ class BinTree {
     }
 
     private boolean dfs(TreeNode p, TreeNode b) {
-        if (b == null)
+        if ( b == null)
             return true;
-        else if (p == null)
-            return false;
-        else if (p.val == b.val) {
+        else {
             return (dfs(p.left, b.left) && dfs(p.right, b.right));
-        } else
-            return false;
-    }
-
-    public TreeNode mirrorTree(TreeNode root) {
-        if (root == null)
-            return null;
-        TreeNode left = mirrorTree(root.left);
-        TreeNode right = mirrorTree(root.right);
-        root.left = right;
-        root.right = left;
-        return root;
-    }
-
-    public boolean isSymmetric(TreeNode root) {
-        if (root == null)
-            return true;
-        TreeNode a = root.left;
-        TreeNode b = root.right;
-        return isSymmetricTwo(a, b);
-
-    }
-
-    private boolean isSymmetricTwo(TreeNode a, TreeNode b) {
-        if (a == null && b == null)
-            return true;
-        else if (a == null || b == null)
-            return false;
-        else if (a.val != b.val)
-            return false;
-        else
-            return isSymmetricTwo(a.left, b.right) && isSymmetricTwo(a.right, b.left);
+        }
     }
 }

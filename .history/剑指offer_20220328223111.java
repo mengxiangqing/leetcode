@@ -293,9 +293,7 @@ class BinTree {
             return true;
         else if (a == null || b == null)
             return false;
-        else if (a.val != b.val)
-            return false;
         else
-            return isSymmetricTwo(a.left, b.right) && isSymmetricTwo(a.right, b.left);
+            return isSymmetricTwo(a.left, b.right) && isSymmetricTwo(a.right, b.right);
     }
 }
