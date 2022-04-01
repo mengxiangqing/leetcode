@@ -16,7 +16,6 @@ class 剑指22 {
         ListNode q = head;
         while (i < k) {
             p = p.next;
-            i++;
         }
         while (p != null) {
             p = p.next;

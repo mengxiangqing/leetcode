@@ -3,121 +3,7 @@ import java.util.*;
 
 public class 剑指offer {
     public static void main(String[] args) {
-        Trans46 ts = new Trans46();
-        ts.translateNumDP(12258);
-    }
-}
 
-class 剑指22 {
-    // 输入一个链表，输出该链表中倒数第k个节点。为了符合大多数人的习惯，本题从1开始计数，即链表的尾节点是倒数第1个节点。
-    public ListNode getKthFromEnd(ListNode head, int k) {
-        int i = 0;
-        ListNode p = head;
-        ListNode q = head;
-        while (i < k) {
-            p = p.next;
-            i++;
-        }
-        while (p != null) {
-            p = p.next;
-            q = q.next;
-        }
-
-        return q;
-    }
-}
-
-class 剑指18 {
-    // 给定单向链表的头指针和一个要删除的节点的值，定义一个函数删除该节点。
-    // 返回删除后的链表的头节点。
-    public ListNode deleteNode(ListNode head, int val) {
-        ListNode dummy = new ListNode(0);
-        dummy.next = head;
-        ListNode pre = dummy;
-        ListNode p = dummy.next;
-        while (p != null) {
-            if (p.val == val) {
-                pre.next = p.next;
-                break;
-            }
-            pre = pre.next;
-            p = p.next;
-        }
-        return dummy.next;
-    }
-}
-
-class 剑指48 {
-    public int lengthOfLongestSubstring(String s) {
-        int len = s.length();
-        if (len <= 1)
-            return len;
-        int max = 0;
-        int temp = 0;
-        HashMap<Character, Integer> hashMap = new HashMap<>();
-        for (int j = 0; j < len; j++) {
-            int i = hashMap.getOrDefault(s.charAt(j), -1);
-            temp = temp < j - i ? temp + 1 : j - i;
-            max = Math.max(max, j - i);
-        }
-
-        return max;
-    }
-}
-
-class Trans46 {
-    // 剑指 Offer 46. 把数字翻译成字符串
-    public int translateNum(int num) {
-        List<String> list = new ArrayList<>();
-        StringBuilder sb = new StringBuilder();
-        trackBack(String.valueOf(num), list, sb, 0);
-        return list.size();
-    }
-
-    public int translateNumDP(int num) {
-        String str = String.valueOf(num);
-        if (str.length() < 2)
-            return str.length();
-        // 以i结尾的字符串能翻译的种类
-        int[] dp = new int[str.length() + 1];
-        dp[0] = 1;
-        dp[1] = 1;
-        if (Integer.valueOf(str.substring(0, 2)) > 9 && Integer.valueOf(str.substring(0, 2)) < 26) {
-            dp[1] += 1;
-        }
-        for (int i = 2; i < str.length(); i++) {
-            dp[i] = dp[i - 1];
-            if (Integer.valueOf(str.substring(i - 1, i + 1)) > 9 && Integer.valueOf(str.substring(i - 1, i + 1)) < 26) {
-                dp[i] += dp[i - 2];
-            }
-        }
-
-        return dp[str.length() - 1];
-
-    }
-
-    private void trackBack(String num, List<String> list, StringBuilder sb, int index) {
-        if (index == num.length()) {
-            String str = new String(sb);
-            if (!list.contains(str))
-                list.add(str);
-            return;
-        }
-
-        for (int j = index + 1; j <= index + 2 && j <= num.length(); j++) {
-            String sTmp = num.substring(index, j);
-            if (Integer.parseInt(sTmp) <= 25) {
-                if (sTmp.length() > 1) {
-                    if (sTmp.charAt(0) == '0')
-                        break;
-                }
-                sb.append((char) (Integer.parseInt(sTmp) + 'a'));
-                trackBack(num, list, sb, j);
-                sb.deleteCharAt(sb.length() - 1);
-
-            }
-
-        }
     }
 }
 
@@ -439,4 +325,34 @@ class BinTree {
         return dp[m - 1][n - 1];
     }
 
+    // 剑指 Offer 46. 把数字翻译成字符串
+    public int translateNum(int num) {
+        List<String> list = new ArrayList<>();
+        StringBuilder sb = new StringBuilder();
+        trackBack(String.valueOf(num), list, sb, 0);
+        return list.size();
+    }
+
+    private void trackBack(String num, List<String> list, StringBuilder sb, int index) {
+        if (index == num.length()) {
+            String str = new String(sb);
+            if (!list.contains(str))
+                list.add(str);
+            return;
+        }
+        for (int i = index; i < num.length() - 1; i++) {
+            for (int j = i + 1; j <= i + 2; j++) {
+                String sTmp = num.substring(i, j);
+                if (Integer.parseInt(sTmp) <= 25) {
+                    sb.append(sTmp);
+                    trackBack(num, list, sb, i + 1);
+                    for (int k = i; k < j; k++) {
+                        sb.deleteCharAt(sb.length() - 1);
+                    }
+
+                }
+            }
+
+        }
+    }
 }
