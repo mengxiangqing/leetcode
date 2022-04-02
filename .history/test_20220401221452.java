@@ -37,9 +37,9 @@ public class test {
         // S.minWindow("abc", "cba");
 
         String a = "java2";
-        // String b = "java";
-        final String d = "java";
-        String c = d + 2;
+         String b = "java";
+        String d = "java";
+        String c = b + 2;
         String e = d + 2;
         System.out.println(a == c);
         System.out.println(a == e);
