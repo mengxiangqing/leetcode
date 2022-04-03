@@ -3,50 +3,28 @@ import java.util.*;
 
 public class 剑指offer {
     public static void main(String[] args) {
-        剑指47 jz = new 剑指47();
-        int[] nums = new int[] { 10, 26, 30, 31, 47, 60 };
-
-        jz.twoSum(nums, 40);
-
+        Trans46 ts = new Trans46();
+        ts.translateNumDP(12258);
     }
-}
-
-class 剑指47 {
-    public int[] twoSum(int[] nums, int target) {
-        int i = 0, j = nums.length - 1;
-        while (i < j) {
-            int s = nums[i] + nums[j];
-            if (s < target)
-                i++;
-            else if (s > target)
-                j--;
-            else
-                return new int[] { nums[i], nums[j] };
-        }
-        return new int[0];
-    }
-
 }
 
 class 剑指21 {
     public int[] exchange(int[] nums) {
-        if (nums.length <= 1)
-            return nums;
-        int fast = 0;
-        int slow = 0;
-        while (fast < nums.length) {
-            if (nums[fast] % 2 == 1) {
-                int temp = nums[fast];
-                nums[fast] = nums[slow];
-                nums[slow] = temp;
-                slow++;
+        int left = 0;
+        int right = nums.length-1;
+        while (left != right) {
+            while (nums[left] % 2 == 1)
+                left++;
+            while (nums[right] % 2 == 0) {
+                right--;
             }
-            fast++;
+            int temp = nums[left];
+            nums[left] = nums[right];
+            nums[right] = temp;
         }
         return nums;
     }
 }
-
 class 剑指22 {
     // 输入一个链表，输出该链表中倒数第k个节点。为了符合大多数人的习惯，本题从1开始计数，即链表的尾节点是倒数第1个节点。
     public ListNode getKthFromEnd(ListNode head, int k) {

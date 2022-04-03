@@ -4,28 +4,43 @@ import java.util.*;
 public class 剑指offer {
     public static void main(String[] args) {
         剑指47 jz = new 剑指47();
-        int[] nums = new int[] { 10, 26, 30, 31, 47, 60 };
+        int[] nums = new int[] { 10,26,30,31,47,60 };
 
-        jz.twoSum(nums, 40);
+        jz.twoSum(nums,40);
 
     }
 }
 
 class 剑指47 {
     public int[] twoSum(int[] nums, int target) {
-        int i = 0, j = nums.length - 1;
-        while (i < j) {
-            int s = nums[i] + nums[j];
-            if (s < target)
-                i++;
-            else if (s > target)
+        int i = 0;
+        int j = nums.length - 1;
+        while (nums[i] + nums[j] != target) {
+            if (nums[i] + nums[j] > target)
                 j--;
-            else
-                return new int[] { nums[i], nums[j] };
-        }
-        return new int[0];
-    }
+            if(nums[i] + nums[j]<target)
+                i++;
+            if (nums[i] + nums[j] == target)
+                return new int[] { nums[i] , nums[j] };
 
+        }
+        return new int[] {};
+    }
+    //在数组的start 和 end 之间二分查找target
+    public static int search(int[] nums, int start, int end, int target) {
+        while (start < end) {
+            int mid = (end - start) / 2 + start;
+            if (nums[mid] == target) {
+                return mid;
+            }
+            else if (nums[mid] < target) {
+                start = mid + 1;
+            }
+            else
+                end = mid - 1;
+        }
+        return -1;
+    }
 }
 
 class 剑指21 {

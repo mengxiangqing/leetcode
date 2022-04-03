@@ -3,45 +3,34 @@ import java.util.*;
 
 public class 剑指offer {
     public static void main(String[] args) {
-        剑指47 jz = new 剑指47();
-        int[] nums = new int[] { 10, 26, 30, 31, 47, 60 };
+        剑指21 jz = new 剑指21();
+        int[] nums = new int[] { 1, 2, 3, 4 };
 
-        jz.twoSum(nums, 40);
+        jz.exchange(nums);
 
     }
-}
-
-class 剑指47 {
-    public int[] twoSum(int[] nums, int target) {
-        int i = 0, j = nums.length - 1;
-        while (i < j) {
-            int s = nums[i] + nums[j];
-            if (s < target)
-                i++;
-            else if (s > target)
-                j--;
-            else
-                return new int[] { nums[i], nums[j] };
-        }
-        return new int[0];
-    }
-
 }
 
 class 剑指21 {
     public int[] exchange(int[] nums) {
         if (nums.length <= 1)
             return nums;
-        int fast = 0;
-        int slow = 0;
-        while (fast < nums.length) {
-            if (nums[fast] % 2 == 1) {
-                int temp = nums[fast];
-                nums[fast] = nums[slow];
-                nums[slow] = temp;
-                slow++;
+        int left = 0;
+        int right = nums.length - 1;
+        while (left < right) {
+            while (nums[left] % 2 == 1 && left + 1 < nums.length)
+                left++;
+            while (nums[right] % 2 == 0 && right > 0) {
+                right--;
             }
-            fast++;
+            if (nums[left] % 2 == 0 && nums[right] % 2 == 1 && left < right) {
+
+                int temp = nums[left];
+                nums[left] = nums[right];
+                nums[right] = temp;
+                left++;
+                right--;
+            }
         }
         return nums;
     }
