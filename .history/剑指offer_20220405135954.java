@@ -6,137 +6,43 @@ public class 剑指offer {
         剑指34 jz = new 剑指34();
         int[] nums = new int[] { 10, 26, 30, 31, 47, 60 };
         String str = "[5,4,8,11,null,13,4,7,2,null,null,5,1]";
-        String[] data = str.substring(1, str.length() - 1).split(",");
-        TreeNode root = jz.createTree(data);
+        String[] data = str.substring(0, str.length() - 1).split("，");
+        TreeNode root = jz.createTree(data, 0);
         jz.pathSum(root, 22);
 
-    }
-}
 
-class Node {
-    public int val;
-    public Node left;
-    public Node right;
-
-    public Node() {
-    }
-
-    public Node(int _val) {
-        val = _val;
-    }
-
-    public Node(int _val, Node _left, Node _right) {
-        val = _val;
-        left = _left;
-        right = _right;
-    }
-}
-
-class 剑指54 {
-    int res;
-    int k;
-
-    public int kthLargest(TreeNode root, int k) {
-        this.k = k;
-        dfs(root);
-        return res;
-    }
-
-    private void dfs(TreeNode root) {
-        if (root == null)
-            return;
-        dfs(root.right);
-        if (k == 0)
-            return;
-        if (--k == 0)
-            res = root.val;
-        dfs(root.left);
-    }
-}
-
-class 剑指36 {
-    // 输入一棵二叉搜索树，将该二叉搜索树转换成一个排序的循环双向链表。要求不能创建任何新的节点，只能调整树中节点指针的指向。
-    Deque<Node> que = new ArrayDeque<>();
-
-    public Node treeToDoublyList(Node root) {
-        if (root == null)
-            return null;
-        treeToDoublyList(root.left);
-
-        if (que.isEmpty()) {
-            que.addLast(root);
-        } else {
-            que.getLast().right = root;
-            root.left = que.getLast();
-            que.addLast(root);
-        }
-        treeToDoublyList(root.right);
-        que.getLast().right = que.getFirst();
-        que.getFirst().left = que.getLast();
-        return que.getFirst();
     }
 }
 
 class 剑指34 {
     public List<List<Integer>> pathSum(TreeNode root, int target) {
         List<List<Integer>> res = new ArrayList<>();
-        if (root == null)
-            return res;
         List<Integer> path = new ArrayList<>();
         dfs(res, root, target, path, 0);
         return res;
     }
 
     private void dfs(List<List<Integer>> res, TreeNode root, int target, List<Integer> path, int sum) {
-        path.add(root.val);
-        sum += root.val;
         if (sum == target && root.left == null && root.right == null) {
             res.add(new ArrayList<>(path));
-
-        } else {
-
-            if (root.left != null)
-                dfs(res, root.left, target, path, sum);
-            if (root.right != null)
-                dfs(res, root.right, target, path, sum);
+            return;
         }
-        path.remove(path.size() - 1);
-
+        if (root != null) {
+            path.add(root.val);
+            if (root.left != null)
+                dfs(res, root.left, target, path, sum + root.val);
+            if (root.right != null)
+                dfs(res, root.right, target, path, sum + root.val);
+            path.remove(path.size() - 1);
+        }
     }
 
-    /**
-     * 根据数组层次遍历生成二叉树
-     *
-     * @param data
-     * @return
-     */
-    public TreeNode createTree(String[] data) {
-        ArrayDeque<TreeNode> pre = new ArrayDeque<>();
-        TreeNode root = new TreeNode(Integer.parseInt(data[0]));
-        pre.addLast(root);
-        int index = 0;
-
-        while (!pre.isEmpty()) {
-            ArrayDeque<TreeNode> cur = new ArrayDeque<>();
-            while (!pre.isEmpty()) {
-
-                TreeNode node = pre.removeFirst();
-                TreeNode left = null;
-                TreeNode right = null;
-
-                if (++index < data.length && !data[index].equals("null")) {
-                    left = new TreeNode(Integer.parseInt(data[index]));
-                    cur.addLast(left);
-                }
-                if (++index < data.length && !data[index].equals("null")) {
-                    right = new TreeNode(Integer.parseInt(data[index]));
-                    cur.addLast(right);
-                }
-                node.left = left;
-                node.right = right;
-            }
-            pre = cur;
-        }
+    public TreeNode createTree(String[] data, int index) {
+        if (data[index].equals("null"))
+            return null;
+        TreeNode root = new TreeNode(Integer.parseInt(data[index]));
+        root.left = createTree(data, index * 2);
+        root.right = createTree(data, index * 2 + 1);
         return root;
     }
 }
@@ -400,19 +306,20 @@ class ReverseList {
         return cur;
     }
 }
-/*
- * class Node {
- * int val;
- * Node next;
- * Node random;
- *
- * public Node(int val) {
- * this.val = val;
- * this.next = null;
- * this.random = null;
- * }
- * }
- * /**
+
+class Node {
+    int val;
+    Node next;
+    Node random;
+
+    public Node(int val) {
+        this.val = val;
+        this.next = null;
+        this.random = null;
+    }
+}
+
+/**
  * 请实现 copyRandomList 函数，复制一个复杂链表。在复杂链表中，每个节点除了有一个 next 指针指向下一个节点，还有一个 random
  * 指针指向链表中的任意节点或者 null。
  *
@@ -420,34 +327,32 @@ class ReverseList {
  * 链接：https://leetcode-cn.com/problems/fu-za-lian-biao-de-fu-zhi-lcof
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
-/*
- * class CopyComplixList {
- * HashMap<Node, Node> hashMap = new HashMap<>();
- *
- * public Node copyRandomList(Node head) {
- * // 新链表头结点
- * Node newDummy = new Node(0);
- * Node q = newDummy;
- * Node p = head;
- * while (p != null) {
- * Node newNode = new Node(p.val);
- * q.next = newNode;
- * hashMap.put(p, newNode);
- * q = q.next;
- * p = p.next;
- * }
- * q = newDummy.next;
- * while (head != null) {
- * if (head.random != null) {
- * q.random = hashMap.get(head.random);
- * }
- * head = head.next;
- * q = q.next;
- * }
- * return newDummy.next;
- * }
- * }
- */
+class CopyComplixList {
+    HashMap<Node, Node> hashMap = new HashMap<>();
+
+    public Node copyRandomList(Node head) {
+        // 新链表头结点
+        Node newDummy = new Node(0);
+        Node q = newDummy;
+        Node p = head;
+        while (p != null) {
+            Node newNode = new Node(p.val);
+            q.next = newNode;
+            hashMap.put(p, newNode);
+            q = q.next;
+            p = p.next;
+        }
+        q = newDummy.next;
+        while (head != null) {
+            if (head.random != null) {
+                q.random = hashMap.get(head.random);
+            }
+            head = head.next;
+            q = q.next;
+        }
+        return newDummy.next;
+    }
+}
 
 class StringReverse {
     public String reverseLeftWords(String s, int n) {
@@ -477,6 +382,7 @@ class StringReverse {
             else
                 return 0;
         } else {
+            int n = nums.length;
             for (int i = 1; i < nums.length; i++) {
                 if (nums[i] != nums[i - 1] + 1) {
                     num = nums[i] + 1;
@@ -650,6 +556,7 @@ class BinTree {
     }
 
     public int maxValue(int[][] grid) {
+        int max = 0;
         int m = grid.length;
         int n = grid[0].length;
         int[][] dp = new int[m + 1][n + 1];

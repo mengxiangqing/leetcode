@@ -32,49 +32,8 @@ class Node {
     }
 }
 
-class 剑指54 {
-    int res;
-    int k;
-
-    public int kthLargest(TreeNode root, int k) {
-        this.k = k;
-        dfs(root);
-        return res;
-    }
-
-    private void dfs(TreeNode root) {
-        if (root == null)
-            return;
-        dfs(root.right);
-        if (k == 0)
-            return;
-        if (--k == 0)
-            res = root.val;
-        dfs(root.left);
-    }
-}
-
 class 剑指36 {
-    // 输入一棵二叉搜索树，将该二叉搜索树转换成一个排序的循环双向链表。要求不能创建任何新的节点，只能调整树中节点指针的指向。
-    Deque<Node> que = new ArrayDeque<>();
 
-    public Node treeToDoublyList(Node root) {
-        if (root == null)
-            return null;
-        treeToDoublyList(root.left);
-
-        if (que.isEmpty()) {
-            que.addLast(root);
-        } else {
-            que.getLast().right = root;
-            root.left = que.getLast();
-            que.addLast(root);
-        }
-        treeToDoublyList(root.right);
-        que.getLast().right = que.getFirst();
-        que.getFirst().left = que.getLast();
-        return que.getFirst();
-    }
 }
 
 class 剑指34 {
@@ -401,18 +360,19 @@ class ReverseList {
     }
 }
 /*
- * class Node {
- * int val;
- * Node next;
- * Node random;
- *
- * public Node(int val) {
- * this.val = val;
- * this.next = null;
- * this.random = null;
- * }
- * }
- * /**
+class Node {
+    int val;
+    Node next;
+    Node random;
+
+    public Node(int val) {
+        this.val = val;
+        this.next = null;
+        this.random = null;
+    }
+}
+*/
+/**
  * 请实现 copyRandomList 函数，复制一个复杂链表。在复杂链表中，每个节点除了有一个 next 指针指向下一个节点，还有一个 random
  * 指针指向链表中的任意节点或者 null。
  *
@@ -420,34 +380,32 @@ class ReverseList {
  * 链接：https://leetcode-cn.com/problems/fu-za-lian-biao-de-fu-zhi-lcof
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
-/*
- * class CopyComplixList {
- * HashMap<Node, Node> hashMap = new HashMap<>();
- *
- * public Node copyRandomList(Node head) {
- * // 新链表头结点
- * Node newDummy = new Node(0);
- * Node q = newDummy;
- * Node p = head;
- * while (p != null) {
- * Node newNode = new Node(p.val);
- * q.next = newNode;
- * hashMap.put(p, newNode);
- * q = q.next;
- * p = p.next;
- * }
- * q = newDummy.next;
- * while (head != null) {
- * if (head.random != null) {
- * q.random = hashMap.get(head.random);
- * }
- * head = head.next;
- * q = q.next;
- * }
- * return newDummy.next;
- * }
- * }
- */
+class CopyComplixList {
+    HashMap<Node, Node> hashMap = new HashMap<>();
+
+    public Node copyRandomList(Node head) {
+        // 新链表头结点
+        Node newDummy = new Node(0);
+        Node q = newDummy;
+        Node p = head;
+        while (p != null) {
+            Node newNode = new Node(p.val);
+            q.next = newNode;
+            hashMap.put(p, newNode);
+            q = q.next;
+            p = p.next;
+        }
+        q = newDummy.next;
+        while (head != null) {
+            if (head.random != null) {
+                q.random = hashMap.get(head.random);
+            }
+            head = head.next;
+            q = q.next;
+        }
+        return newDummy.next;
+    }
+}
 
 class StringReverse {
     public String reverseLeftWords(String s, int n) {
@@ -650,6 +608,7 @@ class BinTree {
     }
 
     public int maxValue(int[][] grid) {
+        int max = 0;
         int m = grid.length;
         int n = grid[0].length;
         int[][] dp = new int[m + 1][n + 1];

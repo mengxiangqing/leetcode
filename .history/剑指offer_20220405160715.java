@@ -32,28 +32,6 @@ class Node {
     }
 }
 
-class 剑指54 {
-    int res;
-    int k;
-
-    public int kthLargest(TreeNode root, int k) {
-        this.k = k;
-        dfs(root);
-        return res;
-    }
-
-    private void dfs(TreeNode root) {
-        if (root == null)
-            return;
-        dfs(root.right);
-        if (k == 0)
-            return;
-        if (--k == 0)
-            res = root.val;
-        dfs(root.left);
-    }
-}
-
 class 剑指36 {
     // 输入一棵二叉搜索树，将该二叉搜索树转换成一个排序的循环双向链表。要求不能创建任何新的节点，只能调整树中节点指针的指向。
     Deque<Node> que = new ArrayDeque<>();
