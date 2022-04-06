@@ -38,22 +38,20 @@ class 剑指45 {
 
     public boolean isStraight(int[] nums) {
         Arrays.sort(nums);
+        int zeroCount = 0;
         int min = 20;
         int max = 0;
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] != 0) {
-                min = Math.min(min, nums[i]);
-                max = Math.max(max, nums[i]);
-            }
-            if (i > 0 && nums[i] != 0 && nums[i] == nums[i - 1])
-                return false;
-
+        for (int i : nums) {
+            if (i == 0)
+                zeroCount++;
+            min = Math.min(min, i);
+            max = Math.max(max, i);
         }
         if (max - min >= 5) {
-            return false;
+
         }
 
-        return true;
+        return false;
     }
 }
 

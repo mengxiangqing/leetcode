@@ -4,10 +4,11 @@ import java.util.*;
 public class 剑指offer {
     public static void main(String[] args) {
         剑指45 jz = new 剑指45();
-        int[] nums = new int[] { 3, 30, 34, 5, 9 };
+        int[] nums = new int[] { 3,30,34,5,9 };
         String str = "[5,4,8,11,null,13,4,7,2,null,null,5,1]";
         String[] data = str.substring(1, str.length() - 1).split(",");
         jz.minNumber(nums);
+
 
     }
 }
@@ -27,7 +28,6 @@ class 剑指45 {
             }
 
         });
-
         StringBuilder sb = new StringBuilder();
         for (String str : strs) {
             sb.append(str);
@@ -35,28 +35,7 @@ class 剑指45 {
         }
         return sb.toString();
     }
-
-    public boolean isStraight(int[] nums) {
-        Arrays.sort(nums);
-        int min = 20;
-        int max = 0;
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] != 0) {
-                min = Math.min(min, nums[i]);
-                max = Math.max(max, nums[i]);
-            }
-            if (i > 0 && nums[i] != 0 && nums[i] == nums[i - 1])
-                return false;
-
-        }
-        if (max - min >= 5) {
-            return false;
-        }
-
-        return true;
-    }
 }
-
 class Node {
     public int val;
     public Node left;

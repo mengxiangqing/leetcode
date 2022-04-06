@@ -41,10 +41,9 @@ class 剑指45 {
         int min = 20;
         int max = 0;
         for (int i = 0; i < nums.length; i++) {
-            if (nums[i] != 0) {
-                min = Math.min(min, nums[i]);
-                max = Math.max(max, nums[i]);
-            }
+
+            min = Math.min(min, nums[i]);
+            max = Math.max(max, nums[i]);
             if (i > 0 && nums[i] != 0 && nums[i] == nums[i - 1])
                 return false;
 

@@ -27,33 +27,13 @@ class 剑指45 {
             }
 
         });
-
+        Arrays.sort(strs, (x, y) -> (x + y).compareTo(y + x));
         StringBuilder sb = new StringBuilder();
         for (String str : strs) {
             sb.append(str);
 
         }
         return sb.toString();
-    }
-
-    public boolean isStraight(int[] nums) {
-        Arrays.sort(nums);
-        int min = 20;
-        int max = 0;
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] != 0) {
-                min = Math.min(min, nums[i]);
-                max = Math.max(max, nums[i]);
-            }
-            if (i > 0 && nums[i] != 0 && nums[i] == nums[i - 1])
-                return false;
-
-        }
-        if (max - min >= 5) {
-            return false;
-        }
-
-        return true;
     }
 }
 

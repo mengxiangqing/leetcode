@@ -3,60 +3,23 @@ import java.util.*;
 
 public class 剑指offer {
     public static void main(String[] args) {
-        剑指45 jz = new 剑指45();
-        int[] nums = new int[] { 3, 30, 34, 5, 9 };
+        剑指34 jz = new 剑指34();
+        int[] nums = new int[] { 3,30,34,5,9 };
         String str = "[5,4,8,11,null,13,4,7,2,null,null,5,1]";
         String[] data = str.substring(1, str.length() - 1).split(",");
-        jz.minNumber(nums);
+        TreeNode root = jz.createTree(data);
+        jz.pathSum(root, 22);
 
     }
 }
 
 class 剑指45 {
     public String minNumber(int[] nums) {
-        String[] strs = new String[nums.length];
-        for (int i = 0; i < nums.length; i++) {
-            strs[i] = String.valueOf(nums[i]);
-        }
-        Arrays.sort(strs, new Comparator<String>() {
-
-            @Override
-            public int compare(String o1, String o2) {
-                // TODO Auto-generated method stub
-                return (o1 + o2).compareTo(o2 + o1);
-            }
+        Arrays.sort(nums, new Comparator<T>() {
 
         });
-
-        StringBuilder sb = new StringBuilder();
-        for (String str : strs) {
-            sb.append(str);
-
-        }
-        return sb.toString();
-    }
-
-    public boolean isStraight(int[] nums) {
-        Arrays.sort(nums);
-        int min = 20;
-        int max = 0;
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] != 0) {
-                min = Math.min(min, nums[i]);
-                max = Math.max(max, nums[i]);
-            }
-            if (i > 0 && nums[i] != 0 && nums[i] == nums[i - 1])
-                return false;
-
-        }
-        if (max - min >= 5) {
-            return false;
-        }
-
-        return true;
     }
 }
-
 class Node {
     public int val;
     public Node left;
