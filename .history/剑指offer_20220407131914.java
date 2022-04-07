@@ -4,7 +4,7 @@ import java.util.*;
 public class 剑指offer {
     public static void main(String[] args) {
         剑指40 jz = new 剑指40();
-        int[] nums = new int[] { 3, 2, 1, 5 };
+        int[] nums = new int[] { 3, 2, 1 };
         String str = "[5,4,8,11,null,13,4,7,2,null,null,5,1]";
         String[] data = str.substring(1, str.length() - 1).split(",");
         jz.getLeastNumbers(nums, 2);
@@ -20,6 +20,7 @@ class 剑指40 {
             return new int[0];
         return quickSort(arr, k, 0, arr.length - 1);
 
+
     }
 
     private int[] quickSort(int[] arr, int k, int l, int r) {
@@ -27,14 +28,14 @@ class 剑指40 {
         int j = r;
         int temp = arr[l];
         while (i < j) {
-            while (i < j && arr[j] >= temp)
-                j--;
+            while (i < j && arr[i] <= temp)
+                i++;
             if (i < j) {
                 arr[i] = arr[j];
                 i++;
             }
-            while (i < j && arr[i] <= temp)
-                i++;
+            while (i < j && arr[j] >= temp)
+                j--;
             if (i < j) {
                 arr[j] = arr[i];
                 j--;
@@ -43,10 +44,8 @@ class 剑指40 {
         arr[i] = temp;
         if (i > k)
             return quickSort(arr, k, l, i - 1);
-        if (i < k)
-            return quickSort(arr, k, i + 1, r);
 
-        return Arrays.copyOf(arr, k);
+        return null;
     }
 }
 

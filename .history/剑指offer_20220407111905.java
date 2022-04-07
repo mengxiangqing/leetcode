@@ -3,50 +3,43 @@ import java.util.*;
 
 public class 剑指offer {
     public static void main(String[] args) {
-        剑指40 jz = new 剑指40();
-        int[] nums = new int[] { 3, 2, 1, 5 };
+        剑指45 jz = new 剑指45();
+        int[] nums = new int[] { 3, 30, 34, 5, 9 };
         String str = "[5,4,8,11,null,13,4,7,2,null,null,5,1]";
         String[] data = str.substring(1, str.length() - 1).split(",");
-        jz.getLeastNumbers(nums, 2);
+        jz.minNumber(nums);
 
     }
 }
 
 class 剑指40 {
     public int[] getLeastNumbers(int[] arr, int k) {
-        if (k >= arr.length)
-            return arr;
-        if (k == 0)
-            return new int[0];
-        return quickSort(arr, k, 0, arr.length - 1);
+        PriorityQueue<Integer> que = new PriorityQueue<>(new Comparator<Integer>() {
 
-    }
-
-    private int[] quickSort(int[] arr, int k, int l, int r) {
-        int i = l;
-        int j = r;
-        int temp = arr[l];
-        while (i < j) {
-            while (i < j && arr[j] >= temp)
-                j--;
-            if (i < j) {
-                arr[i] = arr[j];
-                i++;
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                // TODO Auto-generated method stub
+                return o2 -o1;
             }
-            while (i < j && arr[i] <= temp)
-                i++;
-            if (i < j) {
-                arr[j] = arr[i];
-                j--;
+
+        });
+        for (int i = 0; i < k; i++) {
+            que.add(arr[k]);
+
+        }
+        for (int i = k; i < arr.length; i++) {
+            if (que.peek() > arr[k]) {
+                que.add(arr[k]);
+                que.poll();
             }
         }
-        arr[i] = temp;
-        if (i > k)
-            return quickSort(arr, k, l, i - 1);
-        if (i < k)
-            return quickSort(arr, k, i + 1, r);
+        int[] res = new int[k];
+        int i = 0;
+        while (!que.isEmpty()) {
+            res[i] = que.poll();
+        }
+        return res;
 
-        return Arrays.copyOf(arr, k);
     }
 }
 
