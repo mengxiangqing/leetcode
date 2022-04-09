@@ -14,9 +14,7 @@ public class 剑指offer {
 
 class 剑指64 {
     public int sumNums(int n) {
-        // 通过短路来实现递归的结束条件
-        boolean flag = (n > 0) && (n += sumNums(n - 1)) > 0;
-        return n;
+
     }
 }
 
