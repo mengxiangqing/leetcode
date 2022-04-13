@@ -7,12 +7,13 @@
 // @lc code=start
 class Solution {
     // you need to treat n as an unsigned value
-    public int hammingWeight(int n) {
+    public int hammingWeight(int b) {
+        long n = b;
         int res = 0;
-        while (n!=0) {
+        while (n > 0) {
             if ((n & 1) == 1)
                 res++;
-            n >>>= 1;
+            n >>= 1;
         }
         return res;
     }

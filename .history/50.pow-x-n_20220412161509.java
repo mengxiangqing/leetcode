@@ -16,9 +16,7 @@ class Solution {
             x = 1 / x;
             b = -b;
         }
-        // 快速幂
         while (b > 0) {
-            //如果b当前最低位是1，就计入结果
             if ((b & 1) == 1) {
                 ans *= x;
             }

@@ -8,70 +8,18 @@ public class 剑指offer {
         // String str = "[5,4,8,11,null,13,4,7,2,null,null,5,1]";
         // String[] data = str.substring(1, str.length() - 1).split(",");
         // jz.verifyPostorder(nums);
-        int a = 13;
-        int b = 14;
+        int a=13;
+        int b=14;
         while (b != 0) {
-            int c = (a & b) << 1;// c=进位
-            a ^= b;// a= 非进位和
+            int c = (a & b) << 1;//c=进位
+            a ^= b;//a= 非进位和
             b = c;// b = 进位
         }
         System.out.println(a);
     }
 }
-class 剑指66 {
-    public int[] constructArr(int[] a) {
-        int len = a.length;
-        if (len == 0)
-            return new int[0];
-        int[] b = new int[len];
-        b[0] = 1;
-        for (int i = 1; i < len; i++) {
-            b[i] = b[i - 1] * a[i - 1];
-        }
-        int temp = 1;
-        for (int i = len-2; i >=0; i--) {
-            temp *= a[i+1];
-            b[i] *= temp;
-        }
-        return b;
-    }
-}
 
 class 剑指33 {
-    public int[] constructArr(int[] a) {
-        int[] b = new int[a.length];
-        for (int i = 0; i < a.length; i++) {
-            for (int j = 0; j < a.length; j++) {
-                if (j != i)
-                    b[i] *= a[j];
-            }
-        }
-        return b;
-    }
-
-    public int[] singleNumbers(int[] nums) {
-        int n = 0;
-        for (int num : nums) {
-            n ^= num;
-        }
-        // 现在n是两个只出现一次的数字的异或值
-        int m = 1;
-        // 自右往左找n中第一个1
-        while ((n & m) == 0) {
-            m <<= 1;
-        }
-        int x = 0;
-        int y = 0;
-        for (int num : nums) {
-            if ((num & m) == 0)
-                x ^= num;
-            else
-                y ^= num;
-        }
-        return new int[] { x, y };
-
-    }
-
     public boolean verifyPostorder(int[] postorder) {
         if (postorder.length <= 1)
             return true;

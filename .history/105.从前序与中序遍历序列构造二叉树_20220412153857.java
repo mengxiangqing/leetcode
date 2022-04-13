@@ -55,7 +55,7 @@ class Solution {
 
         // 得到左子树结点数目
         int size_left_num = inorder_root - in_left;
-        // 先序遍历的第一个结点a就是根节点，在中序中找到这个结点a，由a将中序遍历分成两半，左半边就是左子树，右半边就是右子树，再对这两个子序列递归处理。
+
         root.left = myBuildTree(preorder, inorder, pre_left + 1, pre_left + size_left_num, in_left, inorder_root - 1);
         root.right = myBuildTree(preorder, inorder, pre_left + size_left_num + 1, pre_right, inorder_root + 1,
                 in_right);

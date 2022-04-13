@@ -7,26 +7,28 @@
 // @lc code=start
 class Solution {
 
+
     public double myPow(double x, int n) {
-        // Java 代码中 int32 变量n∈[−2147483648,2147483647] ，因此当 n = -2147483648 时执行 n = -n
-        // 会因越界而赋值出错。解决方法是先将 n 存入 long 变量 b ，后面用 b 操作即可。
-        long b = n;
+
+        int N = n >= 0 ? n : -n;
         double ans = 1;
-        if (b < 0) {
-            x = 1 / x;
-            b = -b;
+        for (int i = 0; i < N; i++) {
+            ans *= x;
         }
-        // 快速幂
-        while (b > 0) {
-            //如果b当前最低位是1，就计入结果
-            if ((b & 1) == 1) {
-                ans *= x;
-            }
-            x *= x;
-            b >>= 1;
-        }
-        return ans;
+        return n >= 0 ? ans : 1.0 / ans;
     }
+
+
+
+
+
+
+
+
+
+
+
+
 
     public double myPow1(double x, int n) {
         Long N = (long) n;

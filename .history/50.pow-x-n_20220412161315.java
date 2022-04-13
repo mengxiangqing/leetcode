@@ -6,7 +6,21 @@
 
 // @lc code=start
 class Solution {
+
     public double myPow(double x, int n) {
+        // Java 代码中 int32 变量n∈[−2147483648,2147483647] ，因此当 n = -2147483648 时执行 n = -n
+        // 会因越界而赋值出错。解决方法是先将 n 存入 long 变量 b ，后面用 b 操作即可。
+        long b = n;
+        double ans = 1;
+        while (b > 0) {
+            if (b & 1) {
+
+            }
+        }
+        return ans;
+    }
+
+    public double myPow1(double x, int n) {
         Long N = (long) n;
         return N >= 0 ? quickMul(x, N) : 1.0 / quickMul(x, -N);
     }

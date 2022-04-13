@@ -5,16 +5,16 @@
  */
 
 // @lc code=start
-public class Solution {
+class Solution {
     // you need to treat n as an unsigned value
     public int hammingWeight(int n) {
-        int ret = 0;
-        while (n != 0) {
-            n &= n - 1;
-            ret++;
-
+        int res = 0;
+        while (n) {
+            if ((n & 1) == 1)
+                res++;
+            n >>= 1;
         }
-        return ret;
+        return res;
     }
 }
 // @lc code=end

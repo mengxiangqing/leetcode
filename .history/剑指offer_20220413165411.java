@@ -18,24 +18,6 @@ public class 剑指offer {
         System.out.println(a);
     }
 }
-class 剑指66 {
-    public int[] constructArr(int[] a) {
-        int len = a.length;
-        if (len == 0)
-            return new int[0];
-        int[] b = new int[len];
-        b[0] = 1;
-        for (int i = 1; i < len; i++) {
-            b[i] = b[i - 1] * a[i - 1];
-        }
-        int temp = 1;
-        for (int i = len-2; i >=0; i--) {
-            temp *= a[i+1];
-            b[i] *= temp;
-        }
-        return b;
-    }
-}
 
 class 剑指33 {
     public int[] constructArr(int[] a) {
@@ -43,7 +25,7 @@ class 剑指33 {
         for (int i = 0; i < a.length; i++) {
             for (int j = 0; j < a.length; j++) {
                 if (j != i)
-                    b[i] *= a[j];
+                    b[i] += a[j];
             }
         }
         return b;

@@ -30,7 +30,7 @@ class 剑指66 {
         }
         int temp = 1;
         for (int i = len-2; i >=0; i--) {
-            temp *= a[i+1];
+            temp *= a[i];
             b[i] *= temp;
         }
         return b;

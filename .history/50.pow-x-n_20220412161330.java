@@ -12,18 +12,10 @@ class Solution {
         // 会因越界而赋值出错。解决方法是先将 n 存入 long 变量 b ，后面用 b 操作即可。
         long b = n;
         double ans = 1;
-        if (b < 0) {
-            x = 1 / x;
-            b = -b;
-        }
-        // 快速幂
         while (b > 0) {
-            //如果b当前最低位是1，就计入结果
-            if ((b & 1) == 1) {
-                ans *= x;
+            if (b & 1 ==1) {
+
             }
-            x *= x;
-            b >>= 1;
         }
         return ans;
     }
