@@ -29,8 +29,6 @@ class 剑指66 {
                     temp[tempIndex++] = k;
                 }
                 res.add(temp);
-                curSum -= i;
-                i++;
             } else if (curSum < target) {
                 j++;
                 curSum += j;
@@ -39,7 +37,7 @@ class 剑指66 {
                 i++;
             }
         }
-        // int[][] ans = res.toArray(new int[0][]);
+        int[][] ans = res.toArray(new int[0][]);
         return res.toArray(new int[res.size()][]);
     }
 
@@ -747,7 +745,6 @@ class BinTree {
             if (node.right != null)
                 que.addFirst(node.right);
         }
-        //Integer列表转int数组
         return ans.stream().mapToInt(Integer::intValue).toArray();
     }
 

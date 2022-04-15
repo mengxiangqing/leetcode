@@ -1,5 +1,3 @@
-import javax.swing.text.html.HTMLDocument.RunElement;
-
 /*
  * @lc app=leetcode.cn id=343 lang=java
  *
@@ -19,15 +17,13 @@ class Solution {
         //     dp[i] = curMax;
         // }
         // return dp[n];
-        if (n <= 3)
-            return n-1;
         int num3 = n / 3;
         if (n % 3 == 0)
             return (int)Math.pow(3, num3);
         else if (n % 3 == 1) {
-            return (int) Math.pow(3, num3 - 1)*4;
+
         } else {
-            return (int) Math.pow(3, num3 ) * 2;
+
         }
     }
 }

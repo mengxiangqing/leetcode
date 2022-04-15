@@ -3,12 +3,19 @@ import java.util.*;
 
 public class 剑指offer {
     public static void main(String[] args) {
-        剑指66 jz = new 剑指66();
-        int[] nums = new int[] { 1, 2, 5, 10, 6, 9, 4, 3 };
-        String str = "[5,4,8,11,null,13,4,7,2,null,null,5,1]";
-        String[] data = str.substring(1, str.length() - 1).split(",");
-        jz.findContinuousSequence(15);
-
+        // 剑指33 jz = new 剑指33();
+        // int[] nums = new int[] { 1, 2, 5, 10, 6, 9, 4, 3 };
+        // String str = "[5,4,8,11,null,13,4,7,2,null,null,5,1]";
+        // String[] data = str.substring(1, str.length() - 1).split(",");
+        // jz.verifyPostorder(nums);
+        int a = 13;
+        int b = 14;
+        while (b != 0) {
+            int c = (a & b) << 1;// c=进位
+            a ^= b;// a= 非进位和
+            b = c;// b = 进位
+        }
+        System.out.println(a);
     }
 }
 
@@ -16,31 +23,25 @@ class 剑指66 {
     public int[][] findContinuousSequence(int target) {
         if (target == 1)
             return new int[0][];
-
-        List<int[]> res = new ArrayList<>();
-        int i = 1;
-        int j = 2;
-        int curSum = 3;
-        while (i != j) {
-            if (curSum == target) {
-                int[] temp = new int[j - i + 1];
-                int tempIndex = 0;
-                for (int k = i; k <= j; k++) {
-                    temp[tempIndex++] = k;
-                }
-                res.add(temp);
-                curSum -= i;
-                i++;
-            } else if (curSum < target) {
-                j++;
+        List<List<Integer>> res = new ArrayList<>();
+        int ban = target / 2 + 1;
+        for (int i = ban; i > 1; i--) {
+            List<Integer> temp = new ArrayList<>();
+            int curSum = 0;
+            for (int j = i; j >= 1; j--) {
                 curSum += j;
-            } else if (curSum > target) {
-                curSum -= i;
-                i++;
+                temp.add(j);
+                if (curSum == target)
+                    res.add(temp);
+                else if (curSum > target)
+                    break;
+
             }
         }
-        // int[][] ans = res.toArray(new int[0][]);
-        return res.toArray(new int[res.size()][]);
+        for (List<Integer> list : res) {
+
+        }
+
     }
 
     public int[] constructArr(int[] a) {
@@ -747,7 +748,6 @@ class BinTree {
             if (node.right != null)
                 que.addFirst(node.right);
         }
-        //Integer列表转int数组
         return ans.stream().mapToInt(Integer::intValue).toArray();
     }
 

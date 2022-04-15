@@ -23,8 +23,7 @@ public class test {
         // triangle.add(num2);
         // triangle.add(num3);
         // triangle.add(num4);
-        int[] num1 = { 1,2,3,4,5 };
-        int[] num2 = { 4,3,5,1,2 };
+        // int[] nums = { 0, 1, 0, 3, 2, 3 };
         // String[] strs = { "word", "good", "best", "good" };
         // int tmp = 2;
         // int cmp = 3;
@@ -36,7 +35,6 @@ public class test {
         // char[] c = str.toCharArray();
         // System.out.println(new String(c));
         // S.minWindow("abc", "cba");
-        S.validateStackSequences(num1, num2);
 
     }
 }

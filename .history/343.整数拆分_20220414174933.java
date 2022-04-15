@@ -27,7 +27,7 @@ class Solution {
         else if (n % 3 == 1) {
             return (int) Math.pow(3, num3 - 1)*4;
         } else {
-            return (int) Math.pow(3, num3 ) * 2;
+            return (int) Math.pow(3, num3 + 1) * 2;
         }
     }
 }

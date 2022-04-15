@@ -9,6 +9,7 @@ public class 剑指offer {
         String[] data = str.substring(1, str.length() - 1).split(",");
         jz.findContinuousSequence(15);
 
+
     }
 }
 
@@ -16,31 +17,36 @@ class 剑指66 {
     public int[][] findContinuousSequence(int target) {
         if (target == 1)
             return new int[0][];
-
-        List<int[]> res = new ArrayList<>();
-        int i = 1;
-        int j = 2;
-        int curSum = 3;
-        while (i != j) {
-            if (curSum == target) {
-                int[] temp = new int[j - i + 1];
-                int tempIndex = 0;
-                for (int k = i; k <= j; k++) {
-                    temp[tempIndex++] = k;
-                }
-                res.add(temp);
-                curSum -= i;
-                i++;
-            } else if (curSum < target) {
-                j++;
+        List<List<Integer>> res = new ArrayList<>();
+        int ban = target / 2 + 1;
+        for (int i = ban; i > 1; i--) {
+            List<Integer> temp = new ArrayList<>();
+            int curSum = 0;
+            for (int j = i; j >= 1; j--) {
                 curSum += j;
-            } else if (curSum > target) {
-                curSum -= i;
-                i++;
+                temp.add(j);
+                if (curSum == target){
+
+                    res.add(new ArrayList<>(temp));
+                    break;
+                }
+                else if (curSum > target)
+                    break;
+
             }
         }
-        // int[][] ans = res.toArray(new int[0][]);
-        return res.toArray(new int[res.size()][]);
+        int[][] ans = new int[res.size()][];
+        int i = 0;
+        for (List<Integer> list : res) {
+            ans[i] = new int[list.size()];
+            int j = 0;
+            for (Integer num : list) {
+                ans[i][j] = num.intValue();
+                j++;
+            }
+            i++;
+        }
+        return ans;
     }
 
     public int[] constructArr(int[] a) {
@@ -747,7 +753,6 @@ class BinTree {
             if (node.right != null)
                 que.addFirst(node.right);
         }
-        //Integer列表转int数组
         return ans.stream().mapToInt(Integer::intValue).toArray();
     }
 

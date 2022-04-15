@@ -24,7 +24,7 @@ public class test {
         // triangle.add(num3);
         // triangle.add(num4);
         int[] num1 = { 1,2,3,4,5 };
-        int[] num2 = { 4,3,5,1,2 };
+        int[] num2 = { 4,5,3,2,1 };
         // String[] strs = { "word", "good", "best", "good" };
         // int tmp = 2;
         // int cmp = 3;

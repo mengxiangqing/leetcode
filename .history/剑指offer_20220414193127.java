@@ -9,6 +9,7 @@ public class 剑指offer {
         String[] data = str.substring(1, str.length() - 1).split(",");
         jz.findContinuousSequence(15);
 
+
     }
 }
 
@@ -16,31 +17,9 @@ class 剑指66 {
     public int[][] findContinuousSequence(int target) {
         if (target == 1)
             return new int[0][];
-
         List<int[]> res = new ArrayList<>();
-        int i = 1;
-        int j = 2;
-        int curSum = 3;
-        while (i != j) {
-            if (curSum == target) {
-                int[] temp = new int[j - i + 1];
-                int tempIndex = 0;
-                for (int k = i; k <= j; k++) {
-                    temp[tempIndex++] = k;
-                }
-                res.add(temp);
-                curSum -= i;
-                i++;
-            } else if (curSum < target) {
-                j++;
-                curSum += j;
-            } else if (curSum > target) {
-                curSum -= i;
-                i++;
-            }
-        }
-        // int[][] ans = res.toArray(new int[0][]);
-        return res.toArray(new int[res.size()][]);
+
+        return res.toArray(new int[0][]);
     }
 
     public int[] constructArr(int[] a) {
@@ -747,7 +726,6 @@ class BinTree {
             if (node.right != null)
                 que.addFirst(node.right);
         }
-        //Integer列表转int数组
         return ans.stream().mapToInt(Integer::intValue).toArray();
     }
 

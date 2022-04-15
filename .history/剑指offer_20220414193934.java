@@ -747,7 +747,6 @@ class BinTree {
             if (node.right != null)
                 que.addFirst(node.right);
         }
-        //Integer列表转int数组
         return ans.stream().mapToInt(Integer::intValue).toArray();
     }
 
