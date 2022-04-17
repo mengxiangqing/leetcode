@@ -69,6 +69,5 @@ public class ThreadTest {
         thread3.start();
         thread3.interrupt();
 
-
     }
 }

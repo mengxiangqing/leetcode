@@ -54,7 +54,7 @@ public class ThreadTest {
             } catch (InterruptedException e) {// 阻塞状态中进行中断线程操作
                 Thread.currentThread().interrupt();
                 System.out.println("异常中断");
-                // Thread.currentThread().start();
+                Thread.currentThread().start();
                 // return;// 退出run方法，中断进程
             }
         };
@@ -68,7 +68,6 @@ public class ThreadTest {
         thread3.setName("线程3");
         thread3.start();
         thread3.interrupt();
-
 
     }
 }

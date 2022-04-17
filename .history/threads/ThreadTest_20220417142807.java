@@ -37,25 +37,18 @@ public class ThreadTest {
             }
         };
         Runnable task3 = () -> {
-            try {
-                int i = 0;
-                while (i++ < 20) {
-                    // dosomething
-                    double amount = MAX_AMOUNT * Math.random();
-                    bank.transfer(1, 3, amount);
-                    Thread.sleep(1000l);// 阻塞状态，线程被调用了interrupte（）方法，清除中断标志，抛出InterruptedException
-                    // 运行状态，线程被调用了interrupte（）方法，中断标志被设置为true
-                    // 非阻塞状态中进行中断线程操作
-                    if (Thread.currentThread().isInterrupted()) {
-                        System.out.println("线程中断");
-                        break;// 退出循环，中断进程
-                    }
+            int i = 0;
+            while (i++ < 20) {
+                // Thread.sleep(1000l);// 阻塞状态，线程被调用了interrupte（）方法，清除中断标志，抛出InterruptedException
+                // dosomething
+                double amount = MAX_AMOUNT * Math.random();
+                bank.transfer(1, 3, amount);
+                // 运行状态，线程被调用了interrupte（）方法，中断标志被设置为true
+                // 非阻塞状态中进行中断线程操作
+                if (Thread.currentThread().isInterrupted()) {
+                    System.out.println("线程中断");
+                    break;// 退出循环，中断进程
                 }
-            } catch (InterruptedException e) {// 阻塞状态中进行中断线程操作
-                Thread.currentThread().interrupt();
-                System.out.println("异常中断");
-                // Thread.currentThread().start();
-                // return;// 退出run方法，中断进程
             }
         };
 
@@ -68,7 +61,6 @@ public class ThreadTest {
         thread3.setName("线程3");
         thread3.start();
         thread3.interrupt();
-
 
     }
 }
