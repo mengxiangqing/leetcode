@@ -5,7 +5,7 @@ public class 剑指offer {
     public static void main(String[] args) {
         剑指34 jz = new 剑指34();
         int[] nums = new int[] { 1, 2, 5, 10, 6, 9, 4, 3 };
-        String str = "[1,2,3,null,null,4,5]";
+        String str = "[5,4,8,11,null,13,4,7,2,null,null,5,1]";
         String[] data = str.substring(1, str.length() - 1).split(",");
         jz.createTree(data);
 

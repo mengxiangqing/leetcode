@@ -12,9 +12,7 @@ public class test {
 
     public static void main(String[] args) {
         Codec code = new Codec();
-        TreeNode root= code.deserialize("[1,2,3,null,null,4,5]");
-        code.serialize(root);
-
+        code.deserialize(data)
 
     }
 }

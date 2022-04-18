@@ -3,12 +3,11 @@ import java.util.*;
 
 public class 剑指offer {
     public static void main(String[] args) {
-        剑指34 jz = new 剑指34();
+        剑指20 jz = new 剑指20();
         int[] nums = new int[] { 1, 2, 5, 10, 6, 9, 4, 3 };
-        String str = "[1,2,3,null,null,4,5]";
+        String str = "[5,4,8,11,null,13,4,7,2,null,null,5,1]";
         String[] data = str.substring(1, str.length() - 1).split(",");
-        jz.createTree(data);
-
+        jz.isNumber("959440.94f");
 
     }
 }
@@ -71,29 +70,18 @@ class 剑指20 {
     public int strToInt(String str) {
         str = str.trim();
         String s = "";
-        if (str.length() == 0)
-            return 0;
-        int i = 0;
-        if (str.charAt(i) == '+' || str.charAt(i) == '-'
-                || (i < str.length() && str.charAt(i) >= '0' && str.charAt(i) <= '9')) {
+        int i;
+        for (i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == '+' || str.charAt(i) == '-' || (str.charAt(i) >= '0') && str.charAt(i) <= '9') {
+                break;
+            }
+        }
+        if (str.charAt(i) == '+' || str.charAt(i) == '-')
+            i++;
+        while (i < str.length() - 1 && str.charAt(i) >= '0' && str.charAt(i) <= '9') {
             s += str.charAt(i++);
         }
-        else
-            return 0;
-
-        while (i < str.length() && str.charAt(i) >= '0' && str.charAt(i) <= '9') {
-            s += str.charAt(i++);
-        }
-        try{
-            return Integer.parseInt(s);
-        } catch (Exception e) {
-            if (s.length() <= 1)
-                return 0;
-            if (s.charAt(0) == '-')
-                return Integer.MIN_VALUE;
-            else
-                return Integer.MAX_VALUE;
-        }
+        return Integer.parseInt(s);
 
     }
 

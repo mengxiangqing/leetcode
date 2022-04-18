@@ -3,12 +3,11 @@ import java.util.*;
 
 public class 剑指offer {
     public static void main(String[] args) {
-        剑指34 jz = new 剑指34();
+        剑指20 jz = new 剑指20();
         int[] nums = new int[] { 1, 2, 5, 10, 6, 9, 4, 3 };
-        String str = "[1,2,3,null,null,4,5]";
+        String str = "[5,4,8,11,null,13,4,7,2,null,null,5,1]";
         String[] data = str.substring(1, str.length() - 1).split(",");
-        jz.createTree(data);
-
+        jz.isNumber("  1e3   ");
 
     }
 }
@@ -16,13 +15,6 @@ public class 剑指offer {
 class 剑指20 {
     public boolean isNumber(String s) {
         s = s.trim();
-        if (s.length() == 0 || s.contains(" ") || s.contains("f"))
-            return false;
-        while (s.charAt(0) == '+' || s.charAt(0) == '-') {
-            s = s.substring(1, s.length());
-            if (s.length() == 0)
-                return false;
-        }
         if (s.contains(".")) {
             // 小数
             try {
@@ -36,65 +28,14 @@ class 剑指20 {
         } else if (s.contains("e") || s.contains("E")) {
             for (int i = 0; i < s.length(); i++) {
                 if (s.charAt(i) == 'e' || s.charAt(i) == 'E') {
-                    if (i == 0 || i == s.length() - 1)
-                        return false;
-                    // e后面有小数直接返回false
-                    if (s.substring(i + 1).contains(".") || s.substring(i + 1).contains("e")
-                            || s.substring(i + 1).contains("E")) {
+                    //e后面有小数直接返回false
+                    if (s.substring(i).contains(".")) {
                         return false;
                     } else
-                        return isNumber(s.substring(0, i)) && isNumber(s.substring(i + 1));
+                        return isNumber(s.substring(0,i));
                 }
             }
-        } else if (s.contains("+") || s.contains("-")) {
-            // 指数的正负号
-            for (int i = 0; i < s.length(); i++) {
-                if (s.charAt(i) == '+' || s.charAt(i) == '-') {
-                    if (s.charAt(i - 1) == 'e' || s.charAt(i - 1) == 'E')
-                        return true;
-                    else
-                        return false;
-                }
-            }
-        } else {
-            // 纯数字
-            try {
-                Long num = Long.parseLong(s);
-                return true;
-            } catch (Exception e) {
-                return false;
-            }
         }
-        return false;
-    }
-
-    public int strToInt(String str) {
-        str = str.trim();
-        String s = "";
-        if (str.length() == 0)
-            return 0;
-        int i = 0;
-        if (str.charAt(i) == '+' || str.charAt(i) == '-'
-                || (i < str.length() && str.charAt(i) >= '0' && str.charAt(i) <= '9')) {
-            s += str.charAt(i++);
-        }
-        else
-            return 0;
-
-        while (i < str.length() && str.charAt(i) >= '0' && str.charAt(i) <= '9') {
-            s += str.charAt(i++);
-        }
-        try{
-            return Integer.parseInt(s);
-        } catch (Exception e) {
-            if (s.length() <= 1)
-                return 0;
-            if (s.charAt(0) == '-')
-                return Integer.MIN_VALUE;
-            else
-                return Integer.MAX_VALUE;
-        }
-
     }
 
 }
