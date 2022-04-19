@@ -1,58 +1,11 @@
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Deque;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
+import java.lang.String;
+import java.util.*;
 
 public class 剑指offer {
     public static void main(String[] args) {
-        剑指38 ja = new 剑指38();
-        System.out.println(Arrays.toString(ja.permutation("dkjphedy")));
+        BinTree bi = new BinTree();
+        TreeNode root = new TreeNode(1);
 
-    }
-}
-
-class 剑指38 {
-    private boolean[] used;
-
-    public String[] permutation(String s) {
-        used = new boolean[s.length()];
-        List<String> res = new ArrayList<>();
-        char[] c = s.toCharArray();
-
-        Arrays.sort(c);
-        StringBuilder sb = new StringBuilder();
-        backTrack(res, c, sb, 0);
-
-        return res.toArray(new String[0]);
-    }
-
-    private void backTrack(List<String> res, char[] c, StringBuilder sb, int j) {
-        if (j == c.length) {
-
-            res.add(sb.toString());
-            return;
-        }
-        for (int i = 0; i < c.length; i++) {
-            //确保相邻的只选一次
-            //!used[i - 1]和used[i - 1]都能通过的原因：  https://leetcode-cn.com/problems/permutations-ii/solution/hui-su-suan-fa-python-dai-ma-java-dai-ma-by-liwe-2/
-            if (used[i] || (i > 0 && !used[i - 1] && c[i - 1] == c[i])) {
-                continue;
-            }
-
-            sb.append(c[i]);
-            used[i] = true;
-            backTrack(res, c, sb, j + 1);
-            sb.deleteCharAt(sb.length() - 1);
-            used[i] = false;
-
-        }
     }
 }
 
@@ -876,6 +829,7 @@ class BinTree {
             if (node.right != null)
                 que.addFirst(node.right);
         }
+        Math::pow
         // Integer列表转int数组
         // ans.stream().map(v -> v.intValue()).toArray();
         System.out.println(Arrays.toString(ans.stream().mapToInt(v -> v.intValue()).toArray()));

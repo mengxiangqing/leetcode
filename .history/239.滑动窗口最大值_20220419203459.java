@@ -1,3 +1,5 @@
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.PriorityQueue;
 
 /*
@@ -19,9 +21,9 @@ class Solution {
         for (i = 0; i < k; i++) {
             que.offer(new int[] { nums[i], i });
         }
-        // 填充第一个窗口的值
-        res[0] = que.peek()[0];
-        // 开始滑动窗口
+        // 填充前k个
+        Arrays.fill(res, 0, k > n ? n : k, que.peek()[0]);
+
         for (i = k; i < nums.length; i++) {
             que.offer(new int[] { nums[i], i });
             // 当队列最大值不在窗口内,出队

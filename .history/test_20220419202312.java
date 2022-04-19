@@ -11,15 +11,11 @@ import java.util.List;
 public class test {
 
     public static void main(String[] args) {
-        // Solutio s = new Solutio();
-        // int[] nums = new int[] {9,11};
-        // int k = 2;
-        // s.maxSlidingWindow(nums, k);
-        System.out.println(2 & 3);
-        System.out.println(~1);
-        System.out.println(2 | 3);
-        System.out.println(2 ^ 3);
-        System.out.println(~-3);
+        Solutio s = new Solutio();
+        int[] num = new int[] {};
+        int k = 3;
+        s.maxSlidingWindow(nums, k);
+
 
     }
 }

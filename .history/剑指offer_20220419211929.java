@@ -12,46 +12,27 @@ import java.util.stream.Stream;
 
 public class 剑指offer {
     public static void main(String[] args) {
-        剑指38 ja = new 剑指38();
-        System.out.println(Arrays.toString(ja.permutation("dkjphedy")));
+        BinTree bi = new BinTree();
+        TreeNode root = new TreeNode(1);
 
     }
 }
 
 class 剑指38 {
-    private boolean[] used;
-
     public String[] permutation(String s) {
-        used = new boolean[s.length()];
         List<String> res = new ArrayList<>();
         char[] c = s.toCharArray();
-
-        Arrays.sort(c);
         StringBuilder sb = new StringBuilder();
         backTrack(res, c, sb, 0);
 
         return res.toArray(new String[0]);
     }
 
-    private void backTrack(List<String> res, char[] c, StringBuilder sb, int j) {
-        if (j == c.length) {
-
-            res.add(sb.toString());
-            return;
-        }
-        for (int i = 0; i < c.length; i++) {
-            //确保相邻的只选一次
-            //!used[i - 1]和used[i - 1]都能通过的原因：  https://leetcode-cn.com/problems/permutations-ii/solution/hui-su-suan-fa-python-dai-ma-java-dai-ma-by-liwe-2/
-            if (used[i] || (i > 0 && !used[i - 1] && c[i - 1] == c[i])) {
-                continue;
+    private void backTrack(List<String> res, char[] c, StringBuilder sb, int index) {
+        if (sb.length() == c.length && index == c.length - 1) {
+            if (!res.contains(sb.toString())) {
+                res.add(sb.toString());
             }
-
-            sb.append(c[i]);
-            used[i] = true;
-            backTrack(res, c, sb, j + 1);
-            sb.deleteCharAt(sb.length() - 1);
-            used[i] = false;
-
         }
     }
 }

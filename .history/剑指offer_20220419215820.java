@@ -25,7 +25,6 @@ class 剑指38 {
         used = new boolean[s.length()];
         List<String> res = new ArrayList<>();
         char[] c = s.toCharArray();
-
         Arrays.sort(c);
         StringBuilder sb = new StringBuilder();
         backTrack(res, c, sb, 0);
@@ -41,7 +40,6 @@ class 剑指38 {
         }
         for (int i = 0; i < c.length; i++) {
             //确保相邻的只选一次
-            //!used[i - 1]和used[i - 1]都能通过的原因：  https://leetcode-cn.com/problems/permutations-ii/solution/hui-su-suan-fa-python-dai-ma-java-dai-ma-by-liwe-2/
             if (used[i] || (i > 0 && !used[i - 1] && c[i - 1] == c[i])) {
                 continue;
             }
