@@ -3,7 +3,6 @@ import java.lang.reflect.Method;
 import java.math.BigDecimal;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Deque;
 import java.util.List;
 
@@ -13,30 +12,25 @@ import java.util.List;
 
 public class test {
 
-    public static void main(String[] args) {
-        nextLargerNodes();
-    }
+    public static void main(String[] args) throws NoSuchMethodException, SecurityException, IllegalAccessException,
+            IllegalArgumentException, InvocationTargetException {
+        // Solutio s = new Solutio();
+        // int[] nums = new int[] {9,11};
+        // int k = 2;
+        // s.maxSlidingWindow(nums, k);
+        List<Integer> list = new ArrayList<>();
 
-    public static int[] nextLargerNodes() {
-        List<Integer> list = new ArrayList<>(List.of(2,1,5));
-        // 链表转数组
-        // System.out.println(Arrays.toString(list.toArray()));
-        // 存放数值和下标的栈 【val,index】
-        Deque<int[]> que = new ArrayDeque<>();
-        que.addFirst(new int[] { list.get(0), 0 });
-        int[] res = new int[list.size()];
-        for (int i = 1; i < res.length; i++) {
-            if (list.get(i) <= que.getFirst()[0])
-                que.addFirst(new int[] { list.get(i), i });
-            else {
-                while (!que.isEmpty()&&list.get(i) > que.getFirst()[0]) {
-                    res[que.getFirst()[1]] = list.get(i);
-                    que.removeFirst();
-                }
-                que.addFirst(new int[] { list.get(i), i });
-            }
-        }
-        return res;
+        list.add(12);
+        // 这里直接添加会报错
+        // list.add("a");
+        Class<? extends List> clazz = list.getClass();
+        Method add = clazz.getDeclaredMethod("add", Object.class);
+        // 但是通过反射添加是可以的
+        // 这就说明在运行期间所有的泛型信息都会被擦掉
+        add.invoke(list, "kl");
+        System.out.println(list);
+        BigDecimal f = new BigDecimal("0.001");
+
     }
 
 }

@@ -29,7 +29,7 @@ public class test {
             if (list.get(i) <= que.getFirst()[0])
                 que.addFirst(new int[] { list.get(i), i });
             else {
-                while (!que.isEmpty()&&list.get(i) > que.getFirst()[0]) {
+                while (list.get(i) > que.getFirst()[0]) {
                     res[que.getFirst()[1]] = list.get(i);
                     que.removeFirst();
                 }
