@@ -17,31 +17,7 @@ public class 剑指offer {
 
 class 回文排列 {
     public boolean canPermutePalindrome2(String s) {
-        int[] a = new int[128];
-        for (int i = 0; i < s.length(); i++) {
-            if ((s.charAt(i) >= 'a' && s.charAt(i) <= 'z') || (s.charAt(i) >= 'A' && s.charAt(i) <= 'Z')
-                    || (s.charAt(i) <= '9' && s.charAt(i) >= '0')) {
-                a[s.charAt(i)]++;
-            }
-        }
-        // 偶数个 没有一个 个数为1 的字母
-        if (s.length() % 2 == 0) {
-            for (int i = 0; i < a.length; i++) {
-                if (a[i] % 2 == 1)
-                    return false;
-            }
-        } else {
-            int flag = 0;
-            for (int i = 0; i < a.length; i++) {
-                if (a[i] % 2 == 1) {
-                    flag++;
-                    if (flag > 1)
-                        return false;
-                }
-            }
 
-        }
-        return true;
     }
 
     public boolean canPermutePalindrome(String s) {

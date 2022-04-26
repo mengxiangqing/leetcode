@@ -14,12 +14,11 @@ import java.util.List;
 public class test {
 
     public static void main(String[] args) {
-
-
-        int a[][] = { { 2, 3 }, { 2, 4 } };
-        // Soluti s = new Soluti();
-        s.projectionArea(a);
-
+        // nextLargerNodes();
+        int i = 1_000_000;
+        int b = 0b0010;
+        System.out.println(i + b);//look
+        int a[] = { 1, 2, 3, };
 
     }
 

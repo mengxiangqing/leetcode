@@ -15,88 +15,12 @@ public class 剑指offer {
     }
 }
 
-class 回文排列 {
-    public boolean canPermutePalindrome2(String s) {
-        int[] a = new int[128];
-        for (int i = 0; i < s.length(); i++) {
-            if ((s.charAt(i) >= 'a' && s.charAt(i) <= 'z') || (s.charAt(i) >= 'A' && s.charAt(i) <= 'Z')
-                    || (s.charAt(i) <= '9' && s.charAt(i) >= '0')) {
-                a[s.charAt(i)]++;
-            }
-        }
-        // 偶数个 没有一个 个数为1 的字母
-        if (s.length() % 2 == 0) {
-            for (int i = 0; i < a.length; i++) {
-                if (a[i] % 2 == 1)
-                    return false;
-            }
-        } else {
-            int flag = 0;
-            for (int i = 0; i < a.length; i++) {
-                if (a[i] % 2 == 1) {
-                    flag++;
-                    if (flag > 1)
-                        return false;
-                }
-            }
-
-        }
-        return true;
-    }
-
-    public boolean canPermutePalindrome(String s) {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < s.length(); i++) {
-            if ((s.charAt(i) >= 'a' && s.charAt(i) <= 'z') || (s.charAt(i) >= 'A' && s.charAt(i) <= 'Z')
-                    || (s.charAt(i) <= '9' && s.charAt(i) >= '0')) {
-                stringBuilder.append(s.charAt(i));
-            }
-        }
-        String s2 = stringBuilder.toString();
-        StringBuilder s3 = new StringBuilder();
-        boolean[] used = new boolean[s2.length()];
-        if (backTrack(s2, s3, used))
-            return true;
-        return false;
-    }
-
-    public static boolean backTrack(String s, StringBuilder temp, boolean[] used) {
-        if (temp.length() == s.length()) {
-            if (isHui(temp.toString()))
-                return true;
-        } else {
-
-            for (int i = 0; i < s.length(); i++) {
-                if (!used[i]) {
-                    temp.append(s.charAt(i));
-                    used[i] = true;
-                    boolean flag = backTrack(s, temp, used);
-                    temp.deleteCharAt(temp.length() - 1);
-                    used[i] = false;
-                    if (flag)
-                        return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    public static boolean isHui(String s) {
-
-        for (int i = 0; i < s.length() / 2; i++) {
-            if (s.charAt(i) != s.charAt(s.length() - 1 - i))
-                return false;
-        }
-        return true;
-    }
-}
-
 class 剑指09 {
 
     private Deque<Integer> statck1 = new ArrayDeque<>();
     private Deque<Integer> statck2 = new ArrayDeque<>();
-
-    public void appendTail(int value) {
+    public void appendTail( int value)
+    {
         statck1.addFirst(value);
     }
 
@@ -109,7 +33,6 @@ class 剑指09 {
         return statck2.isEmpty() ? -1 : statck2.removeFirst();
     }
 }
-
 class 剑指38 {
     private boolean[] used;
 
@@ -132,9 +55,8 @@ class 剑指38 {
             return;
         }
         for (int i = 0; i < c.length; i++) {
-            // 确保相邻的只选一次
-            // !used[i - 1]和used[i - 1]都能通过的原因：
-            // https://leetcode-cn.com/problems/permutations-ii/solution/hui-su-suan-fa-python-dai-ma-java-dai-ma-by-liwe-2/
+            //确保相邻的只选一次
+            //!used[i - 1]和used[i - 1]都能通过的原因：  https://leetcode-cn.com/problems/permutations-ii/solution/hui-su-suan-fa-python-dai-ma-java-dai-ma-by-liwe-2/
             if (used[i] || (i > 0 && !used[i - 1] && c[i - 1] == c[i])) {
                 continue;
             }

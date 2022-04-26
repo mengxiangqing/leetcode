@@ -17,7 +17,7 @@ public class test {
 
 
         int a[][] = { { 2, 3 }, { 2, 4 } };
-        // Soluti s = new Soluti();
+        Soluti s = new Soluti();
         s.projectionArea(a);
 
 
