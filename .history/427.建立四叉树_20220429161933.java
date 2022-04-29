@@ -65,27 +65,26 @@ class Solution {
      * @return
      */
     public static Node create(int[][] grid, int i, int j, int x) {
+        Node root = new Node();
         if (x == 1) {
-
-            return new Node(grid[i][j] == 1, true);
+            root.val = grid[i][j] == 0 ? false : true;
+            root.isLeaf = true;
         } else {
-            Node root = new Node();
             root.topLeft = create(grid, i, j, x / 2);
             root.bottomLeft = create(grid, i + x / 2, j, x / 2);
             root.topRight = create(grid, i, j + x / 2, x / 2);
             root.bottomRight = create(grid, i + x / 2, j + x / 2, x / 2);
             // 四个子节点相同，则精简
-            if (((root.topLeft.val && root.topRight.val && root.bottomLeft.val && root.bottomRight.val)
-                    || (!root.topLeft.val && !root.topRight.val && !root.bottomLeft.val && !root.bottomRight.val))
-                    && (root.topLeft.isLeaf && root.topRight.isLeaf && root.bottomLeft.isLeaf
-                            && root.bottomRight.isLeaf)) {
-                return new Node(root.topLeft.val, true);
-            }
+            if ((root.topLeft.val && root.topRight.val && root.bottomLeft.val && root.bottomRight.val)
+                    || (!root.topLeft.val && !root.topRight.val && !root.bottomLeft.val && !root.bottomRight.val)) {
 
-            else {
-                return new Node(false, false, root.topLeft, root.topRight, root.bottomLeft, root.bottomRight);
+            } else {
+                // 四个结点不全部相同
+                root.isLeaf = false;
+                root.val = true;
             }
         }
+        return root;
     }
 }
 // @lc code=end
