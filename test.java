@@ -15,7 +15,9 @@ public class test {
         // int a[][] =  {{1,1,0,0},{0,0,1,1},{1,1,0,0},{0,0,1,1}};
         // foooo f = new foooo();
         // f.construct(a);
-        System.out.println(13^3);
+        Solution1823 s = new Solution1823();
+      System.out.println( s.findTheWinner(5, 2));
+
 
 
     }
