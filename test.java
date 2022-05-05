@@ -15,8 +15,9 @@ public class test {
         // int a[][] =  {{1,1,0,0},{0,0,1,1},{1,1,0,0},{0,0,1,1}};
         // foooo f = new foooo();
         // f.construct(a);
-        Solution1823 s = new Solution1823();
-      System.out.println( s.findTheWinner(5, 2));
+        Solution713 s = new Solution713();
+        int nums[] = { 10,5,2,6};
+        s.numSubarrayProductLessThanK(nums, 100);
 
 
 
