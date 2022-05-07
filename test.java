@@ -16,8 +16,10 @@ public class test {
         // foooo f = new foooo();
         // f.construct(a);
         Solution713 s = new Solution713();
-        int nums[] = { 10,5,2,6};
-        s.numSubarrayProductLessThanK(nums, 100);
+        int nums[] = { 10, 5, 2, 6 };
+      String start= "AACCGGTT", end = "AAACGGTA";
+      String[] bank = { "AACCGGTA","AACCGCTA","AAACGGTA" };
+       s.minMutation(start, end, bank);
 
 
 
