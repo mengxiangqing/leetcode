@@ -11,22 +11,19 @@ public class test {
 
     public static void main(String[] args) {
 
-
-        // int a[][] =  {{1,1,0,0},{0,0,1,1},{1,1,0,0},{0,0,1,1}};
+        // int a[][] = {{1,1,0,0},{0,0,1,1},{1,1,0,0},{0,0,1,1}};
         // foooo f = new foooo();
         // f.construct(a);
-        Solution713 s = new Solution713();
+        Solution942 s = new Solution942();
         int nums[] = { 10, 5, 2, 6 };
-      String start= "AACCGGTT", end = "AAACGGTA";
-      String[] bank = { "AACCGGTA","AACCGCTA","AAACGGTA" };
-       s.minMutation(start, end, bank);
-
-
+        String start = "AACCGGTT", end = "AAACGGTA";
+        String[] bank = { "AACCGGTA", "AACCGCTA", "AAACGGTA" };
+        s.diStringMatch("IDID");
 
     }
 
     public static int[] nextLargerNodes() {
-        List<Integer> list = new ArrayList<>(List.of(2,1,5));
+        List<Integer> list = new ArrayList<>(List.of(2, 1, 5));
         // 链表转数组
         // System.out.println(Arrays.toString(list.toArray()));
         // 存放数值和下标的栈 【val,index】
@@ -37,7 +34,7 @@ public class test {
             if (list.get(i) <= que.getFirst()[0])
                 que.addFirst(new int[] { list.get(i), i });
             else {
-                while (!que.isEmpty()&&list.get(i) > que.getFirst()[0]) {
+                while (!que.isEmpty() && list.get(i) > que.getFirst()[0]) {
                     res[que.getFirst()[1]] = list.get(i);
                     que.removeFirst();
                 }
