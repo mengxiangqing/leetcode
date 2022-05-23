@@ -26,7 +26,7 @@ class Solution
 public:
     TreeNode *sortedArrayToBST(vector<int> &nums)
     {
-        return sortedArray(nums, 0, nums.size() - 1);
+        return dfs(nums, 0, nums.size() - 1);
     }
     TreeNode *dfs(vector<int> &nums, int left, int right)
     {
