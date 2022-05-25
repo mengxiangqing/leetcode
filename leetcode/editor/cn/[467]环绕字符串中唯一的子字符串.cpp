@@ -51,7 +51,6 @@ using namespace std;
 class Solution {
 public:
     static hash <string> myHash;
-
     int findSubstringInWraproundString(string p) {
         if(p.length()==1)return 1;
         int count = 0;
@@ -70,6 +69,3 @@ public:
     }
 };
 //leetcode submit region end(Prohibit modification and deletion)
-int main(){
-
-}

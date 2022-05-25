@@ -5,6 +5,8 @@
  */
 #include <iostream>
 #include <string>
+#include <vector>
+#include<numeric>
 using namespace std;
 // @lc code=start
 class Solution
@@ -12,27 +14,22 @@ class Solution
 public:
     int findSubstringInWraproundString(string p)
     {
-        int count = 0;
-        int i =0;
-        while( i < p.length() - 1) {
-            int j = i + 1;
-            while (j < p.length()-1 && (p.at(j) == p.at(j - 1) + 1) || (p.at(j - 1) + 1-97) % 26 == p.at(j)-97) {
-                j++;
+        // dp[i]表示以字符i结尾，且在s中的子串的最长长度
+        vector<int> dp(26);
+        int k = 0;
+        for (int i = 0; i < p.length(); i++)
+        {
+            // 字符之差为 1 或 -25
+            if (i && (p[i] - p[i - 1] + 26) % 26 == 1)
+            {
+                ++k;
             }
-            cout<<j;
-            // 子串长度
-            int n = j - i;
-            // 根据递增公式计算子串个数
-            count += n * (n + 1) / 2;
-            i = j+1;
+            else
+                k = 1;
+            dp[p[i] - 'a'] = max(dp[p[i] - 'a'], k);
         }
-        return count;
+        // 累加函数，开始，结尾，初值
+        return accumulate(dp.begin(),dp.end(),0);
     }
 };
 // @lc code=end
-int main(){
-    Solution s;
-    s.findSubstringInWraproundString("zab");
-    
-
-}
