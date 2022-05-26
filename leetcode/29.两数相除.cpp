@@ -39,7 +39,6 @@ public:
         }
         //a b转换成负数，正数的话 -INT_MIN比INT_MAX大
         a = a < 0 ? a : -a;
-        std::cout<<a<<std::endl;
         b = b < 0 ? b : -b;
         while (a <= b)
         {
