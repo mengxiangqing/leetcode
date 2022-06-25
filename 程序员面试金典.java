@@ -6,20 +6,74 @@ public class 程序员面试金典 {
   public static void main(String[] args) {
     Solutio solution = new Solutio();
     String S = "ds sdfs afs sdfa dfssf asdf             ";
-    System.out.println(solution.compressString("a"));
+    int matrix[][] = { { 0, 1, 2, 0 }, { 3, 4, 5, 2 }, { 1, 3, 1, 5 } };
+    System.out.println( solution.isFlipedString("aba", "bab"));
   }
 }
 
 class Solutio {
 
   /**
+   * 面试题 01.09. 字符串轮转
+   * 字符串轮转。给定两个字符串s1和s2，请编写代码检查s2是否为s1旋转而成（比如，waterbottle是erbottlewat旋转后的字符串）
+   * @param matrix
+   */
+  public boolean isFlipedString(String s1, String s2) {
+    if (s1.length() != s2.length()) {
+      return false;
+    }
+    if (s1.length() == 0 && s2.length() == 0) {
+      return true;
+    }
+    //拼接两个s2，如果是s2是s1旋转后，则肯定包含一个s1
+    String s = s2 + s2;
+    return s.contains(s1);
+  }
+
+  /**
+   * 面试题 01.08. 零矩阵
+   * 编写一种算法，若M × N矩阵中某个元素为0，则将其所在的行与列清零。
+   * @param matrix
+   */
+  public void setZeroes(int[][] matrix) {
+    int m = matrix.length;
+    int n = matrix[0].length;
+    int a[] = new int[m];
+    int b[] = new int[n];
+    for (int i = 0; i < m; i++) {
+      for (int j = 0; j < n; j++) {
+        if (matrix[i][j] == 0) {
+          if (a[i] == 0) {
+            a[i] = 1;
+          }
+          if (b[j] == 0) {
+            b[j] = 1;
+          }
+        }
+      }
+    }
+    for (int i = 0; i < m; i++) {
+      for (int j = 0; j < n; j++) {
+        if (a[i] == 1 || b[j] == 1) matrix[i][j] = 0;
+      }
+    }
+  }
+
+  /**
    * 面试题1.6 旋转矩阵
    * @param matrix
    */
   public void rotate(int[][] matrix) {
-    int m = matrix.length;
-    int n = matrix[0].length;
-
+    int n = matrix.length;
+    for (int i = 0; i < n / 2; i++) {
+      for (int j = i; j < n - i - 1; j++) {
+        int temp = matrix[i][j];
+        matrix[i][j] = matrix[n - j - 1][i];
+        matrix[n - j - 1][i] = matrix[n - i - 1][n - j - 1];
+        matrix[n - i - 1][n - j - 1] = matrix[j][n - i - 1];
+        matrix[j][n - i - 1] = temp;
+      }
+    }
   }
 
   /**
