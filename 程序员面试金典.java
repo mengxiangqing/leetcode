@@ -6,11 +6,21 @@ public class 程序员面试金典 {
   public static void main(String[] args) {
     Solutio solution = new Solutio();
     String S = "ds sdfs afs sdfa dfssf asdf             ";
-    System.out.println(solution.oneEditAway("a","ab"));
+    System.out.println(solution.compressString("a"));
   }
 }
 
 class Solutio {
+
+  /**
+   * 面试题1.6 旋转矩阵
+   * @param matrix
+   */
+  public void rotate(int[][] matrix) {
+    int m = matrix.length;
+    int n = matrix[0].length;
+
+  }
 
   /**
    * 判断字符是否唯一
@@ -108,7 +118,6 @@ class Solutio {
    * @return
    */
   public boolean oneEditAway(String first, String second) {
-
     // 看看长度差值
     int len1 = first.length();
     int len2 = second.length();
@@ -117,10 +126,8 @@ class Solutio {
     String s2 = s1.equals(first) ? second : first;
     len1 = s1.length();
     len2 = s2.length();
-    if (Math.abs(len1 - len2) > 1)
-      return false;
-    if (s1.equals("") || s2.equals(""))
-      return true;
+    if (Math.abs(len1 - len2) > 1) return false;
+    if (s1.equals("") || s2.equals("")) return true;
     boolean oneEdit = false; //表示是否操作过一次
     int index1 = 0;
     int index2 = 0;
@@ -143,23 +150,48 @@ class Solutio {
     } else {
       // s1是长串，s2是短串
       while (index1 < len1) {
-          if (index2 == len2)
-            return true;
+        if (index2 == len2) return true;
         if (s1.charAt(index1) == s2.charAt(index2)) {
           index1++;
           index2++;
         } else {
-          if (oneEdit)
-            return false;
-          else {
+          if (oneEdit) return false; else {
             index1++;
             oneEdit = true;
-            }
+          }
         }
       }
-
     }
 
     return true;
+  }
+
+  /**
+   * 面试题06 压缩字符串
+   * @param S
+   * @return
+   */
+  public String compressString(String S) {
+    StringBuilder sb = new StringBuilder();
+    int right = 0;
+    int left = 0;
+    int count = 0;
+    while (right < S.length()) {
+      if (S.charAt(right) != S.charAt(left)) {
+        sb.append(S.charAt(left));
+        if (count != 0) sb.append(count);
+        left = right;
+      } else {
+        count = 0;
+        while (right < S.length() && S.charAt(right) == S.charAt(left)) {
+          right++;
+          count++;
+        }
+      }
+    }
+    sb.append(S.charAt(left));
+    if (count != 0) sb.append(count);
+
+    return sb.length() > S.length() ? S : sb.toString();
   }
 }
