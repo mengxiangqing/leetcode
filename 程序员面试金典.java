@@ -1,5 +1,7 @@
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class 程序员面试金典 {
 
@@ -7,11 +9,85 @@ public class 程序员面试金典 {
     Solutio solution = new Solutio();
     String S = "ds sdfs afs sdfa dfssf asdf             ";
     int matrix[][] = { { 0, 1, 2, 0 }, { 3, 4, 5, 2 }, { 1, 3, 1, 5 } };
-    System.out.println( solution.isFlipedString("aba", "bab"));
+    int[] num = {1, 2, 3, 3, 2, 1};
+    ListNode head = createList(num);
+    ListNode result = solution.removeDuplicateNodes(head);
+
+  }
+
+
+  private static ListNode createList(int[] num) {
+    ListNode dummy = new ListNode(0);
+    ListNode r = dummy;
+    for (int i = 0; i < num.length; i++) {
+      ListNode p = new ListNode(num[i]);
+      r.next = p;
+      r = r.next;
+    }
+    r.next = null;
+
+    return dummy.next;
+  }
+}
+
+class ListNode {
+
+  int val;
+  ListNode next;
+
+  ListNode(int x) {
+    val = x;
   }
 }
 
 class Solutio {
+
+  /**
+   * 移除重复结点
+   * @param head
+   * @return
+   */
+  public ListNode removeDuplicateNodes1(ListNode head) {
+    if (head == null || head.next == null) return head;
+    ListNode p = head;
+    ListNode pre = head;
+    ListNode q = head.next;
+    //p指向每一个不同数字的第一位，慢慢从头往后走
+    // q是遍历指针
+    while (p != null) {
+      pre = p;
+      q = p.next;
+      while (q != null) {
+        while (q!=null&&p!=null&&q.val == p.val) {
+          pre.next = q.next;
+          q = pre.next;
+        }
+        if(pre!=null)pre = pre.next;
+        if(q!=null)q = q.next;
+      }
+      p = p.next;
+
+    }
+    return head;
+  }
+
+  public ListNode removeDuplicateNodes(ListNode head) {
+    if (head == null)
+      return head;
+    Set<Integer> occ = new HashSet<>();
+    occ.add(head.val);
+    ListNode pre = head;
+    while (pre.next != null) {
+      ListNode cur = pre.next;
+      // 添加成功说明之前没有重复的
+      if (occ.add(cur.val)) {
+        pre = pre.next;
+      } else
+        pre.next = pre.next.next;
+    }
+    pre.next = null;
+    return head;
+  }
 
   /**
    * 面试题 01.09. 字符串轮转
