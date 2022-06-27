@@ -9,12 +9,10 @@ public class 程序员面试金典 {
     Solutio solution = new Solutio();
     String S = "ds sdfs afs sdfa dfssf asdf             ";
     int matrix[][] = { { 0, 1, 2, 0 }, { 3, 4, 5, 2 }, { 1, 3, 1, 5 } };
-    int[] num = {1, 2, 3, 3, 2, 1};
+    int[] num = { 1, 2, 3, 3, 2, 1 };
     ListNode head = createList(num);
     ListNode result = solution.removeDuplicateNodes(head);
-
   }
-
 
   private static ListNode createList(int[] num) {
     ListNode dummy = new ListNode(0);
@@ -43,6 +41,42 @@ class ListNode {
 class Solutio {
 
   /**
+   * 面试题 02.03. 删除中间节点
+   * 若链表中的某个节点，既不是链表头节点，也不是链表尾节点，则称其为该链表的「中间节点」。
+   * 假定已知链表的某一个中间节点，请实现一种算法，将该节点从链表中删除。
+   * 例如，传入节点 c（位于单向链表 a->b->c->d->e->f 中），将其删除后，剩余链表为 a->b->d->e->f
+   */
+  public void deleteNode(ListNode node) {
+    // NB,思想太妙了。将下个节点值复制过来，然后跳过下个节点
+    node.val = node.next.val;
+    node.next = node.next.next;
+
+   }
+
+  /**
+   * 面试题 02.02. 返回倒数第 k 个节点
+   * 实现一种算法，找出单向链表中倒数第 k 个节点。返回该节点的值
+   * @param head
+   * @param k
+   * @return
+   */
+  public int kthToLast(ListNode head, int k) {
+    int index = 0;
+    ListNode p = head;
+
+    while (p != null && index < k) {
+      p = p.next;
+      index++;
+    }
+    ListNode q = head;
+    while (p != null) {
+      p = p.next;
+      q = q.next;
+    }
+    return q.val;
+  }
+
+  /**
    * 移除重复结点
    * @param head
    * @return
@@ -58,22 +92,20 @@ class Solutio {
       pre = p;
       q = p.next;
       while (q != null) {
-        while (q!=null&&p!=null&&q.val == p.val) {
+        while (q != null && p != null && q.val == p.val) {
           pre.next = q.next;
           q = pre.next;
         }
-        if(pre!=null)pre = pre.next;
-        if(q!=null)q = q.next;
+        if (pre != null) pre = pre.next;
+        if (q != null) q = q.next;
       }
       p = p.next;
-
     }
     return head;
   }
 
   public ListNode removeDuplicateNodes(ListNode head) {
-    if (head == null)
-      return head;
+    if (head == null) return head;
     Set<Integer> occ = new HashSet<>();
     occ.add(head.val);
     ListNode pre = head;
@@ -82,8 +114,7 @@ class Solutio {
       // 添加成功说明之前没有重复的
       if (occ.add(cur.val)) {
         pre = pre.next;
-      } else
-        pre.next = pre.next.next;
+      } else pre.next = pre.next.next;
     }
     pre.next = null;
     return head;
