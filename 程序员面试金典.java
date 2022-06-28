@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -41,6 +42,80 @@ class ListNode {
 class Solutio {
 
   /**
+   * 面试题 02.05. 链表求和
+   * 给定两个用链表表示的整数，每个节点包含一个数位。
+   * 这些数位是反向存放的，也就是个位排在链表首部。
+   * 编写函数对这两个整数求和，并用链表形式返回结果。
+   * @param l1
+   * @param l2
+   * @return
+   */
+
+  public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+    int flag = 0; //进位 取0 或 1
+    ListNode dummy = new ListNode(0);
+    ListNode p = dummy;
+    while (l1 != null || l2 != null) {
+      int num1 = l1 == null ? 0 : l1.val;
+      int num2 = l2 == null ? 0 : l2.val;
+      int count = num1 + num2 + flag;
+      ListNode temp = l1 != null ? l1 : l2;
+      if(l1!=null) l1 = l1.next;
+      if(l2!=null) l2 = l2.next;
+      //有进位
+      if (count > 9) {
+        flag = 1;
+        temp.val = count - 10;
+      } else {
+        flag = 0;
+        temp.val = count;
+      }
+      p.next = temp;
+      p = p.next;
+    }
+    if (flag != 0) {
+      ListNode temp = new ListNode(1);
+      p.next = temp;
+      p = p.next;
+    }
+      p.next = null;
+
+    return dummy.next;
+  }
+
+  /**
+   * 面试题 02.04. 分割链表
+   * 给你一个链表的头节点 head 和一个特定值 x ，请你对链表进行分隔，使得所有 小于 x 的节点都出现在 大于或等于 x 的节点之前。
+   * 你不需要 保留 每个分区中各节点的初始相对位置。
+   * @param head
+   * @param x
+   * @return
+   */
+  public ListNode partition(ListNode head, int x) {
+    //维护两个链表，一个比x小的值，另一个放大值，然后拼接
+    if (head == null) return head;
+    ListNode p = head;
+    ListNode small = new ListNode(0);
+    ListNode p1 = small;
+    ListNode large = new ListNode(0);
+    ListNode p2 = large;
+    while (p != null) {
+      if (p.val < x) {
+        p1.next = p;
+        p1 = p1.next;
+      } else {
+        p2.next = p;
+        p2 = p2.next;
+      }
+      p = p.next;
+    }
+
+    p1.next = large.next;
+    p2.next = null;
+    return small.next;
+  }
+
+  /**
    * 面试题 02.03. 删除中间节点
    * 若链表中的某个节点，既不是链表头节点，也不是链表尾节点，则称其为该链表的「中间节点」。
    * 假定已知链表的某一个中间节点，请实现一种算法，将该节点从链表中删除。
@@ -50,8 +125,7 @@ class Solutio {
     // NB,思想太妙了。将下个节点值复制过来，然后跳过下个节点
     node.val = node.next.val;
     node.next = node.next.next;
-
-   }
+  }
 
   /**
    * 面试题 02.02. 返回倒数第 k 个节点
