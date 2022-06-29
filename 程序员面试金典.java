@@ -1,6 +1,7 @@
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -41,6 +42,69 @@ class ListNode {
 
 class Solutio {
 
+  //翻转链表
+  public ListNode reverseList(ListNode head) {
+    if (head == null || head.next == null) return head;
+    ListNode pre = null;
+    ListNode cur = head;
+    //   1->2->3->4->5
+    // p c
+    while (cur != null) {
+      ListNode tempNext = cur.next;
+      cur.next = pre;
+      pre = cur;
+      cur = tempNext;
+    }
+    return pre;
+  }
+
+  /**
+   * 面试题 02.06. 回文链表
+   * 编写一个函数，检查输入的链表是否是回文的。
+   * @param head
+   * @return
+   */
+  public boolean isPalindrome(ListNode head) {
+    // ListNode p = head;
+    // Deque<Integer> stack = new ArrayDeque<>();
+    // while (p != null) {
+    //   stack.addFirst(p.val);
+    //   p = p.next;
+    // }
+    // p = head;
+    // while (p != null) {
+    //   if (p.val != stack.removeFirst())
+    //     return false;
+    //   p = p.next;
+    // }
+    // return true;
+
+    if (head == null) return true;
+    ListNode slow = head;
+    ListNode fast = head;
+    // 使用快慢指针找到链表中间值
+    while (fast.next != null && fast.next.next != null) {
+      // 慢指针一次走一步，快指针走两步
+      fast = fast.next.next;
+      slow = slow.next;
+    }
+    // 翻转后半部分链表
+    ListNode second = reverseList(slow.next);
+    ListNode q = second;
+    ListNode p = head;
+    boolean result = true;
+    while (result && q != null) {
+      if (p.val != q.val) {
+        result = false;
+      }
+      p = p.next;
+      q = q.next;
+    }
+    // 还原链表
+    slow.next = reverseList(second);
+    return result;
+  }
+
   /**
    * 面试题 02.05. 链表求和
    * 给定两个用链表表示的整数，每个节点包含一个数位。
@@ -60,8 +124,8 @@ class Solutio {
       int num2 = l2 == null ? 0 : l2.val;
       int count = num1 + num2 + flag;
       ListNode temp = l1 != null ? l1 : l2;
-      if(l1!=null) l1 = l1.next;
-      if(l2!=null) l2 = l2.next;
+      if (l1 != null) l1 = l1.next;
+      if (l2 != null) l2 = l2.next;
       //有进位
       if (count > 9) {
         flag = 1;
@@ -78,7 +142,7 @@ class Solutio {
       p.next = temp;
       p = p.next;
     }
-      p.next = null;
+    p.next = null;
 
     return dummy.next;
   }
