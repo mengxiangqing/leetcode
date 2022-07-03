@@ -41,7 +41,7 @@ class ListNode {
   }
 }
 
-class Solutio {
+class Solution {
 
   // 面试题 02.08. 环路检测
   // 给定一个链表，如果它是有环链表，实现一个算法返回环路的开头节点。若环不存在，请返回 null。
