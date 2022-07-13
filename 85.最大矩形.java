@@ -1,3 +1,6 @@
+import java.util.ArrayDeque;
+import java.util.Deque;
+
 /*
  * @lc app=leetcode.cn id=85 lang=java
  *
@@ -6,24 +9,38 @@
 
 // @lc code=start
 class Solution {
-    public int maximalRectangle(char[][] matrix) {
-        int rows = matrix.length;
-        int cols = matrix[0].length;
-        // dp[i][j]代表 i行j列最大矩形面积
-        int[][] dp = new int[rows + 1][cols + 1];
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                if (matrix[i][j] == '1') {
-                    if (i == 0 || j == 0)
-                        dp[i][j] = 1;
-                    else {
 
-                    }
+  public int maximalRectangle(char[][] matrix) {
+    int rows = matrix.length;
+    int cols = matrix[0].length;
+    int max = 0;
 
-                }
-            }
-        }
-        return dp[rows][cols];
+    int[] heights = new int[cols];
+    for (int i = 0; i < rows; i++) {
+      for (int j = 0; j < cols; j++) {
+        heights[j] = matrix[i][j] == '1' ? heights[j] + 1 : 0;
+      }
+      max = Math.max(max, maxArea(heights));
     }
+    return max;
+  }
+
+  public int maxArea(int[] nums) {
+    int max = 0;
+    int len = nums.length;
+    int[] heights = new int[len + 2];
+    System.arraycopy(nums, 0, heights, 1, len);
+    Deque<Integer> stack = new ArrayDeque<>();
+    stack.addFirst(0);
+    for (int i = 1; i < heights.length; i++) {
+      while (heights[stack.getFirst()] > heights[i]) {
+        int curH = heights[stack.removeFirst()];
+        int curW = i - stack.getFirst() - 1;
+        max = Math.max(max, curH * curW);
+      }
+      stack.addFirst(i);
+    }
+    return max;
+  }
 }
 // @lc code=end
