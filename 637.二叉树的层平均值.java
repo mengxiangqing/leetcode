@@ -1,12 +1,11 @@
 import java.util.ArrayDeque;
-import java.util.ArrayList;
 import java.util.Deque;
 import java.util.List;
 
 /*
- * @lc app=leetcode.cn id=102 lang=java
+ * @lc app=leetcode.cn id=637 lang=java
  *
- * [102] 二叉树的层序遍历
+ * [637] 二叉树的层平均值
  */
 
 /**
@@ -33,45 +32,29 @@ class TreeNode {
 
 // @lc code=start
 class Solution {
-    public List<List<Integer>> levelOrder1(TreeNode root) {
-        List<List<Integer>> res = new ArrayList<>();
+    public List<Double> averageOfLevels(TreeNode root) {
         if (root == null)
-            return res;
-        dfs(1, root, res);
-        return res;
-    }
+            return null;
 
-    private void dfs(int index, TreeNode root, List<List<Integer>> res) {
-        if (res.size() < index)// 妙呀
-            res.add(new ArrayList<>());
-        res.get(index - 1).add(root.val);
-        if (root.left != null)
-            dfs(index + 1, root.left, res);
-        if (root.right != null)
-            dfs(index + 1, root.right, res);
-    }
-
-    public List<List<Integer>> levelOrder(TreeNode root) {
-        List<List<Integer>> res = new ArrayList<>();
-        if (root == null)
-            return res;
+        List<Double> res = new ArrayList<>();
         Deque<TreeNode> que = new ArrayDeque<>();
         que.add(root);
+
         while (!que.isEmpty()) {
-            List<Integer> tempList = new ArrayList<>();
             int size = que.size();
+            double sum = 0;
             for (int i = 0; i < size; i++) {
                 TreeNode node = que.removeFirst();
-                tempList.add(node.val);
+                sum += node.val;
                 if (node.left != null)
                     que.addLast(node.left);
                 if (node.right != null)
                     que.addLast(node.right);
             }
-            res.add(tempList);
+            res.add(sum / size);
         }
+
         return res;
     }
-
 }
 // @lc code=end
