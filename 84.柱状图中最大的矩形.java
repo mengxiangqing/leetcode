@@ -9,65 +9,23 @@ import java.util.Deque;
 
 // @lc code=start
 class Solution {
-    // public int largestRectangleArea(int[] heights) {
-    // int max = 0;
-    // int n = heights.length;
-    // if (n == 1)
-    // return heights[0];
-    // Deque<Integer> stack = new ArrayDeque<>();
-    // for (int i = 0; i < n; i++) {
-    // while (!stack.isEmpty() && heights[i] < heights[stack.peekLast()]) {
-    // int current_h = heights[stack.pollLast()];
-    // int current_w;
-    // if (stack.isEmpty()) {
-    // current_w = i;
-    // } else {
-    // current_w = i - stack.peekLast() - 1;
-    // }
 
-    // max = Math.max(max, (current_h * current_w));
-    // }
-
-    // stack.addLast(i);
-    // }
-    // while (!stack.isEmpty()) {
-    // int current_h = heights[stack.pollLast()];
-    // int current_w;
-    // if (stack.isEmpty()) {
-    // current_w = n;
-    // } else {
-    // current_w = n - stack.peekLast() - 1;
-    // }
-
-    // max = Math.max(max, (current_h * current_w));
-    // }
-
-    // return max;
-    // }
     public int largestRectangleArea(int[] heights) {
         Deque<Integer> stack = new ArrayDeque<>();
         // 在数组首尾添加0，方便确定边界
         int[] newheights = new int[heights.length + 2];
         System.arraycopy(heights, 0, newheights, 1, heights.length);
-        //先将哨兵放入栈，就不用判断非空了
+        // 先将哨兵放入栈，就不用判断非空了
         stack.addLast(0);
         int max = 0;
         for (int i = 1; i < newheights.length; i++) {
-            // 栈顶元素小于新元素heights[i]
-            if (newheights[stack.getLast()] <= newheights[i]) {
-                // 进栈
-                stack.addLast(i);
-            } else {
-                // 新元素小于栈顶元素，出栈，并计算面积
-                while (newheights[stack.getLast()] > newheights[i]) {
-                    int curH = newheights[stack.pollLast()];
-                    int curW = i - stack.getLast()-1;
-
-                    max = Math.max(max, curH * curW);
-                }
-                //新元素进栈
-                stack.addLast(i);
+            // 单调递增栈，遇到比栈顶小的就出栈
+            while (newheights[stack.getLast()] > newheights[i]) {
+                int curH = newheights[stack.removeLast()];
+                int curW = i -( stack.getLast() + 1);
+                max = Math.max(max, curH * curW);
             }
+            stack.addLast(i);
         }
         return max;
 
