@@ -1,12 +1,11 @@
 import java.util.ArrayDeque;
-import java.util.ArrayList;
 import java.util.Deque;
 import java.util.List;
 
 /*
- * @lc app=leetcode.cn id=144 lang=java
+ * @lc app=leetcode.cn id=230 lang=java
  *
- * [144] 二叉树的前序遍历
+ * [230] 二叉搜索树中第K小的元素
  */
 
 /**
@@ -30,35 +29,36 @@ class TreeNode {
         this.right = right;
     }
 }
-// @lc code=start
 
+// @lc code=start
 class Solution {
-    public List<Integer> preorderTraversal(TreeNode root) {
-        List<Integer> res = new ArrayList<Integer>();
+    List<Integer> list ;
+
+    public int kthSmallest(TreeNode root, int k) {
         Deque<TreeNode> stack = new ArrayDeque<>();
         while (!stack.isEmpty() || root != null) {
             while (root != null) {
-                res.add(root.val);
                 stack.addFirst(root);
                 root = root.left;
             }
             root = stack.removeFirst();
+            k--;
+            if (k == 0) {
+                break;
+            }
             root = root.right;
-        }
+       }
+       return root.val;
 
-        return res;
     }
 
-    public void preorder(TreeNode root, List<Integer> res) {
+    private void inorderDfs(TreeNode root) {
         if (root == null) {
             return;
         }
-        res.add(root.val);
-        preorder(root.left, res);
-        preorder(root.right, res);
+        inorderDfs(root.left);
+        list.add(root.val);
+        inorderDfs(root.right);
     }
 }
-
-
-
 // @lc code=end
