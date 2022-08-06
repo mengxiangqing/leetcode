@@ -2,19 +2,20 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 public class 程序员面试金典 {
 
   public static void main(String[] args) {
-    Solutio solution = new Solutio();
-    String S = "ds sdfs afs sdfa dfssf asdf             ";
-    int matrix[][] = { { 0, 1, 2, 0 }, { 3, 4, 5, 2 }, { 1, 3, 1, 5 } };
-    int[] num = { 1, 2, 3, 3, 2, 1 };
-    ListNode head = createList(num);
-    ListNode result = solution.removeDuplicateNodes(head);
+    TripleInOne solution = new TripleInOne(1);
+    solution.push(0, 1);
+    solution.push(0, 2);
+    solution.pop(0);
+    solution.pop(0);
+    solution.pop(0);
+    solution.isEmpty(0);
+
   }
 
   private static ListNode createList(int[] num) {
@@ -28,6 +29,121 @@ public class 程序员面试金典 {
     r.next = null;
 
     return dummy.next;
+  }
+}
+
+/*
+ * 面试题 03.02. 栈的最小值
+ * 请设计一个栈，除了常规栈支持的pop与push函数以外，还支持min函数，该函数返回栈元素中的最小值。执行push、pop和min操作的时间复杂度必须为O
+ * (1)。
+ *
+ *
+ * 示例：
+ *
+ * MinStack minStack = new MinStack();
+ * minStack.push(-2);
+ * minStack.push(0);
+ * minStack.push(-3);
+ * minStack.getMin(); --> 返回 -3.
+ * minStack.pop();
+ * minStack.top(); --> 返回 0.
+ */
+class MinStack {
+  // 记录值
+  Deque<Integer> stack;
+  // 记录栈内的最小值
+  Deque<Integer> min;
+
+  /** initialize your data structure here. */
+  public MinStack() {
+    stack = new ArrayDeque<>();
+    min = new ArrayDeque<>();
+  }
+
+  public void push(int x) {
+    stack.addFirst(x);
+    if (min.isEmpty()) {
+      min.addFirst(x);
+    } else {
+      int curMin = min.getFirst();
+      min.addFirst(curMin>x?x:curMin);
+    }
+  }
+
+  public void pop() {
+    stack.removeFirst();
+    min.removeFirst();
+  }
+
+  public int top() {
+    return stack.getFirst();
+  }
+
+  public int getMin() {
+    return min.getFirst();
+  }
+}
+
+/*
+ * 面试题 03.01. 三合一
+ * 三合一。描述如何只用一个数组来实现三个栈。
+ *
+ * 你应该实现push(stackNum,
+ * value)、pop(stackNum)、isEmpty(stackNum)、peek(stackNum)方法。stackNum表示栈下标，
+ * value表示压入的值。
+ *
+ * 构造函数会传入一个stackSize参数，代表每个栈的大小。
+ *
+ * 示例1:
+ *
+ * 输入：
+ * ["TripleInOne", "push", "push", "pop", "pop", "pop", "isEmpty"]
+ * [[1], [0, 1], [0, 2], [0], [0], [0], [0]]
+ * 输出：
+ * [null, null, null, 1, -1, -1, true]
+ * 说明：当栈为空时`pop, peek`返回-1，当栈满时`push`不压入元素。
+ */
+class TripleInOne {
+  int[][] num;
+  int stackSize;
+
+  public TripleInOne(int stackSize) {
+
+    num = stackSize <= 3 ? new int[4][3] : new int[4][stackSize];
+    this.stackSize = stackSize;
+  }
+
+  public void push(int stackNum, int value) {
+    int index = num[3][stackNum];
+    if (index < stackSize) {
+      num[stackNum][index] = value;
+      num[3][stackNum]++;
+    }
+  }
+
+  public int pop(int stackNum) {
+    if (num[3][stackNum] == 0) {
+      return -1;
+    }
+
+    int result = num[stackNum][num[3][stackNum] - 1];
+    num[stackNum][num[3][stackNum] - 1] = 0;
+    num[3][stackNum]--;
+    return result;
+  }
+
+  public int peek(int stackNum) {
+    if (num[3][stackNum] == 0) {
+      return -1;
+    }
+    return num[stackNum][num[3][stackNum] - 1];
+  }
+
+  public boolean isEmpty(int stackNum) {
+    if (num[3][stackNum] == 0) {
+      return true;
+    } else
+      return false;
   }
 }
 
@@ -45,11 +161,13 @@ class Solution {
 
   // 面试题 02.08. 环路检测
   // 给定一个链表，如果它是有环链表，实现一个算法返回环路的开头节点。若环不存在，请返回 null。
-  // 如果链表中有某个节点，可以通过连续跟踪 next 指针再次到达，则链表中存在环。 为了表示给定链表中的环，我们使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。 如果 pos 是 -1，则在该链表中没有环。注意：pos 不作为参数进行传递，仅仅是为了标识链表的实际情况。
+  // 如果链表中有某个节点，可以通过连续跟踪 next 指针再次到达，则链表中存在环。 为了表示给定链表中的环，我们使用整数 pos
+  // 来表示链表尾连接到链表中的位置（索引从 0 开始）。 如果 pos 是 -1，则在该链表中没有环。注意：pos
+  // 不作为参数进行传递，仅仅是为了标识链表的实际情况。
   public ListNode detectCycle(ListNode head) {
     ListNode p = head;
     ListNode q = head;
-    while (q.next != null && q.next.next!=null) {
+    while (q.next != null && q.next.next != null) {
       q = q.next.next;
       p = p.next;
       if (p == q)
@@ -64,7 +182,8 @@ class Solution {
   // 涨涨记性吧
   // 浪漫相遇题
   public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-    if (headA == null || headB == null) return null;
+    if (headA == null || headB == null)
+      return null;
     ListNode p = headA;
     ListNode q = headB;
     while (p != q) {
@@ -74,12 +193,13 @@ class Solution {
     return p;
   }
 
-  //翻转链表
+  // 翻转链表
   public ListNode reverseList(ListNode head) {
-    if (head == null || head.next == null) return head;
+    if (head == null || head.next == null)
+      return head;
     ListNode pre = null;
     ListNode cur = head;
-    //   1->2->3->4->5
+    // 1->2->3->4->5
     // p c
     while (cur != null) {
       ListNode tempNext = cur.next;
@@ -93,6 +213,7 @@ class Solution {
   /**
    * 面试题 02.06. 回文链表
    * 编写一个函数，检查输入的链表是否是回文的。
+   *
    * @param head
    * @return
    */
@@ -100,18 +221,19 @@ class Solution {
     // ListNode p = head;
     // Deque<Integer> stack = new ArrayDeque<>();
     // while (p != null) {
-    //   stack.addFirst(p.val);
-    //   p = p.next;
+    // stack.addFirst(p.val);
+    // p = p.next;
     // }
     // p = head;
     // while (p != null) {
-    //   if (p.val != stack.removeFirst())
-    //     return false;
-    //   p = p.next;
+    // if (p.val != stack.removeFirst())
+    // return false;
+    // p = p.next;
     // }
     // return true;
 
-    if (head == null) return true;
+    if (head == null)
+      return true;
     ListNode slow = head;
     ListNode fast = head;
     // 使用快慢指针找到链表中间值
@@ -142,13 +264,14 @@ class Solution {
    * 给定两个用链表表示的整数，每个节点包含一个数位。
    * 这些数位是反向存放的，也就是个位排在链表首部。
    * 编写函数对这两个整数求和，并用链表形式返回结果。
+   *
    * @param l1
    * @param l2
    * @return
    */
 
   public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-    int flag = 0; //进位 取0 或 1
+    int flag = 0; // 进位 取0 或 1
     ListNode dummy = new ListNode(0);
     ListNode p = dummy;
     while (l1 != null || l2 != null) {
@@ -156,9 +279,11 @@ class Solution {
       int num2 = l2 == null ? 0 : l2.val;
       int count = num1 + num2 + flag;
       ListNode temp = l1 != null ? l1 : l2;
-      if (l1 != null) l1 = l1.next;
-      if (l2 != null) l2 = l2.next;
-      //有进位
+      if (l1 != null)
+        l1 = l1.next;
+      if (l2 != null)
+        l2 = l2.next;
+      // 有进位
       if (count > 9) {
         flag = 1;
         temp.val = count - 10;
@@ -183,13 +308,15 @@ class Solution {
    * 面试题 02.04. 分割链表
    * 给你一个链表的头节点 head 和一个特定值 x ，请你对链表进行分隔，使得所有 小于 x 的节点都出现在 大于或等于 x 的节点之前。
    * 你不需要 保留 每个分区中各节点的初始相对位置。
+   *
    * @param head
    * @param x
    * @return
    */
   public ListNode partition(ListNode head, int x) {
-    //维护两个链表，一个比x小的值，另一个放大值，然后拼接
-    if (head == null) return head;
+    // 维护两个链表，一个比x小的值，另一个放大值，然后拼接
+    if (head == null)
+      return head;
     ListNode p = head;
     ListNode small = new ListNode(0);
     ListNode p1 = small;
@@ -226,6 +353,7 @@ class Solution {
   /**
    * 面试题 02.02. 返回倒数第 k 个节点
    * 实现一种算法，找出单向链表中倒数第 k 个节点。返回该节点的值
+   *
    * @param head
    * @param k
    * @return
@@ -248,15 +376,17 @@ class Solution {
 
   /**
    * 移除重复结点
+   *
    * @param head
    * @return
    */
   public ListNode removeDuplicateNodes1(ListNode head) {
-    if (head == null || head.next == null) return head;
+    if (head == null || head.next == null)
+      return head;
     ListNode p = head;
     ListNode pre = head;
     ListNode q = head.next;
-    //p指向每一个不同数字的第一位，慢慢从头往后走
+    // p指向每一个不同数字的第一位，慢慢从头往后走
     // q是遍历指针
     while (p != null) {
       pre = p;
@@ -266,8 +396,10 @@ class Solution {
           pre.next = q.next;
           q = pre.next;
         }
-        if (pre != null) pre = pre.next;
-        if (q != null) q = q.next;
+        if (pre != null)
+          pre = pre.next;
+        if (q != null)
+          q = q.next;
       }
       p = p.next;
     }
@@ -275,7 +407,8 @@ class Solution {
   }
 
   public ListNode removeDuplicateNodes(ListNode head) {
-    if (head == null) return head;
+    if (head == null)
+      return head;
     Set<Integer> occ = new HashSet<>();
     occ.add(head.val);
     ListNode pre = head;
@@ -284,7 +417,8 @@ class Solution {
       // 添加成功说明之前没有重复的
       if (occ.add(cur.val)) {
         pre = pre.next;
-      } else pre.next = pre.next.next;
+      } else
+        pre.next = pre.next.next;
     }
     pre.next = null;
     return head;
@@ -293,6 +427,7 @@ class Solution {
   /**
    * 面试题 01.09. 字符串轮转
    * 字符串轮转。给定两个字符串s1和s2，请编写代码检查s2是否为s1旋转而成（比如，waterbottle是erbottlewat旋转后的字符串）
+   *
    * @param matrix
    */
   public boolean isFlipedString(String s1, String s2) {
@@ -302,7 +437,7 @@ class Solution {
     if (s1.length() == 0 && s2.length() == 0) {
       return true;
     }
-    //拼接两个s2，如果是s2是s1旋转后，则肯定包含一个s1
+    // 拼接两个s2，如果是s2是s1旋转后，则肯定包含一个s1
     String s = s2 + s2;
     return s.contains(s1);
   }
@@ -310,6 +445,7 @@ class Solution {
   /**
    * 面试题 01.08. 零矩阵
    * 编写一种算法，若M × N矩阵中某个元素为0，则将其所在的行与列清零。
+   *
    * @param matrix
    */
   public void setZeroes(int[][] matrix) {
@@ -331,13 +467,15 @@ class Solution {
     }
     for (int i = 0; i < m; i++) {
       for (int j = 0; j < n; j++) {
-        if (a[i] == 1 || b[j] == 1) matrix[i][j] = 0;
+        if (a[i] == 1 || b[j] == 1)
+          matrix[i][j] = 0;
       }
     }
   }
 
   /**
    * 面试题1.6 旋转矩阵
+   *
    * @param matrix
    */
   public void rotate(int[][] matrix) {
@@ -355,6 +493,7 @@ class Solution {
 
   /**
    * 判断字符是否唯一
+   *
    * @param astr
    * @return
    */
@@ -374,12 +513,14 @@ class Solution {
 
   /**
    * 判断是否是重排字符串
+   *
    * @param s1
    * @param s2
    * @return
    */
   public boolean CheckPermutation(String s1, String s2) {
-    if (s1.length() != s2.length()) return false;
+    if (s1.length() != s2.length())
+      return false;
     Map<Character, Integer> sMap1 = new HashMap<>();
 
     for (int i = 0; i < s1.length(); i++) {
@@ -389,7 +530,8 @@ class Solution {
     for (int i = 0; i < s2.length(); i++) {
       char c2 = s2.charAt(i);
       sMap1.put(c2, sMap1.getOrDefault(c2, 0) - 1);
-      if (sMap1.get(c2) < 0) return false;
+      if (sMap1.get(c2) < 0)
+        return false;
     }
     return true;
   }
@@ -407,7 +549,8 @@ class Solution {
         arr[right--] = '0';
         arr[right--] = '2';
         arr[right--] = '%';
-      } else arr[right--] = arr[left];
+      } else
+        arr[right--] = arr[left];
 
       left--;
     }
@@ -423,20 +566,24 @@ class Solution {
     for (char c : s.toCharArray()) {
       map.put(c, map.getOrDefault(c, 0) + 1);
     }
-    //偶数字符串，则不能有字符是奇数个
+    // 偶数字符串，则不能有字符是奇数个
     if (s.length() % 2 == 0) {
       int count = 0;
       for (char c : map.keySet()) {
-        if (map.get(c) % 2 == 1) count++;
-        if (count > 0) return false;
+        if (map.get(c) % 2 == 1)
+          count++;
+        if (count > 0)
+          return false;
       }
       return true;
     } else {
-      //只能有一个字符是奇数个
+      // 只能有一个字符是奇数个
       int count = 0;
       for (char c : map.keySet()) {
-        if (map.get(c) % 2 == 1) count++;
-        if (count > 1) return false;
+        if (map.get(c) % 2 == 1)
+          count++;
+        if (count > 1)
+          return false;
       }
       return true;
     }
@@ -444,6 +591,7 @@ class Solution {
 
   /**
    * 一次编辑
+   *
    * @param first
    * @param second
    * @return
@@ -452,14 +600,16 @@ class Solution {
     // 看看长度差值
     int len1 = first.length();
     int len2 = second.length();
-    //s1 是长的，s2 是短串
+    // s1 是长的，s2 是短串
     String s1 = len1 > len2 ? first : second;
     String s2 = s1.equals(first) ? second : first;
     len1 = s1.length();
     len2 = s2.length();
-    if (Math.abs(len1 - len2) > 1) return false;
-    if (s1.equals("") || s2.equals("")) return true;
-    boolean oneEdit = false; //表示是否操作过一次
+    if (Math.abs(len1 - len2) > 1)
+      return false;
+    if (s1.equals("") || s2.equals(""))
+      return true;
+    boolean oneEdit = false; // 表示是否操作过一次
     int index1 = 0;
     int index2 = 0;
     if (len1 == len2) {
@@ -481,12 +631,15 @@ class Solution {
     } else {
       // s1是长串，s2是短串
       while (index1 < len1) {
-        if (index2 == len2) return true;
+        if (index2 == len2)
+          return true;
         if (s1.charAt(index1) == s2.charAt(index2)) {
           index1++;
           index2++;
         } else {
-          if (oneEdit) return false; else {
+          if (oneEdit)
+            return false;
+          else {
             index1++;
             oneEdit = true;
           }
@@ -499,6 +652,7 @@ class Solution {
 
   /**
    * 面试题06 压缩字符串
+   *
    * @param S
    * @return
    */
@@ -510,7 +664,8 @@ class Solution {
     while (right < S.length()) {
       if (S.charAt(right) != S.charAt(left)) {
         sb.append(S.charAt(left));
-        if (count != 0) sb.append(count);
+        if (count != 0)
+          sb.append(count);
         left = right;
       } else {
         count = 0;
@@ -521,7 +676,8 @@ class Solution {
       }
     }
     sb.append(S.charAt(left));
-    if (count != 0) sb.append(count);
+    if (count != 0)
+      sb.append(count);
 
     return sb.length() > S.length() ? S : sb.toString();
   }
