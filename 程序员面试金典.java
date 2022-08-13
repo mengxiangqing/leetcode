@@ -2,19 +2,20 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 public class 程序员面试金典 {
 
   public static void main(String[] args) {
-    TripleInOne solution = new TripleInOne(1);
-    solution.push(0, 1);
-    solution.push(0, 2);
-    solution.pop(0);
-    solution.pop(0);
-    solution.pop(0);
-    solution.isEmpty(0);
+    StackOfPlates sop = new StackOfPlates(2);
+    sop.push(1);
+    sop.push(2);
+    sop.push(3);
+    sop.popAt(0);
+    sop.popAt(0);
+    sop.popAt(0);
 
   }
 
@@ -29,6 +30,67 @@ public class 程序员面试金典 {
     r.next = null;
 
     return dummy.next;
+  }
+}
+
+/**
+ * 面试题 03.03. 堆盘子
+ * 堆盘子。设想有一堆盘子，堆太高可能会倒下来。因此，在现实生活中，盘子堆到一定高度时，我们就会另外堆一堆盘子。请实现数据结构SetOfStacks，模拟这种行为。SetOfStacks应该由多个栈组成，并且在前一个栈填满时新建一个栈。此外，SetOfStacks.push()和SetOfStacks.pop()应该与普通栈的操作方法相同（也就是说，pop()返回的值，应该跟只有一个栈时的情况一样）。
+ * 进阶：实现一个popAt(int index)方法，根据指定的子栈，执行pop操作。
+ *
+ * 当某个栈为空时，应当删除该栈。当栈中没有元素或不存在该栈时，pop，popAt 应返回 -1.
+ *
+ * 示例1:
+ *
+ * 输入：
+ * ["StackOfPlates", "push", "push", "popAt", "pop", "pop"]
+ * [[1], [1], [2], [1], [], []]
+ * 输出：
+ * [null, null, null, 2, 1, -1]
+ *
+ */
+
+class StackOfPlates {
+  private List<Deque<Integer>> stacks;
+  private int cap;
+  private int curStackIndex;
+
+  public StackOfPlates(int cap) {
+    stacks = new ArrayList<>();
+    this.cap = cap;
+    curStackIndex = 0;
+    stacks.add(new ArrayDeque<>());
+  }
+
+  public void push(int val) {
+
+    // 栈列表为空 或者 当前栈满了 新增栈
+    if (stacks.size() == 0 || stacks.get(curStackIndex).size() >= cap) {
+      curStackIndex++;
+      stacks.add(new ArrayDeque<>());
+
+    }
+    stacks.get(curStackIndex).addFirst(val);
+  }
+
+  public int pop() {
+    if (curStackIndex < 0) {
+      return -1;
+    }
+    if (stacks.get(curStackIndex).size() == 0) {
+      curStackIndex--;
+    }
+    return curStackIndex < 0 || stacks.get(curStackIndex).isEmpty() ? -1 : stacks.get(curStackIndex).removeFirst();
+  }
+
+  public int popAt(int index) {
+    if (index > curStackIndex)
+      return -1;
+    if (stacks.get(index).isEmpty() && curStackIndex > index) {
+      stacks.remove(index);
+    }
+    return stacks.get(index).isEmpty() ? -1 : stacks.get(index).removeFirst();
+
   }
 }
 
@@ -66,7 +128,7 @@ class MinStack {
       min.addFirst(x);
     } else {
       int curMin = min.getFirst();
-      min.addFirst(curMin>x?x:curMin);
+      min.addFirst(curMin > x ? x : curMin);
     }
   }
 
