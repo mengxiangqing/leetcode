@@ -1,0 +1,105 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Launch BaiDuTest1",
+            "request": "launch",
+            "mainClass": "BaiDuTest1",
+            "projectName": "leetcode_17974a0f"
+        },
+        {
+            "type": "java",
+            "name": "Launch EnumTest",
+            "request": "launch",
+            "mainClass": "EnumTest",
+            "projectName": "leetcode_17974a0f"
+        },
+        {
+            "type": "java",
+            "name": "Launch HuaWeiTest1",
+            "request": "launch",
+            "mainClass": "HuaWeiTest1",
+            "projectName": "leetcode_17974a0f"
+        },
+        {
+            "type": "java",
+            "name": "Launch Main",
+            "request": "launch",
+            "mainClass": "Main",
+            "projectName": "leetcode_17974a0f"
+        },
+        {
+            "type": "java",
+            "name": "Launch test",
+            "request": "launch",
+            "mainClass": "leetcode.editor.cn.test",
+            "projectName": "leetcode_17974a0f"
+        },
+        {
+            "type": "java",
+            "name": "Launch test(1)",
+            "request": "launch",
+            "mainClass": "test",
+            "projectName": "leetcode_17974a0f"
+        },
+        {
+            "type": "java",
+            "name": "Launch testChar",
+            "request": "launch",
+            "mainClass": "testChar",
+            "projectName": "leetcode_17974a0f"
+        },
+        {
+            "type": "java",
+            "name": "Launch testCqueue",
+            "request": "launch",
+            "mainClass": "testCqueue",
+            "projectName": "leetcode_17974a0f"
+        },
+        {
+            "type": "java",
+            "name": "Launch wangyi2",
+            "request": "launch",
+            "mainClass": "wangyi2",
+            "projectName": "leetcode_17974a0f"
+        },
+        {
+            "type": "java",
+            "name": "Launch 剑指offer",
+            "request": "launch",
+            "mainClass": "剑指offer",
+            "projectName": "leetcode_17974a0f"
+        },
+        {
+            "type": "java",
+            "name": "Launch 剑指offer30包含min函数的栈",
+            "request": "launch",
+            "mainClass": "剑指offer30包含min函数的栈",
+            "projectName": "leetcode_17974a0f"
+        },
+        {
+            "type": "java",
+            "name": "Launch 污染水域",
+            "request": "launch",
+            "mainClass": "污染水域",
+            "projectName": "leetcode_17974a0f"
+        },
+        {
+            "type": "java",
+            "name": "Launch 滑动窗口最大值",
+            "request": "launch",
+            "mainClass": "滑动窗口最大值",
+            "projectName": "leetcode_17974a0f"
+        }
+    ]
+}

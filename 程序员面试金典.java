@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.PriorityQueue;
 import java.util.Set;
 
 public class 程序员面试金典 {
@@ -34,6 +35,130 @@ public class 程序员面试金典 {
 }
 
 /**
+ * 面试题 03.05. 栈排序
+ * 栈排序。
+ * 编写程序，对栈进行排序使最小元素位于栈顶。最多只能使用一个其他的临时栈存放数据，但不得将元素复制到别的数据结构（如数组）中。该栈支持如下操作：push、pop、peek
+ * 和 isEmpty。当栈为空时，peek 返回 -1。
+ *
+ * 示例1:
+ *
+ * 输入：
+ * ["SortedStack", "push", "push", "peek", "pop", "peek"]
+ * [[], [1], [2], [], [], []]
+ * 输出：
+ * [null,null,null,1,null,2]
+ * 示例2:
+ *
+ * 输入：
+ * ["SortedStack", "pop", "pop", "push", "pop", "isEmpty"]
+ * [[], [], [], [1], [], []]
+ * 输出：
+ * [null,null,null,null,null,true]
+ * 说明:
+ *
+ * 栈中的元素数目在[0, 5000]范围内。
+ */
+class SortedStack {
+  class ListNode {
+    int val;
+    ListNode pre;
+    ListNode next;
+  }
+
+  ListNode head;
+  ListNode end;
+
+  public SortedStack() {
+    head.next = end;
+    head.val = -1;
+    end.val = -1;
+    end.pre = head;
+  }
+
+  public void push(int val) {
+    ListNode newNode = new ListNode();
+    newNode.val = val;
+  }
+
+  public void pop() {
+    ListNode node = end.pre;
+    node.pre.next = end;
+    end.pre = node.pre;
+  }
+
+  public int peek() {
+    return end.pre.val;
+
+  }
+
+  public boolean isEmpty() {
+    return head.next == end && end.pre == head;
+  }
+}
+
+/**
+ * 面试题 03.04. 化栈为队
+ * 实现一个MyQueue类，该类用两个栈来实现一个队列。
+ *
+ *
+ * 示例：
+ *
+ * MyQueue queue = new MyQueue();
+ *
+ * queue.push(1);
+ * queue.push(2);
+ * queue.peek(); // 返回 1
+ * queue.pop(); // 返回 1
+ * queue.empty(); // 返回 false
+ *
+ * 说明：
+ *
+ * 你只能使用标准的栈操作 -- 也就是只有 push to top, peek/pop from top, size 和 is empty 操作是合法的。
+ * 你所使用的语言也许不支持栈。你可以使用 list 或者 deque（双端队列）来模拟一个栈，只要是标准的栈操作即可。
+ * 假设所有操作都是有效的 （例如，一个空的队列不会调用 pop 或者 peek 操作）。
+ */
+class MyQueue {
+  Deque<Integer> stack1;
+  Deque<Integer> stack2;
+
+  /** Initialize your data structure here. */
+  public MyQueue() {
+    stack1 = new ArrayDeque<>();
+    stack2 = new ArrayDeque<>();
+  }
+
+  /** Push element x to the back of queue. */
+  public void push(int x) {
+    stack1.addFirst(x);
+  }
+
+  /** Removes the element from in front of queue and returns that element. */
+  public int pop() {
+    if (stack2.isEmpty()) {
+      while (!stack1.isEmpty()) {
+        stack2.addFirst(stack1.removeFirst());
+      }
+    }
+    return stack2.removeFirst();
+  }
+
+  /** Get the front element. */
+  public int peek() {
+    if (stack2.isEmpty()) {
+      while (!stack1.isEmpty()) {
+        stack2.addFirst(stack1.removeFirst());
+      }
+    }
+    return stack2.getFirst();
+  }
+
+  /** Returns whether the queue is empty. */
+  public boolean empty() {
+    return stack1.isEmpty() && stack2.isEmpty();
+  }
+}
+
+/**
  * 面试题 03.03. 堆盘子
  * 堆盘子。设想有一堆盘子，堆太高可能会倒下来。因此，在现实生活中，盘子堆到一定高度时，我们就会另外堆一堆盘子。请实现数据结构SetOfStacks，模拟这种行为。SetOfStacks应该由多个栈组成，并且在前一个栈填满时新建一个栈。此外，SetOfStacks.push()和SetOfStacks.pop()应该与普通栈的操作方法相同（也就是说，pop()返回的值，应该跟只有一个栈时的情况一样）。
  * 进阶：实现一个popAt(int index)方法，根据指定的子栈，执行pop操作。
@@ -53,43 +178,46 @@ public class 程序员面试金典 {
 class StackOfPlates {
   private List<Deque<Integer>> stacks;
   private int cap;
-  private int curStackIndex;
 
   public StackOfPlates(int cap) {
     stacks = new ArrayList<>();
     this.cap = cap;
-    curStackIndex = 0;
-    stacks.add(new ArrayDeque<>());
   }
 
   public void push(int val) {
+    if (cap <= 0) {
+      return;
+    }
 
     // 栈列表为空 或者 当前栈满了 新增栈
-    if (stacks.size() == 0 || stacks.get(curStackIndex).size() >= cap) {
-      curStackIndex++;
+    if (stacks.isEmpty() || stacks.get(stacks.size() - 1).size() >= cap) {
       stacks.add(new ArrayDeque<>());
-
     }
-    stacks.get(curStackIndex).addFirst(val);
+    stacks.get(stacks.size() - 1).addFirst(val);
   }
 
   public int pop() {
-    if (curStackIndex < 0) {
+    if (stacks.isEmpty()) {
       return -1;
     }
-    if (stacks.get(curStackIndex).size() == 0) {
-      curStackIndex--;
+    int result = stacks.get(stacks.size() - 1).removeFirst();
+    // 最上面的栈空了，就删除
+    while (stacks.get(stacks.size() - 1).isEmpty()) {
+      stacks.remove(stacks.size() - 1);
+
     }
-    return curStackIndex < 0 || stacks.get(curStackIndex).isEmpty() ? -1 : stacks.get(curStackIndex).removeFirst();
+    return result;
   }
 
   public int popAt(int index) {
-    if (index > curStackIndex)
+    if (stacks.isEmpty() || index > stacks.size() - 1) {
       return -1;
-    if (stacks.get(index).isEmpty() && curStackIndex > index) {
+    }
+    int result = stacks.get(index).removeFirst();
+    if (stacks.get(index).isEmpty()) {
       stacks.remove(index);
     }
-    return stacks.get(index).isEmpty() ? -1 : stacks.get(index).removeFirst();
+    return result;
 
   }
 }
