@@ -7,8 +7,9 @@ import java.util.TreeSet;
 public class test {
 
         public static void main(String[] args) {
-                byte b = (byte) 129;
-                System.out.println(b);
+                Solution1455 so = new Solution1455();
+                System.out.println(so.isPrefixOfWord("b bu bur burg burger", "burg"));
+
 
         }
 
@@ -29,4 +30,3 @@ public class test {
         }
 
 }
-
