@@ -9,7 +9,9 @@ public class test {
         public int n = 5;
 
         public static void main(String[] args) {
-                createTree(new String[] { "1", "2", "3", "4", "6", "5", "7" });
+                Solution658 so = new Solution658();
+                so.findClosestElements(new int[] { -2,-1,1,2,3,4,5 }, 7, 3);
+
         }
 
         public static TreeNode createTree(String[] nums) {
