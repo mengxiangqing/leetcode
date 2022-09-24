@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch test",
+            "request": "launch",
+            "mainClass": "test",
+            "projectName": "leetcode_569f38fc"
+        },
+        {
+            "type": "java",
+            "name": "Launch 程序员面试金典",
+            "request": "launch",
+            "mainClass": "程序员面试金典",
+            "projectName": "leetcode_569f38fc"
+        },
+        {
+            "type": "java",
             "name": "Launch Current File",
             "request": "launch",
             "mainClass": "${file}"

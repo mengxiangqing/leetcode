@@ -9,8 +9,9 @@ public class test {
         public int n = 5;
 
         public static void main(String[] args) {
-                Solution658 so = new Solution658();
-                so.findClosestElements(new int[] { -2,-1,1,2,3,4,5 }, 7, 3);
+               Solution1652 so = new Solution1652();
+               so.decrypt(new int[]{2,4,9,3},-2);
+               
 
         }
 

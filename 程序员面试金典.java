@@ -10,13 +10,8 @@ import java.util.Set;
 public class 程序员面试金典 {
 
   public static void main(String[] args) {
-    StackOfPlates sop = new StackOfPlates(2);
-    sop.push(1);
-    sop.push(2);
-    sop.push(3);
-    sop.popAt(0);
-    sop.popAt(0);
-    sop.popAt(0);
+    Solution0501 so = new Solution0501();
+    so.insertBits(126194517, 2982082, 9, 30);
 
   }
 
@@ -31,6 +26,50 @@ public class 程序员面试金典 {
     r.next = null;
 
     return dummy.next;
+  }
+}
+
+/**
+ * 面试题 05.01. 插入
+ * 给定两个整型数字 N 与 M，以及表示比特位置的 i 与 j（i <= j，且从 0 位开始计算）。
+ * 
+ * 编写一种方法，使 M 对应的二进制数字插入 N 对应的二进制数字的第 i ~ j 位区域，不足之处用 0 补齐。具体插入过程如图所示。
+ */
+class Solution0501 {
+  public int insertBits(int N, int M, int i, int j) {
+    String NStr = Integer.toBinaryString(N);
+    String MStr = Integer.toBinaryString(M);
+    int maxLen = 0;
+    maxLen = Math.max(NStr.length(), maxLen);
+    maxLen = Math.max(MStr.length(), maxLen);
+    maxLen = Math.max(j, maxLen);
+    int len = maxLen - NStr.length();
+    if (NStr.length() < maxLen) {
+      for (int k = 0; k < len; k++) {
+        NStr = '0' + NStr;
+      }
+    }
+    StringBuilder sb = new StringBuilder();
+    int n = MStr.length() - 1;
+    int m = 0;
+    for (int k = NStr.length() - 1; k >= 0; m++, k--) {
+      if (m >= i && m <= j) {
+        if (n < 0) {
+          sb.append('0');
+        } else
+          sb.append(MStr.charAt(n--));
+      } else {
+        sb.append(NStr.charAt(k));
+      }
+    }
+    if (m <= j) {
+      if (n < 0) {
+        sb.append('0');
+      } else
+        sb.append(MStr.charAt(n--));
+    }
+    return Integer.parseInt(sb.reverse().toString(), 2);
+
   }
 }
 
