@@ -4,14 +4,13 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.PriorityQueue;
 import java.util.Set;
 
 public class 程序员面试金典 {
 
   public static void main(String[] args) {
-    Solution0501 so = new Solution0501();
-    so.insertBits(126194517, 2982082, 9, 30);
+    Solution0508 so = new Solution0508();
+    so.drawLine(3, 96, 0, 95, 0);
 
   }
 
@@ -26,6 +25,52 @@ public class 程序员面试金典 {
     r.next = null;
 
     return dummy.next;
+  }
+}
+
+/**
+ * 面试题 05.08. 绘制直线
+ * 已知一个由像素点组成的单色屏幕，每行均有 w 个像素点，所有像素点初始为 0，左上角位置为 (0,0)。
+ * 
+ * 现将每行的像素点按照「每 32 个像素点」为一组存放在一个 int 中，再依次存入长度为 length 的一维数组中。
+ * 
+ * 我们将在屏幕上绘制一条从点 (x1,y) 到点 (x2,y) 的直线（即像素点修改为 1），请返回绘制过后的数组。
+ * 
+ * 
+ * 
+ * 注意：
+ * 
+ * 用例保证屏幕宽度 w 可被 32 整除（即一个 int 不会分布在两行上）
+ */
+class Solution0508 {
+  public int[] drawLine(int length, int w, int x1, int x2, int y) {
+    int[] res = new int[length];
+    // 求行数
+    int h = length * 32 / w;
+    // 每一行个数
+    int num = w / 32;
+    int index = 0;
+    // 遍历每一行
+    for (int i = 0; i < h; i++) {
+      // 直线在这一行
+      if(i == y){
+        index = i * num;
+        StringBuilder sb = new StringBuilder();
+        for (int j = 0; j < w; j++) {
+         if(j >=x1 && j<=x2){
+           sb.append('1');
+         }else{
+           sb.append('0');
+         }
+         if(sb.length() == 32){
+           res[index++] = Integer.parseUnsignedInt(sb.toString(), 2);
+           // 清空StringBuilder
+           sb.delete(0, sb.length());
+         }
+        }
+      }
+    }
+    return res;
   }
 }
 

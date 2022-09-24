@@ -9,8 +9,40 @@ public class test {
         public int n = 5;
 
         public static void main(String[] args) {
-               Solution1652 so = new Solution1652();
-               so.decrypt(new int[]{2,4,9,3},-2);
+                StringBuilder builder = new StringBuilder();  
+                long time = System.currentTimeMillis();  
+                for(int i=0;i<10000000;i++){  
+                    builder = new StringBuilder();  
+                    builder.append("aa");  
+                    builder.append("bb");  
+                    builder.append("cc");  
+                    builder.append("dd");  
+                    builder.append("ee");  
+                }  
+                System.out.println("new 耗时：" + (System.currentTimeMillis() - time));  
+                long time1 = System.currentTimeMillis(); 
+                StringBuilder builder1 = new StringBuilder();
+                for(int i=0;i<10000000;i++){  
+                    builder1.delete(0, builder.length());  
+                    builder1.append("a");  
+                    builder1.append("b");  
+                    builder1.append("c");  
+                    builder1.append("d");  
+                    builder1.append("e");  
+                }  
+                System.out.println("delete 耗时：" + (System.currentTimeMillis() - time1));  
+                long time2 = System.currentTimeMillis(); 
+                StringBuilder builder2 = new StringBuilder();
+                for(int i=0;i<10000000;i++){  
+                    builder2.setLength(0);  
+                    builder2.append("1a");  
+                    builder2.append("1b");  
+                    builder2.append("1c");  
+                    builder2.append("1d");  
+                    builder2.append("1e");  
+                }  
+                System.out.println("setLenth=0 耗时：" + (System.currentTimeMillis() - time2));  
+        
                
 
         }
