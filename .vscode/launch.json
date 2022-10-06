@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch sanfor",
+            "request": "launch",
+            "mainClass": "sanfor",
+            "projectName": "leetcode_569f38fc"
+        },
+        {
+            "type": "java",
             "name": "Launch TestDog",
             "request": "launch",
             "mainClass": "TestDog",

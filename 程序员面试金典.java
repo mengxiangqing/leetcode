@@ -1,4 +1,5 @@
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Deque;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -9,8 +10,8 @@ import java.util.Set;
 public class 程序员面试金典 {
 
   public static void main(String[] args) {
-    Solution0508 so = new Solution0508();
-    so.drawLine(3, 96, 0, 95, 0);
+    Solution0804 so = new Solution0804();
+    so.subsets(new int[] { 1, 2, 3 });
 
   }
 
@@ -25,6 +26,33 @@ public class 程序员面试金典 {
     r.next = null;
 
     return dummy.next;
+  }
+}
+
+/**
+ * 面试题 08.04. 幂集
+ * 幂集。编写一种方法，返回某集合的所有子集。集合中不包含重复的元素。
+ * 
+ * 说明：解集不能包含重复的子集。
+ */
+
+class Solution0804 {
+
+  public List<List<Integer>> subsets(int[] nums) {
+    List<List<Integer>> res = new ArrayList<>();
+    res.add(new ArrayList<>());
+
+    for (int i = 0; i < nums.length; i++) {
+      int size = res.size();
+      // 遍历结果集中的每一个元素，往里添加nums[i]
+      for (int j = 0; j < size; j++) {
+        List<Integer> temp = new ArrayList<>(res.get(j));
+        temp.add(nums[i]);
+        res.add(temp);
+      }
+
+    }
+    return res;
   }
 }
 
@@ -53,20 +81,20 @@ class Solution0508 {
     // 遍历每一行
     for (int i = 0; i < h; i++) {
       // 直线在这一行
-      if(i == y){
+      if (i == y) {
         index = i * num;
         StringBuilder sb = new StringBuilder();
         for (int j = 0; j < w; j++) {
-         if(j >=x1 && j<=x2){
-           sb.append('1');
-         }else{
-           sb.append('0');
-         }
-         if(sb.length() == 32){
-           res[index++] = Integer.parseUnsignedInt(sb.toString(), 2);
-           // 清空StringBuilder
-           sb.delete(0, sb.length());
-         }
+          if (j >= x1 && j <= x2) {
+            sb.append('1');
+          } else {
+            sb.append('0');
+          }
+          if (sb.length() == 32) {
+            res[index++] = Integer.parseUnsignedInt(sb.toString(), 2);
+            // 清空StringBuilder
+            sb.delete(0, sb.length());
+          }
         }
       }
     }

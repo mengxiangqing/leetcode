@@ -8,10 +8,20 @@ import java.util.Deque;
 public class test {
         public int n = 5;
 
-        public static void main(String[] args) {
-               
-               
+        public static void main(String args[]) {
 
+
+                Thread t = new Thread() {
+                        public void run() {
+                                dianping();
+                        }
+                };
+                t.start();
+                System.out.print("dazhong");
+        }
+
+        static void dianping() {
+                System.out.print("dianping");
         }
 
         public static TreeNode createTree(String[] nums) {
