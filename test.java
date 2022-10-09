@@ -8,16 +8,15 @@ import java.util.Deque;
 public class test {
         public int n = 5;
 
+        /**
+         * @param args
+         */
         public static void main(String args[]) {
 
+                Solution856 solution856 = new Solution856();
+                int res = solution856.scoreOfParentheses("()");
+                System.out.println(res);
 
-                Thread t = new Thread() {
-                        public void run() {
-                                dianping();
-                        }
-                };
-                t.start();
-                System.out.print("dazhong");
         }
 
         static void dianping() {

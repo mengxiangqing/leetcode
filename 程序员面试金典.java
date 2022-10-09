@@ -30,6 +30,35 @@ public class 程序员面试金典 {
 }
 
 /**
+ * 面试题 05.06. 整数转换
+ * 整数转换。编写一个函数，确定需要改变几个位才能将整数A转成整数B。
+ */
+class Solution0506 {
+  public int convertInteger(int A, int B) {
+    String AString = Integer.toBinaryString(A);
+    String BString = Integer.toBinaryString(B);
+    int lenA = AString.length();
+    int lenB = BString.length();
+    if (lenA > lenB) {
+      for (int i = 0; i < lenA - lenB; i++) {
+        BString = '0' + BString;
+      }
+    } else if (lenA < lenB) {
+      for (int i = 0; i < lenB - lenA; i++) {
+        AString = '0' + AString;
+      }
+    }
+    int count = 0;
+    for (int i = 0; i < AString.length(); i++) {
+      if (AString.charAt(i) != BString.charAt(i)) {
+        count++;
+      }
+    }
+    return count;
+  }
+}
+
+/**
  * 面试题 08.04. 幂集
  * 幂集。编写一种方法，返回某集合的所有子集。集合中不包含重复的元素。
  * 
