@@ -58,6 +58,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[915]分割数组.c">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/[915]分割数组.md" />
+              <option name="frontendQuestionId" value="leetcode.cn915" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[915]分割数组.c" />
+              <option name="titleSlug" value="partition-array-into-disjoint-intervals" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/[965]单值二叉树.cpp">
           <value>
             <LeetcodeEditor>

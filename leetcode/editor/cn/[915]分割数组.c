@@ -39,12 +39,31 @@
 // 
 //
 // Related Topics 数组 👍 211 👎 0
-
-
+#include<stdio.h>
+int partitionDisjoint(int *nums, int numsSize);
+int main() {
+    int nums[] = {5, 0, 3, 8, 6};
+    partitionDisjoint(nums, 5);
+}
 //leetcode submit region begin(Prohibit modification and deletion)
 
 
-int partitionDisjoint(int* nums, int numsSize){
+int partitionDisjoint(int *nums, int numsSize) {
+    int count = 1;
+    while (count < numsSize) {
+        int max = 0;
+        for (int i = 0; i < count; ++i) {
+            max = max > nums[i] ? max : nums[i];
+        }
+        for (int i = count; i < numsSize; ++i) {
+            if (max < nums[i]) {
+                count++;
+                break;
+            }
+        }
+        return count;
+    }
 
+    return count;
 }
 //leetcode submit region end(Prohibit modification and deletion)

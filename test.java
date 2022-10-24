@@ -13,10 +13,8 @@ public class test {
          */
         public static void main(String args[]) {
 
-                Solution856 solution856 = new Solution856();
-                int res = solution856.scoreOfParentheses("()");
-                System.out.println(res);
-
+                Solution915 so = new Solution915();
+                so.partitionDisjoint(new int[] {6,0,8,30,37,6,75,98,39,90,63,74,52,92,64});
         }
 
         static void dianping() {
@@ -72,6 +70,7 @@ public class test {
         }
 
 }
+
 
 class TreeNode {
         int val;
