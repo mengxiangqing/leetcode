@@ -12,9 +12,10 @@ public class test {
          * @param args
          */
         public static void main(String args[]) {
+                Solution907 so = new Solution907();
+                int res = so.sumSubarrayMins(new int[] { 3, 1, 2, 4, 7, 9, 2, 4, 3, 6 });
+                System.out.println(res);
 
-                Solution915 so = new Solution915();
-                so.partitionDisjoint(new int[] {6,0,8,30,37,6,75,98,39,90,63,74,52,92,64});
         }
 
         static void dianping() {
@@ -70,7 +71,6 @@ public class test {
         }
 
 }
-
 
 class TreeNode {
         int val;
