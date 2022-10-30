@@ -12,9 +12,10 @@ public class test {
          * @param args
          */
         public static void main(String args[]) {
-                Solution907 so = new Solution907();
-                int res = so.sumSubarrayMins(new int[] { 3, 1, 2, 4, 7, 9, 2, 4, 3, 6 });
-                System.out.println(res);
+                Solution784 so = new Solution784();
+                 so.letterCasePermutation("3z4");
+
+
 
         }
 
