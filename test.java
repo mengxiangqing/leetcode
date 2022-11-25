@@ -12,9 +12,9 @@ public class test {
          * @param args
          */
         public static void main(String args[]) {
-                Solution784 so = new Solution784();
-                 so.letterCasePermutation("3z4");
-
+                Solution129 so = new Solution129();
+                TreeNode root = createTree(new String[]{"1","0"});
+                so.sumNumbers(root);
 
 
         }
